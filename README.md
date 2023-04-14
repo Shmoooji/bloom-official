@@ -40,6 +40,8 @@ npm run hot
 
 ### BACKEND
 
+If you're role involves touching the database, please use laravel's features in the database folder. To learn how to use migrations/factories/seeders, watch [here](https://www.youtube.com/watch?v=g-63ClKANsM)
+
 First, make sure u have the database running in the server by setting up the database in phpmyadmin:
 
 1. Turn on Apache and MySQL in XAMPP
