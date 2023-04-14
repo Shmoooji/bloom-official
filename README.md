@@ -88,6 +88,8 @@ php artisan serve
 3. Make a pull request
 4. Wait for merge
 
+Watch this [video](https://www.youtube.com/watch?v=k5D37W6h56o) to better understand forking
+
 ### CREATING A TICKET BRANCH
 
 Steps to create a ticket branch.
