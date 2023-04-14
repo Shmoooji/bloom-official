@@ -81,6 +81,13 @@ php artisan serve
 
 ## Contributing
 
+### Forking
+
+1. Fork Repo
+2. Code
+3. Make a pull request
+4. Wait for merge
+
 ### CREATING A TICKET BRANCH
 
 Steps to create a ticket branch.
