@@ -66,6 +66,12 @@ php artisan migrate:refresh --seed
 
 ```
 
+If errors are encountered, do this next:
+
+```
+php artisan migrate:fresh --seed
+```
+
 To run the laravel localhost server:
 
 ```
