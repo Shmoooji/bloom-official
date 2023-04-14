@@ -1,6 +1,18 @@
 # Bloom Project
 
-A brief description of what this project does and who it's for
+A customer relationship management software. It could help businesses manage customer interactions and improve customer satisfaction. May it be Software, Tool and resources for your businesses. Good for Business that are in the early stages which it could help attract customers and simplify the business process so it could focus on the main thing which is to increase revenue. Hence why it's name is bloom.
+
+#### Modules:
+
+-   Marketing Automation
+-   Sales
+-   Customer Service
+-   Analytics
+
+## Links
+
+-   [Figma Link](https://www.figma.com/file/iQHsG1Hm0eKl4FcKJG1DTT/BLOOM-Wireframes?node-id=3-146)
+-   [Trello](https://www.figma.com/file/iQHsG1Hm0eKl4FcKJG1DTT/BLOOM-Wireframes?node-id=0)
 
 ## Installation
 
@@ -58,6 +70,32 @@ To run the laravel localhost server:
 php artisan serve
 
 ```
+
+## Contributing
+
+### CREATING A TICKET BRANCH
+
+Steps to create a ticket branch.
+
+1. Merge "main" branch to "{feature}/main" branch to update the "{feature}/main" branch.
+   Ex: services/main, events/main
+2. Checkout to "{feature}/main" and do
+
+```
+git checkout -b {feature}/{ticket no.}
+```
+
+### CREATING A PULL REQUEST
+
+Steps to create a pull request.
+
+1. Commit your changes to the "{feature}/{ticket no.}" branch.
+2. Go to the "Pull requests" section and click "New pull request"
+3. Set the "compare:" field to your ticket branch.
+4. Set the "base:" field to the "{feature}/main" branch. Do not leave it in the default main branch.
+5. Click "Create pull request".
+6. Write down the changes you have applied based on the code you have contributed. Attach supporting image/s whenever necessary.
+7. Click "Create pull request"
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
