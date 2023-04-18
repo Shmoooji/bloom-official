@@ -5,7 +5,6 @@
  */
 
 require("./bootstrap");
-// import "./bootstrap";
 import { createApp } from "vue";
 // import BootstrapVue from "bootstrap-vue";
 // import "bootstrap/dist/css/bootstrap.css";
@@ -18,8 +17,8 @@ import App from "./App.vue";
  * to use in your application's views. An example is included for you.
  */
 
-// Vue.use(BootstrapVue);
 const app = createApp(App);
+// app.use(BootstrapVue);
 
 // app.component("app", App);
 
