@@ -4,8 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require("./bootstrap");
 // import "./bootstrap";
-import Vue, { createApp } from "@vue/compat";
+import { createApp } from "vue";
 // import BootstrapVue from "bootstrap-vue";
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -17,7 +18,6 @@ import App from "./App.vue";
  * to use in your application's views. An example is included for you.
  */
 
-// require("./bootstrap");
 // Vue.use(BootstrapVue);
 const app = createApp(App);
 
