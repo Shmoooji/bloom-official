@@ -46,3 +46,7 @@ Route::get("works", function () {
 Route::get("cutserv", function () {
     return view('cutserv');
 });
+
+Route::get('/payment/options', function () {
+    return view('payment_options');
+});
