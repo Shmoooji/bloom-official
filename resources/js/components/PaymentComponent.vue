@@ -5,6 +5,11 @@
 </template>
 
 <style>
+  body {
+    margin: 0;
+    body: 0;
+  }
+
   .payment-container {
     display: flex;
     height: 100vh;
@@ -17,6 +22,8 @@
     align-items: center;
     cursor: pointer;
     transition: background-color 0.2s;
+    height: 100%;
+    width: 100%;
   }
 
   .payment-option:hover {
