@@ -19,7 +19,7 @@ const app = createApp({
     }
 });
 
-import ExampleComponent from './components/ExampleComponent.vue';
+import PaymentComponent from './components/PaymentComponent.vue';
 app.component('payment-component', PaymentComponent);
 
 /**
