@@ -25,6 +25,9 @@ app.component("navbar-component", navbar);
 import campaigns from "./components/campaigns.vue";
 app.component("campaigns-component", campaigns);
 
+import PaymentComponent from "./components/PaymentComponent.vue";
+app.component("payment-component", PaymentComponent);
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
