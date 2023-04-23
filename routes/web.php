@@ -15,3 +15,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// About
+Route::get("about", function(){
+    return view('about');
+});
+
+// Subscription
+Route::get("subscription", function(){
+    return view('subscription');
+});
+
+// Contact Us
+Route::get("contactUs", function(){
+    return view('contactUs');
+});
+
+// Works
+Route::get("works", function(){
+    return view('works');
+});
