@@ -32,7 +32,7 @@
                 <a href="marketingautomation.php" class="header-space"> Marketing Automation </a>
                 <a href="analytics.php" class="header-space"> Analytics </a>
             </div>
-            <div class="header-avatar">
+            <!-- <div class="header-avatar">
                     <div class="header-avatar-menu">
                         <ul>
                             <li><a href="profile.php">
@@ -46,7 +46,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
         </header>
 
         <div class="menu-nav">
@@ -67,6 +67,14 @@
                 <li><a href="unread.php">
                 <p>Trash</p>
                 </a></li>
+        </div>
+
+        <div class="main-menu">
+                <a href="email.php" style="display:inline-block; margin-right:200px;"><h1>Email</h1></a>
+                <a href="livechat.php" style="display:inline-block; margin-right:200px; "><h1>Live Chat</h1></a>
+                <a href="tickets.php" style="display:inline-block; "><h1>Tickets</h1></a>
+        </div>
+            
     </body>
 
     
