@@ -156,4 +156,11 @@ header{
     font-family: 'Meera Inimai', sans-serif;
 }
 
+.main-menu{
+    position: absolute;
+    left: 40%;
+    top: 40%;
+}
+
+
 
