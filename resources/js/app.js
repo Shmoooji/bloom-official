@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import { BootstrapVue3 } from 'bootstrap-vue-3';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,6 +18,18 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
+
+import navbar from './components/navbar.vue';
+app.component('navbar-component', navbar);
+
+import campaigns from './components/campaigns.vue';
+app.component('campaigns-component', campaigns);
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+
+app.use(BootstrapVue3);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -37,3 +50,4 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+app.mount('#campaigns');
