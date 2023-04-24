@@ -40,3 +40,8 @@ Route::get("contactUs", function () {
 Route::get("works", function () {
     return view('works');
 });
+
+// Cutserv
+Route::get("cutserv", function () {
+    return view('cutserv');
+});
