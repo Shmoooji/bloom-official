@@ -4,8 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
+require("./bootstrap");
+import { createApp } from "vue";
+// import BootstrapVue from "bootstrap-vue";
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-vue/dist/bootstrap-vue.css";
+import App from "./App.vue";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,10 +17,10 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+const app = createApp(App);
+// app.use(BootstrapVue);
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+// app.component("app", App);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +40,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount("#app");
