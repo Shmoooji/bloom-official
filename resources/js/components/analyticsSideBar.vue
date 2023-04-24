@@ -63,6 +63,9 @@ export default {
                 transition: 0.4s;
                 font-size: 1vw;
             }
+            .side-nav li{
+                margin-top: 2vh;
+            }
             .side-nav a:hover{
                 text-decoration: none;
                 color: black;
