@@ -12,7 +12,7 @@ A customer relationship management software. It could help businesses manage cus
 ## Links
 
 -   [Figma Link](https://www.figma.com/file/iQHsG1Hm0eKl4FcKJG1DTT/BLOOM-Wireframes?node-id=3-146)
--   [Trello](https://trello.com/invite/b/2Lt56hdE/ATTI81e30a97c810967d1a4f7a1ee9a91bdd40539293/bloom)
+-   [Trello](https://www.figma.com/file/iQHsG1Hm0eKl4FcKJG1DTT/BLOOM-Wireframes?node-id=0)
 
 ## Installation
 

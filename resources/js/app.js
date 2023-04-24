@@ -4,12 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require("./bootstrap");
+import "./bootstrap";
 import { createApp } from "vue";
-// import BootstrapVue from "bootstrap-vue";
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap-vue/dist/bootstrap-vue.css";
-import App from "./App.vue";
+import { BootstrapVue3 } from "bootstrap-vue-3";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,10 +14,21 @@ import App from "./App.vue";
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp(App);
-// app.use(BootstrapVue);
+const app = createApp({});
 
-// app.component("app", App);
+import ExampleComponent from "./components/ExampleComponent.vue";
+app.component("example-component", ExampleComponent);
+
+import navbar from "./components/navbar.vue";
+app.component("navbar-component", navbar);
+
+import campaigns from "./components/campaigns.vue";
+app.component("campaigns-component", campaigns);
+
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+
+app.use(BootstrapVue3);
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,3 +49,4 @@ const app = createApp(App);
  */
 
 app.mount("#app");
+app.mount("#campaigns");

@@ -17,16 +17,10 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "sass": "^1.56.1",
-        "vue": "^3.2.47",
+        "vue": "^3.2.37",
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "@vue/compat": "^3.2.47",
-        "@vue/compiler-sfc": "^3.2.47",
-        "bootstrap-vue": "^2.23.1",
-        "bootstrap-vue-3": "^0.5.1",
-        "jquery": "^1.9.1",
-        "pinia": "^2.0.34",
-        "vue-axios": "^3.5.2"
+        "bootstrap-vue-3": "^0.5.1"
     }
 }
