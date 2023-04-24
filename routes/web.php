@@ -15,3 +15,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/campaigns', function () {
+    return view('campaigns');
+});
+
+// About
+Route::get("about", function () {
+    return view('about');
+});
+
+// Subscription
+Route::get("subscription", function () {
+    return view('subscription');
+});
+
+// Contact Us
+Route::get("contactUs", function () {
+    return view('contactUs');
+});
+
+// Works
+Route::get("works", function () {
+    return view('works');
+});
+
+// Cutserv
+Route::get("cutserv", function () {
+    return view('cutserv');
+});
