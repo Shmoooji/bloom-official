@@ -29,15 +29,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <h1>Contact Us Page</h1>
-
-            <a href="/about">About</a>
-            <br>
-            <a href="/works">Works</a>
-            <br>
-            <a href="/subscription">Subscription</a>
-            <br>
-            <a href="/contactUs">Contact Us</a>
+            <contacts-component></contacts-component>
         </div>
     </body>
 </html>

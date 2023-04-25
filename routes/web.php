@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +34,10 @@ Route::get("subscription", function () {
 });
 
 // Contact Us
-Route::get("contactUs", function () {
+Route::get("contactUs", function() {
     return view('contactUs');
 });
+Route::get("contactUs/list", [ContactController::class, 'index']);
 
 // Works
 Route::get("works", function () {
