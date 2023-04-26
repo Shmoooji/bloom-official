@@ -7,33 +7,28 @@
 import "./bootstrap";
 import { createApp } from "vue";
 import { BootstrapVue3 } from "bootstrap-vue-3";
-import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
-const app = createApp({})
 import marketingAutomation from "./components/MarketingAutomation.vue";
-const marketingApp = createApp(marketingAutomation);
-
-import navbar from "./components/navbar.vue";
-marketingApp.component("navbar-component", navbar);
-
 import ExampleComponent from "./components/ExampleComponent.vue";
-app.component("example-component", ExampleComponent);
-
-app.component("navbar-component", navbar);
-
 import campaigns from "./components/campaigns.vue";
-app.component("campaigns-component", campaigns);
+import sales from "./pages/sales.vue";
+import welcome from "./pages/welcome.vue";
 
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
-
-app.use(BootstrapVue3);
-marketingApp.component('example-component', ExampleComponent);
+const app = createApp({});
+app.component("marketing-automation-component", marketingAutomation)
+    .component("example-component", ExampleComponent)
+    .component("campaigns-component", campaigns)
+    .component("sales-component", sales)
+    .component("welcome-component", welcome)
+    .use(BootstrapVue3)
+    .mount("#app");
 
 /**
  * The following block of code may be used to automatically register your
@@ -53,6 +48,7 @@ marketingApp.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount("#app");
-app.mount("#campaigns");
-marketingApp.mount('#marketingAutomation');
+// app.mount("#app");
+// app.mount("#campaigns");
+// app.mount("#marketingAutomation");
+// app.mount("#sales");

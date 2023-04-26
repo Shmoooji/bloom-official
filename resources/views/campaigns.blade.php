@@ -20,7 +20,7 @@
 
     </head>
     <body class="antialiased">
-        <div id="campaigns">
+        <div id="app">
 
             <campaigns-component></campaigns-component>
 

@@ -1,4 +1,5 @@
 <template>
+    <NavBar></NavBar>
     <b-container fluid="sm">
         <b-row>
             <b-col lg="3" class="my-1">
@@ -37,7 +38,7 @@
                     v-slot="{ ariaDescribedby }"
                 >
                     <b-form-select
-                        v-model="(filterOn, selected)"
+                        v-model="filterOn"
                         :options="options"
                         :aria-describedby="ariaDescribedby"
                         class="mt-0"
@@ -97,9 +98,14 @@
 </template>
 
 <script>
-import { assertExpressionStatement } from "@babel/types";
+// import { assertExpressionStatement } from "@babel/types";
+import navbar from "../components/navbar";
 
 export default {
+    name: "Sales",
+    components: {
+        NavBar,
+    },
     data() {
         return {
             selected: null,
