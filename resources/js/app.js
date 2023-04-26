@@ -15,8 +15,14 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import analyticsNav from './components/analyticsNav.vue';
+import analyticsSideBar from './components/analyticsSideBar.vue';
+import analyticsContentReports from './components/analyticsContentReports.vue';
+
+//app.component('example-component', ExampleComponent);
+app.component('analytics-navbar', analyticsNav);
+app.component('analytics-sidebar', analyticsSideBar);
+app.component('analytics-contentreports', analyticsContentReports);
 
 /**
  * The following block of code may be used to automatically register your
