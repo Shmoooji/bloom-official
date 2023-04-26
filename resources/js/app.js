@@ -29,8 +29,8 @@ app.component("navbar-component", navbar);
 import campaigns from "./components/campaigns.vue";
 app.component("campaigns-component", campaigns);
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 app.use(BootstrapVue3);
 marketingApp.component('example-component', ExampleComponent);
