@@ -46,3 +46,7 @@ Route::get("works", function () {
 Route::get("cutserv", function () {
     return view('cutserv');
 });
+//Marketing Automation
+Route::get("marketing-automation", function(){
+    return view('marketingAutomation');
+});

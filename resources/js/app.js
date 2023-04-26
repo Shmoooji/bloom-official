@@ -7,28 +7,33 @@
 import "./bootstrap";
 import { createApp } from "vue";
 import { BootstrapVue3 } from "bootstrap-vue-3";
+import 'bootstrap/dist/css/bootstrap.css'
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
+const app = createApp({})
+import marketingAutomation from "./components/MarketingAutomation.vue";
+const marketingApp = createApp(marketingAutomation);
 
-const app = createApp({});
+import navbar from "./components/navbar.vue";
+marketingApp.component("navbar-component", navbar);
 
 import ExampleComponent from "./components/ExampleComponent.vue";
 app.component("example-component", ExampleComponent);
 
-import navbar from "./components/navbar.vue";
 app.component("navbar-component", navbar);
 
 import campaigns from "./components/campaigns.vue";
 app.component("campaigns-component", campaigns);
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 app.use(BootstrapVue3);
+marketingApp.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -50,3 +55,4 @@ app.use(BootstrapVue3);
 
 app.mount("#app");
 app.mount("#campaigns");
+marketingApp.mount('#marketingAutomation');
