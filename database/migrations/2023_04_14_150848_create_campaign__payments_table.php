@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('bill_name');
             $table->string('bill_email');
             $table->string('bill_phone');
-            $table->string('bill_counttry');
+            $table->string('bill_country');
             $table->string('bill_city');
             $table->longText('bill_address');
             $table->string('payment_method');
