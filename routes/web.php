@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CampaignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ Route::get('/', function () {
 });
 
 // Campaigns
-Route::get('/campaigns', function () {
-    return view('campaigns');
-});
+Route::get('/campaigns', [CampaignController::class, 'index'] );
 
 // About
 Route::get("about", function () {

@@ -4,8 +4,8 @@
             <navbar-component></navbar-component>
         </div>
         <b-container>
-            <b-row class="my-5">
-                <h1>Choose a Campaign that's</h1>
+            <b-row class="mb-5 mt-5">
+                <h1 class="pt-5">Choose a Campaign that's</h1>
                 <h1>perfect for your Business</h1>
             </b-row>
 
