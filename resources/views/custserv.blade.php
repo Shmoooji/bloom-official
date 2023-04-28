@@ -21,7 +21,6 @@
         <header>
             <div class="header-logo">
                 <a href="index.php">
-                    <img src="">
                     <p>LOGO</p>
                 </a>
             </div>
@@ -69,12 +68,32 @@
                 </a></li>
         </div>
 
-        <div class="main-menu">
+        <!-- <div class="main-menu">
+                <div class="email">
                 <a href="email.php" style="display:inline-block; margin-right:200px;"><h1>Email</h1></a>
+                <div class="livechat">
                 <a href="livechat.php" style="display:inline-block; margin-right:200px; "><h1>Live Chat</h1></a>
+                <div class="tickets">
                 <a href="tickets.php" style="display:inline-block; "><h1>Tickets</h1></a>
-        </div>
-            
-    </body>
+        </div> -->
+        
+        <div class="menu">
+        <a href="">
+            <img src="/img/email.png" alt="Image description">
+            <h2>Email</h2>
+        </a>
 
+        <a href="">
+            <img src="/img/livechat.png" alt="Image description">
+            <h2>Live Chat</h2>
+        </a>
+
+        <a href="">
+            <img src="/img/tickets.png" alt="Image description">
+            <h2>Tickets</h2>
+        </a>
+        </div>   
+</body>
+
+    
     
