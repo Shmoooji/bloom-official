@@ -86,6 +86,7 @@
     </head>
     <body class="antialiased" style="background-image: url('{{ asset('img/landing-page-bg.jpg')}}');">
         <div id="app">
+            {{-- <navbar-component></navbar-component> --}}
             <div>
                 <div class="landing-page-content">
                     <h1>Welcome to Bloom</h1>

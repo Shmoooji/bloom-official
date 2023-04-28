@@ -20,7 +20,8 @@
 
     </head>
     <body class="antialiased">
-        <div id="app">
+        <div id="app" style="padding-top: 100px;">
+            <marketing-automation-component></marketing-automation-component>
         </div>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

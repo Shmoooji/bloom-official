@@ -1,14 +1,14 @@
 <template>
-    <navbar />
+    <NavBar />
 </template>
 
 <script>
-import navbar from "../components/navbar";
+import NavBar from "../components/NavBar";
 
 export default {
     name: "Welcome",
-    componens: {
-        navbar,
+    components: {
+        NavBar,
     },
 };
 </script>
