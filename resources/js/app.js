@@ -25,6 +25,9 @@ app.component("navbar-component", navbar);
 import campaigns from "./components/campaigns.vue";
 app.component("campaigns-component", campaigns);
 
+import index from "./pages/index.vue";
+app.component("index-page", index);
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
@@ -50,3 +53,4 @@ app.use(BootstrapVue3);
 
 app.mount("#app");
 app.mount("#campaigns");
+app.mount("#index");

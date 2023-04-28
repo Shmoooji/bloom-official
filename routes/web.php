@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Index
+Route::get('/index', function () {
+    return view('index');
+});
+
 // Campaigns
 Route::get('/campaigns', function () {
     return view('campaigns');
