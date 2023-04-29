@@ -21,7 +21,6 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "bootstrap-vue": "^2.23.1",
         "bootstrap-vue-3": "^0.5.1"
     }
 }
