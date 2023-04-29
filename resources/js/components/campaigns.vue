@@ -1,5 +1,5 @@
 <template>
-    <div class="campaign-page pt-5">
+    <div class="campaign-page">
         <div>
             <navbar-component></navbar-component>
         </div>
