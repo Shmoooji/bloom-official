@@ -34,10 +34,9 @@ Route::get("subscription", function () {
 });
 
 // Contact Us
-Route::get("contactUs", function() {
+Route::get("contactUs", function () {
     return view('contactUs');
 });
-Route::get("contactUs/list", [ContactController::class, 'index']);
 
 // Works
 Route::get("works", function () {
@@ -48,3 +47,9 @@ Route::get("works", function () {
 Route::get("cutserv", function () {
     return view('cutserv');
 });
+
+// Contacts
+Route::get("contacts", function () {
+    return view('contacts');
+});
+Route::get("contacts/list", [ContactController::class, 'index']);

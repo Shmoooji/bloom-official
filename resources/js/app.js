@@ -26,7 +26,7 @@ import campaigns from "./components/campaigns.vue";
 app.component("campaigns-component", campaigns);
 
 import contacts from "./components/contacts.vue";
-app.component('contacts-component', contacts);
+app.component("contacts-component", contacts);
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";

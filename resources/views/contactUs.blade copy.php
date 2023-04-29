@@ -27,10 +27,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <div id="app">
-            <contacts-component></contacts-component>
-        </div>
+    <body
     </body>
 </html>
 

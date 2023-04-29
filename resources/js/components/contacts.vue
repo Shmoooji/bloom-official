@@ -5,10 +5,7 @@
         </div>
         <div class="contacts-container">
             <h1>CONTACTS</h1>
-            <div class="table-container">
-                <!-- <div class="add-button-container">
-        <b-button variant="success" class="add-button" @click="addContact">+</b-button> -->
-            </div>
+            <div class="table-container"></div>
             <b-table
                 class="table-curve table"
                 striped
@@ -35,13 +32,6 @@
 </template>
 
 <style>
-/* .add-button-container {
-position: absolute;
-top: 0;
-right: 0;
-margin: 20px;
-} */
-
 .contacts-page {
     background-color: #fff;
     min-height: 100vh;
@@ -150,26 +140,18 @@ export default {
                 this.currentPage++;
             }
         },
-        // addContact() {
-        //   const newContact = {
-        //     name: '',
-        //     created: '',
-        //     email: '',
-        //     company: '',
-        //     status: '',
-        //     lastActivity: ''
-        //   };
-        //   this.contacts.push(newContact);
-        // }
     },
-    mounted: function() {
-        console.log('mounted');
-        axios.get('contactUs/list').then((response) => {
-            console.log(response.data);
-            this.contacts = response.data;
-        }).catch((error) => {
-            console.log(error);
-        });
+    mounted: function () {
+        console.log("mounted");
+        axios
+            .get("contacts/list")
+            .then((response) => {
+                console.log(response.data);
+                this.contacts = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
     computed: {
         totalItems() {
