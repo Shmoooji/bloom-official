@@ -1,105 +1,110 @@
 <template>
-    <b-container fluid="sm">
-        <b-row>
-            <b-col lg="3" class="my-1">
-                <b-form-group
-                    label="Filter"
-                    label-for="filter-input"
-                    label-cols-sm="2"
-                    label-align-sm="left"
-                    label-size="m"
-                    class="mb-0"
-                >
-                    <b-input-group size="m">
-                        <b-form-input
-                            id="filter-input"
-                            v-model="filter"
-                            type="search"
-                            placeholder="Type to Search"
-                        ></b-form-input>
-
-                        <b-input-group-append>
-                            <b-button :disabled="!filter" @click="filter = ''"
-                                >Clear</b-button
-                            >
-                        </b-input-group-append>
-                    </b-input-group>
-                </b-form-group>
-            </b-col>
-            <b-col lg="3" class="my-1">
-                <b-form-group
-                    v-model="sortDirection"
-                    label="By"
-                    label-cols-sm="2"
-                    label-align-sm="left"
-                    label-size="m"
-                    class="mb-0"
-                    v-slot="{ ariaDescribedby }"
-                >
-                    <b-form-select
-                        v-model="(filterOn, selected)"
-                        :options="options"
-                        :aria-describedby="ariaDescribedby"
-                        class="mt-0"
-                        size="m"
-                        placeholder="category"
+    <div>
+        <b-container fluid="sm">
+            <b-row>
+                <b-col lg="3" class="my-1">
+                    <b-form-group
+                        label="Filter"
+                        label-for="filter-input"
+                        label-cols-sm="2"
+                        label-align-sm="left"
+                        label-size="m"
+                        class="mb-0"
                     >
-                    </b-form-select>
-                </b-form-group>
-            </b-col>
-        </b-row>
+                        <b-input-group size="m">
+                            <b-form-input
+                                id="filter-input"
+                                v-model="filter"
+                                type="search"
+                                placeholder="Type to Search"
+                            ></b-form-input>
 
-        <b-row class="my-4">
-            <b-table
-                striped
-                hover
-                :items="items"
-                :fields="fields"
-                :per-page="perPage"
-                :current-page="currentPage"
-                :filter="filter"
-                :filter-included-fields="filterOn"
-                :sort-by.sync="sortBy"
-                :sort-desc.sync="sortDesc"
-                :sort-direction="sortDirection"
-                stacked="md"
-                show-empty
-                small
-                @filtered="onFiltered"
-            >
-                <template #cell(name)="row">
-                    {{ row.value.first }} {{ row.value.last }}
-                </template>
+                            <b-input-group-append>
+                                <b-button
+                                    :disabled="!filter"
+                                    @click="filter = ''"
+                                    >Clear</b-button
+                                >
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="3" class="my-1">
+                    <b-form-group
+                        v-model="sortDirection"
+                        label="By"
+                        label-cols-sm="2"
+                        label-align-sm="left"
+                        label-size="m"
+                        class="mb-0"
+                        v-slot="{ ariaDescribedby }"
+                    >
+                        <b-form-select
+                            v-model="filterOn"
+                            :options="options"
+                            :aria-describedby="ariaDescribedby"
+                            class="mt-0"
+                            size="m"
+                            placeholder="category"
+                        >
+                        </b-form-select>
+                    </b-form-group>
+                </b-col>
+            </b-row>
 
-                <template #row-details="row">
-                    <b-card>
-                        <ul>
-                            <li v-for="(value, key) in row.item" :key="key">
-                                {{ key }}: {{ value }}
-                            </li>
-                        </ul>
-                    </b-card>
-                </template>
-            </b-table>
-        </b-row>
+            <b-row class="my-4">
+                <b-table
+                    striped
+                    hover
+                    :items="items"
+                    :fields="fields"
+                    :per-page="perPage"
+                    :current-page="currentPage"
+                    :filter="filter"
+                    :filter-included-fields="filterOn"
+                    :sort-by.sync="sortBy"
+                    :sort-desc.sync="sortDesc"
+                    :sort-direction="sortDirection"
+                    stacked="md"
+                    show-empty
+                    small
+                    @filtered="onFiltered"
+                >
+                    <template #cell(name)="row">
+                        {{ row.value.first }} {{ row.value.last }}
+                    </template>
 
-        <div class="mt-3">
-            <b-pagination
-                v-model="currentPage"
-                :total-rows="totalRows"
-                :per-page="perPage"
-                align="center"
-                size="m"
-                class="my-0"
-            ></b-pagination>
-        </div>
-    </b-container>
+                    <template #row-details="row">
+                        <b-card>
+                            <ul>
+                                <li v-for="(value, key) in row.item" :key="key">
+                                    {{ key }}: {{ value }}
+                                </li>
+                            </ul>
+                        </b-card>
+                    </template>
+                </b-table>
+            </b-row>
+
+            <div class="mt-3">
+                <b-pagination
+                    v-model="currentPage"
+                    :total-rows="totalRows"
+                    :per-page="perPage"
+                    align="center"
+                    size="m"
+                    class="my-0"
+                ></b-pagination>
+            </div>
+        </b-container>
+    </div>
 </template>
 
 <script>
-import { assertExpressionStatement } from "@babel/types";
+// import { assertExpressionStatement } from "@babel/types";
 
 export default {
+    name: "Sales",
     data() {
         return {
             selected: null,
@@ -247,3 +252,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+div {
+    margin-top: 50px;
+}
+</style>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('campaign_payment_id');
+            $table->unsignedBigInteger('campaign_payment_id')->nullable();
             $table->foreign('campaign_payment_id', 'fk_deals_campaign_payment_id')->references('id')->on('campaign_payments')->onDelete('cascade');
             $table->datetimetz('closing_date');
             $table->string('priority');
