@@ -13,31 +13,10 @@
         
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="{{ mix('js/app.js') }}" defer></script>
-
-        <!-- Styles -->
-        <style>
-
-
-        </style>
-
-        <style>
-            body {
-                height: 100vh;
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
     </head>
     <body class="antialiased">
         <div id="app">
-            <h1>Subscription Page</h1>
-
-            <a href="/about">About</a>
-            <br>
-            <a href="/works">Works</a>
-            <br>
-            <a href="/subscription">Subscription</a>
-            <br>
-            <a href="/contactUs">Contact Us</a>
+            <subscription-component></subscription-component> 
         </div>
         
         <script src="https://apis.google.com/js/platform.js" async defer></script>
