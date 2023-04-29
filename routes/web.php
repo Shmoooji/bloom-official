@@ -56,3 +56,7 @@ Route::get("/marketing-automation", function () {
 Route::get("/sales", function () {
     return view('sales');
 });
+
+Route::get('/payment/options', function () {
+    return view('payment_options');
+});

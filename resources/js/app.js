@@ -20,13 +20,16 @@ import navbar from "./components/NavBar.vue";
 import sales from "./pages/Sales.vue";
 import welcome from "./pages/Welcome.vue";
 import marketingAutomation from "./pages/MarketingAutomation.vue";
+import PaymentComponent from "./components/PaymentComponent.vue";
 
 const app = createApp({});
+
 app.component("marketing-automation-component", marketingAutomation)
     .component("campaigns-component", campaigns)
     .component("navbar-component", navbar)
     .component("sales-component", sales)
     .component("welcome-component", welcome)
+    .component("payment-component", PaymentComponent)
     .use(BootstrapVue3)
     .mount("#app");
 
