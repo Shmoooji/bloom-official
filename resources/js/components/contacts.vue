@@ -5,10 +5,7 @@
         </div>
         <div class="contacts-container">
             <h1>CONTACTS</h1>
-            <div class="table-container">
-                <!-- <div class="add-button-container">
-        <b-button variant="success" class="add-button" @click="addContact">+</b-button> -->
-            </div>
+            <div class="table-container"></div>
             <b-table
                 class="table-curve table"
                 striped
@@ -35,13 +32,6 @@
 </template>
 
 <style>
-/* .add-button-container {
-position: absolute;
-top: 0;
-right: 0;
-margin: 20px;
-} */
-
 .contacts-page {
     background-color: #fff;
     min-height: 100vh;
@@ -125,6 +115,7 @@ h1 {
 </style>
 
 <script>
+import axios from "axios";
 import navBar from "./navbar.vue";
 
 export default {
@@ -133,98 +124,9 @@ export default {
     },
     data() {
         return {
-            contacts: [
-                {
-                    name: "Vic Parojinog",
-                    created: "2022-01-01",
-                    email: "vic@example.com",
-                    company: "Company A",
-                    status: "Active",
-                    lastActivity: "2022-04-01",
-                },
-                {
-                    name: "Ivan Leopoldo",
-                    created: "2022-02-15",
-                    email: "ivan@example.com",
-                    company: "Company B",
-                    status: "Inactive",
-                    lastActivity: "2022-05-15",
-                },
-                {
-                    name: "Isa Adriatico",
-                    created: "2022-03-20",
-                    email: "isa@example.com",
-                    company: "Company C",
-                    status: "Active",
-                    lastActivity: "2022-06-20",
-                },
-                {
-                    name: "Aubrey Graham",
-                    created: "2022-04-25",
-                    email: "aubrey@example.com",
-                    company: "Company D",
-                    status: "Inactive",
-                    lastActivity: "2022-07-25",
-                },
-                {
-                    name: "Hitagi Senjougahara",
-                    created: "2022-06-01",
-                    email: "hitagi@example.com",
-                    company: "Company E",
-                    status: "Active",
-                    lastActivity: "2022-09-01",
-                },
-                {
-                    name: "Light Yagami",
-                    created: "2022-07-15",
-                    email: "light@example.com",
-                    company: "Company F",
-                    status: "Inactive",
-                    lastActivity: "2022-10-15",
-                },
-                {
-                    name: "Satoru Gojo",
-                    created: "2022-08-20",
-                    email: "satoru@example.com",
-                    company: "Company G",
-                    status: "Active",
-                    lastActivity: "2022-11-20",
-                },
-                {
-                    name: "Momo Stan",
-                    created: "2022-09-25",
-                    email: "momo@example.com",
-                    company: "Company H",
-                    status: "Inactive",
-                    lastActivity: "2022-12-25",
-                },
-                {
-                    name: "Tzuyu Twice",
-                    created: "2022-11-01",
-                    email: "tzuyu@example.com",
-                    company: "Company I",
-                    status: "Active",
-                    lastActivity: "2023-02-01",
-                },
-                {
-                    name: "Nayeon Once",
-                    created: "2022-12-15",
-                    email: "nayeon@example.com",
-                    company: "Company J",
-                    status: "Inactive",
-                    lastActivity: "2023-03-15",
-                },
-                {
-                    name: "Marshall Mathers",
-                    created: "2023-01-20",
-                    email: "marshall@example.com",
-                    company: "Company K",
-                    status: "Active",
-                    lastActivity: "2023-03-15",
-                },
-            ],
+            contacts: [],
+            itemsPerPage: 15,
             currentPage: 1,
-            itemsPerPage: 5,
         };
     },
     methods: {
@@ -238,17 +140,18 @@ export default {
                 this.currentPage++;
             }
         },
-        // addContact() {
-        //   const newContact = {
-        //     name: '',
-        //     created: '',
-        //     email: '',
-        //     company: '',
-        //     status: '',
-        //     lastActivity: ''
-        //   };
-        //   this.contacts.push(newContact);
-        // }
+    },
+    mounted: function () {
+        console.log("mounted");
+        axios
+            .get("contacts/list")
+            .then((response) => {
+                console.log(response.data);
+                this.contacts = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
     computed: {
         totalItems() {
