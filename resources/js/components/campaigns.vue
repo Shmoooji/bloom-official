@@ -14,7 +14,7 @@
                     <div v-for="campaign in campaigns" :key="campaign.id" class="col-md-6 my-3">
                     <b-card bg-variant="white" text-variant="dark" class="px-3 py-3"> <h2><strong>{{ campaign.name }}</strong></h2>
                     <b-card-text class="my-5">{{ campaign.desc }}</b-card-text>
-                    <b-button href="#" variant="primary">Subscribe</b-button>
+                    <b-button href="/payment" variant="primary">Subscribe</b-button>
                     </b-card>
                 </div>
                 </div>
