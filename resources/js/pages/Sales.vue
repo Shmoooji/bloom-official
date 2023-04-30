@@ -3,10 +3,12 @@
         <b-container fluid="sm">
             <b-row>
                 <b-col lg="3" class="my-1">
+                    <div>
+                        <h1 class="display-5 fw-bold">Sales</h1>
+                    </div>
+                    
                     <b-form-group
-                        label="Filter"
                         label-for="filter-input"
-                        label-cols-sm="2"
                         label-align-sm="left"
                         label-size="m"
                         class="mb-0"
@@ -16,7 +18,7 @@
                                 id="filter-input"
                                 v-model="filter"
                                 type="search"
-                                placeholder="Type to Search"
+                                placeholder="Filter Deals"
                             ></b-form-input>
 
                             <b-input-group-append>
@@ -28,8 +30,8 @@
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                </b-col>
-                <b-col lg="3" class="my-1">
+                <!-- </b-col>
+                <b-col lg="3" class="my-1"> -->
                     <b-form-group
                         v-model="sortDirection"
                         label="By"
