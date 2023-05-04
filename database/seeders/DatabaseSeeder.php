@@ -21,5 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'l_name' => 'Test Last Name',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\Contact::factory(10)->create();
+        \App\Models\Campaign::factory(10)->create();
+        \App\Models\CampaignPayment::factory(10)->create();
+        \App\Models\Deal::factory(10)->create();
     }
 }
