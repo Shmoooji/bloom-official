@@ -60,3 +60,7 @@ Route::get("/sales", function () {
 Route::get('/payment/options', function () {
     return view('payment_options');
 });
+
+Route::get('/analytics', function () {
+    return view('analytics');
+});
