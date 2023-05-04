@@ -16,7 +16,7 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
  * to use in your application's views. An example is included for you.
  */
 import campaigns from "./components/campaigns.vue";
-import navbar from "./components/NavBar.vue";
+import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
 import analyticsNav from "./components/analyticsNav.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue";
@@ -29,12 +29,13 @@ import subscription from "./pages/Subscription.vue";
 import contactUs from "./pages/ContactUs.vue";
 import marketingAutomation from "./pages/MarketingAutomation.vue";
 import customerService from "./pages/CustomerService.vue";
+import index from "./pages/Index.vue";
 
 const app = createApp({});
 
 app.component("marketing-automation-component", marketingAutomation)
     .component("campaigns-component", campaigns)
-    .component("navbar-component", navbar)
+    .component("navbar-component", NavBar)
     .component("sales-component", sales)
     .component("welcome-component", welcome)
     .component("about-component", about)
@@ -46,6 +47,7 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("analytics-sidebar", analyticsSideBar)
     .component("analytics-contentreports", analyticsContentReports)
     .component("customer-service-component", customerService)
+    .component("index-page", index)
     .use(BootstrapVue3)
     .mount("#app");
 
