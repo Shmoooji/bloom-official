@@ -42,6 +42,7 @@
         </div>
             <analytics-navbar></analytics-navbar>
             <analytics-sidebar></analytics-sidebar>
+            <analytics-contentreports></analytics-contentreports>
             </div>
     </body>
 </html>
