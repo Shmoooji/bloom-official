@@ -43,8 +43,8 @@ Route::get("/works", function () {
 });
 
 // Cutserv
-Route::get("/custserv", function () {
-    return view('custserv');
+Route::get("/customerservice", function () {
+    return view('customerservice');
 });
 
 //Marketing Automation

@@ -17,13 +17,14 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
  */
 import campaigns from "./components/campaigns.vue";
 import navbar from "./components/NavBar.vue";
-import sales from "./pages/Sales.vue";
-import welcome from "./pages/Welcome.vue";
-import marketingAutomation from "./pages/MarketingAutomation.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
 import analyticsNav from "./components/analyticsNav.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue";
 import analyticsContentReports from "./components/analyticsContentReports.vue";
+import sales from "./pages/Sales.vue";
+import welcome from "./pages/Welcome.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
+import customerService from "./pages/CustomerService.vue";
 
 const app = createApp({});
 
@@ -36,6 +37,7 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("analytics-navbar", analyticsNav)
     .component("analytics-sidebar", analyticsSideBar)
     .component("analytics-contentreports", analyticsContentReports)
+    .component("customer-service-component", customerService)
     .use(BootstrapVue3)
     .mount("#app");
 
