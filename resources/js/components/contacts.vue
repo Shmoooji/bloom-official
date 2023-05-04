@@ -125,7 +125,7 @@ h1 {
 </style>
 
 <script>
-import navBar from "./navbar.vue";
+import navBar from "./NavBar.vue";
 
 export default {
     components: {
