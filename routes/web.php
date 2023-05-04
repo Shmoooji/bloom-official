@@ -43,8 +43,8 @@ Route::get("/works", function () {
 });
 
 // Cutserv
-Route::get("/custserv", function () {
-    return view('custserv');
+Route::get("/customerservice", function () {
+    return view('customerservice');
 });
 
 //Marketing Automation
@@ -59,4 +59,8 @@ Route::get("/sales", function () {
 
 Route::get('/payment/options', function () {
     return view('payment_options');
+});
+
+Route::get('/analytics', function () {
+    return view('analytics');
 });
