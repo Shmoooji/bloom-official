@@ -6,7 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
-import "bootstrap-icons/font/bootstrap-icons.css";
+//import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
@@ -19,9 +19,8 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import campaigns from "./components/campaigns.vue";
 import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
-import analyticsNav from "./components/analyticsNav.vue";
-import analyticsSideBar from "./components/analyticsSideBar.vue";
-import analyticsContentReports from "./components/analyticsContentReports.vue";
+import analyticsReports from "./components/analyticsReports.vue";
+import analyticsSideBar from "./components/analyticsSideBar.vue"; 
 import sales from "./pages/Sales.vue";
 import welcome from "./pages/Welcome.vue";
 import about from "./pages/About.vue";
@@ -44,9 +43,8 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("subscription-component", subscription)
     .component("contact-us-component", contactUs)
     .component("payment-component", PaymentComponent)
-    .component("analytics-navbar", analyticsNav)
-    .component("analytics-sidebar", analyticsSideBar)
-    .component("analytics-contentreports", analyticsContentReports)
+    .component("analytics-reports-component", analyticsReports)
+    .component("analytics-sidebar-component", analyticsSideBar)
     .component("customer-service-component", customerService)
     .component("index-page", index)
     .use(BootstrapVue3)
