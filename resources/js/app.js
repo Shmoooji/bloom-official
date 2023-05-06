@@ -19,7 +19,7 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import campaigns from "./components/campaigns.vue";
 import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
-import analyticsReports from "./components/analyticsReports.vue";
+import analyticsReports from "./pages/analyticsReports.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue"; 
 import sales from "./pages/Sales.vue";
 import welcome from "./pages/Welcome.vue";
