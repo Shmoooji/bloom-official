@@ -69,3 +69,7 @@ Route::get('/payment/options', function () {
 Route::get('/analytics', function () {
     return view('analytics');
 });
+
+Route::get('/graphs', function () {
+    return view('graphs');
+});

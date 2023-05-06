@@ -30,6 +30,7 @@ import contactUs from "./pages/ContactUs.vue";
 import marketingAutomation from "./pages/MarketingAutomation.vue";
 import customerService from "./pages/CustomerService.vue";
 import index from "./pages/Index.vue";
+import analyticsGraphs from "./pages/analyticsGraphs.vue";
 
 const app = createApp({});
 
@@ -46,6 +47,7 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("analytics-reports-component", analyticsReports)
     .component("analytics-sidebar-component", analyticsSideBar)
     .component("customer-service-component", customerService)
+    .component("analytics-graphs-component", analyticsGraphs)
     .component("index-page", index)
     .use(BootstrapVue3)
     .mount("#app");
