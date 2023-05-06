@@ -142,7 +142,7 @@ div {
 
     <div class="analytics-graphs">
         <div>
-            <nav-bar></nav-bar>
+            <navbar-component></navbar-component>
         </div>
         <b-row>
             <b-col><analytics-side-bar></analytics-side-bar></b-col>
@@ -199,17 +199,18 @@ div {
 </div>
 </template>
 <script>
+import AnalyticsSideBar from '../components/analyticsSideBar.vue';
+import navBar from "../components/NavBar.vue";
 
 export default {
-    components: {AnalyticsSideBar, NavBar},
+    components: {AnalyticsSideBar, navBar},
     name: "Analytics Graphs",
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
     },
 };
 
-import AnalyticsSideBar from '../components/analyticsSideBar.vue';
-import NavBar from '../components/NavBar.vue';
+
 </script>
 
 
