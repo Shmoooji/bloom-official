@@ -18,7 +18,7 @@ class PaymentController extends Controller
     }
 
     public function index() {
-        return view('payment_options');
+        return view('payment.options');
     }
 
     public function createPaymentPaypal(Request $request) {
@@ -60,7 +60,7 @@ class PaymentController extends Controller
 
             CampaignPayment::savePaymentInfo($info);
 
-            return view('payment_success')
+            return view('payment.success')
             ->with('paymentID', $paymentID)
             ->with('payerID', $payerID);
         }

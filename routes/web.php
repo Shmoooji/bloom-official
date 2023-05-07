@@ -64,6 +64,7 @@ Route::get("/sales", function () {
     return view('sales');
 });
 
+// Payment
 Route::prefix('payment')->group(function () {
     Route::get('/option', [PaymentController::class, 'index']);
 
