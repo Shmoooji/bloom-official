@@ -64,8 +64,16 @@ Route::get("/sales", function () {
     return view('sales');
 });
 
-Route::get('/payment/options', [PaymentController::class, 'displayOptions']);
-Route::post('/payment/paypal', [PaymentController::class, 'createPaymentPaypal']);
+Route::prefix('payment')->group(function () {
+    Route::get('/option', [PaymentController::class, 'index']);
+
+    Route::post('/option/gcash', [PaymentController::class, 'createPaymentGcash']);
+    Route::post('/option/paymaya', [PaymentController::class, 'createPaymentPaymaya']);
+    Route::post('/option/paypal', [PaymentController::class, 'createPaymentPaypal']);
+
+    Route::post('/success', [PaymentController::class, 'success']);
+    Route::post('/error', [PaymentController::class, 'error']);
+});
 
 Route::get('/analytics', function () {
     return view('analytics');

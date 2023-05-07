@@ -16,7 +16,7 @@ class PaymentController extends Controller
         $this->gateway->setTestMode(true);
     }
 
-    public function displayOptions() {
+    public function index() {
         return view('payment_options');
     }
 
@@ -40,5 +40,9 @@ class PaymentController extends Controller
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
+    }
+
+    public function success(Request $request) {
+
     }
 }
