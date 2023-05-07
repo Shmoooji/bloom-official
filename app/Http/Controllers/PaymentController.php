@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CampaignPayment;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 
@@ -32,6 +33,16 @@ class PaymentController extends Controller
             ))->send();
 
             if ($response->isRedirect()) {
+                $info = $request->all();
+
+                $info['user_id'] = 4;
+                $info['campaign_type'] = 3;
+                $info['payment_method'] = 'PayPal';
+                $info['subscription_period'] = 6;
+
+
+                CampaignPayment::savePaymentInfo($info);
+
                 $response->redirect();
             } else {
                 return $response->getMessage();
@@ -43,6 +54,13 @@ class PaymentController extends Controller
     }
 
     public function success(Request $request) {
+        $paymentID = $request->query('paymentId');
+        $payerID = $request->query('PayerID');
 
+        if (!empty($paymentID) && !empty($payerID)) {
+            return view('payment_success')
+            ->with('paymentID', $paymentID)
+            ->with('payerID', $payerID);
+        }
     }
 }
