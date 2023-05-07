@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,9 +64,8 @@ Route::get("/sales", function () {
     return view('sales');
 });
 
-Route::get('/payment/options', function () {
-    return view('payment_options');
-});
+Route::get('/payment/options', [PaymentController::class, 'displayOptions']);
+Route::post('/payment/paypal', [PaymentController::class, 'createPaymentPaypal']);
 
 Route::get('/analytics', function () {
     return view('analytics');
