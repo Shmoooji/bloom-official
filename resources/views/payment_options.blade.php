@@ -14,12 +14,27 @@
 
         <script src="{{ mix('/js/app.js') }}"></script>
     </head>
-    <body>
+    <body style="overflow: hidden">
         <div id="app">
             <div class="payment-container">
-                <payment-component :payment-method="'GCash'"></payment-component>
-                <payment-component :payment-method="'PayMaya'"></payment-component>
-                <payment-component :payment-method="'PayPal'"></payment-component>
+                <form action="{{ url('/payment/gcash') }}" method="POST" style="width: calc(100%/3)">
+                    @csrf
+                    <input type="hidden" name="amount" value="49.99">
+                    <payment-component :payment-method="'GCash'"></payment-component>
+                </form>
+
+                <form action="{{ url('/payment/paymaya') }}" method="POST" style="width: calc(100%/3)">
+                    @csrf
+                    <input type="hidden" name="amount" value="49.99">
+                    <payment-component :payment-method="'PayMaya'"></payment-component>
+                </form>
+
+                <form action="{{ url('/payment/paypal') }}" method="POST" style="width: calc(100%/3)">
+                    @csrf
+                    <input type="hidden" name="amount" value="49.99">
+                    <payment-component :payment-method="'PayPal'"></payment-component>
+                </form>
+                
             </div>
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
