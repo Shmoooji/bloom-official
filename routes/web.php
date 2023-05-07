@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,3 +54,5 @@ Route::get("contacts", function () {
     return view('contacts');
 });
 Route::get("contacts/list", [ContactController::class, 'index']);
+Route::get("contacts/list/{id}", [ContactController::class, 'show']);
+Route::delete("contacts/list/{id}", [ContactController::class, 'destroy']);

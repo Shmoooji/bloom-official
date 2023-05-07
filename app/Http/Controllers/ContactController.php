@@ -44,9 +44,9 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
-        //
+        return Contact::find($id);
     }
 
     /**
@@ -78,8 +78,15 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        try {
+            $contact = Contact::find($id);
+            $contact->delete();
+        } catch(\Illuminate\Database\QueryException $ex){
+            return "Unable to delete ID: ".$id." due to ".$ex;        
+        }
+
+        return "Successfully deleted ID: ".$id;
     }
 }

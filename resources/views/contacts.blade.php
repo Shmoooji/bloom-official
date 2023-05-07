@@ -29,6 +29,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
+            <navbar-component></navbar-component>
             <contacts-component></contacts-component>
         </div>
     </body>
