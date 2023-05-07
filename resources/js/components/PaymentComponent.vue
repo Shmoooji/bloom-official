@@ -1,11 +1,11 @@
 <template>
-    <div :class="['payment-option', paymentMethod]" @click="goToGcash">
+    <button :class="['payment-option', paymentMethod]">
         <img
             :id="paymentMethod"
             :src="logoUrl"
             :alt="paymentMethod + ' Logo'"
         />
-    </div>
+    </button>
 </template>
 
 <style>
@@ -79,13 +79,13 @@ export default {
     methods: {
         goToPaymentPage() {
             switch (this.paymentMethod) {
-                case "gcash":
+                case "GCash":
                     this.$router.push("/");
                     break;
-                case "paymaya":
+                case "PayMaya":
                     this.$router.push("/");
                     break;
-                case "paypal":
+                case "PayPal":
                     this.$router.push("/");
                     break;
             }
