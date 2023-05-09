@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('campaign_type')->references('id')->on('campaigns')->onDelete('cascade');
             $table->string('payment_method');
             $table->integer('subscription_period');
-            $table->string('payment_id');
+            $table->string('payment_id')->unique();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
