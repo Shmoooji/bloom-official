@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 // Index
 Route::get('/index', function () {
-    return view('index');
+    return view('index')->name('index');
 });
 
 // Campaigns
@@ -66,14 +66,14 @@ Route::get("/sales", function () {
 
 // Payment
 Route::prefix('payment')->group(function () {
-    Route::get('/option', [PaymentController::class, 'index']);
+    Route::get('/option', [PaymentController::class, 'index'])->name('payment/option');
 
     Route::post('/gcash', [PaymentController::class, 'createPaymentGcash']);
     Route::post('/paymaya', [PaymentController::class, 'createPaymentPaymaya']);
     Route::post('/paypal', [PaymentController::class, 'createPaymentPaypal']);
 
-    Route::get('/success', [PaymentController::class, 'success']);
-    Route::get('/error', [PaymentController::class, 'error']);
+    Route::get('/success', [PaymentController::class, 'handleSuccess']);
+    Route::get('/error', [PaymentController::class, 'handleError']);
 });
 
 Route::get('/analytics', function () {
