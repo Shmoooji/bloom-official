@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         \App\Models\Contact::factory(10)->create();
-        
+
         DB::table('campaigns')->insert([
             [
                 'type' => 'Basic',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        \App\Models\CampaignPayment::factory(10)->create();
-        \App\Models\Deal::factory(10)->create();
+        \App\Models\CampaignPayment::factory(100)->create();
+        \App\Models\Deal::factory(100)->create();
     }
 }

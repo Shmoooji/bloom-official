@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Campaign;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 /**
@@ -20,11 +21,17 @@ class CampaignPaymentFactory extends Factory
      */
     public function definition()
     {
-        //$randomPaymentID = Str::random(1);
-        //$randomPaymentID .= preg_replace('/\D/', '', Str::random(1));
+        $randomPaymentID = Str::random(24);
+        $randomPaymentID .= preg_replace('/\D/', '', Str::random(14));
+        $iteration = 0;
+        while(DB::scalar("SELECT COUNT(payment_id) FROM campaign_payments WHERE payment_id = 'PAYID-".$randomPaymentID."'") >= 1){
+            $randomPaymentID = Str::random(24);
+            $randomPaymentID .= preg_replace('/\D/', '', Str::random(14));
+            $iteration++;
+        }
 
         return [
-            //'payment_id' => "PAYID-".$randomPaymentID, //deprecated due to changing the structure of the database to use payment_id as the primary key instead
+            'payment_id' => "PAYID-".$randomPaymentID,
             "user_id" => User::all()->random()->id,
             "campaign_type" => Campaign::all()->random()->id,
             'payment_method' => fake()->randomElement(['GCash', 'PayMaya', 'PayPal']),

@@ -17,13 +17,14 @@ class CampaignPayment extends Model
                            'subscription_period',
                            'payment_id'];
 
- /*   public static function paymentIsUnique($paymentID) { //deprecated, paymentID is now primary key thus is unique
+    public static function paymentIsUnique($paymentID) {
         $existingPayment = DB::table('campaign_payments')
                              ->where('payment_id', $paymentID)
                              ->first();
 
         return is_null($existingPayment);
-    }   */
+    }
+
 
     public static function savePaypalInfo(array $info) {
         DB::table('campaign_payments')->insert([

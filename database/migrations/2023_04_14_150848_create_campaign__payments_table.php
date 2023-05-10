@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('campaign_payments', function (Blueprint $table) {
-            $table->id('payment_id');
+            $table->string('payment_id')->primary();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('campaign_type');
