@@ -11,19 +11,19 @@ class CampaignPayment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 
-                           'campaign_type', 
-                           'payment_method', 
+    protected $fillable = ['user_id',
+                           'campaign_type',
+                           'payment_method',
                            'subscription_period',
                            'payment_id'];
-                           
-    public static function paymentIsUnique($paymentID) {
+
+ /*   public static function paymentIsUnique($paymentID) { //deprecated, paymentID is now primary key thus is unique
         $existingPayment = DB::table('campaign_payments')
                              ->where('payment_id', $paymentID)
                              ->first();
 
         return is_null($existingPayment);
-    }
+    }   */
 
     public static function savePaypalInfo(array $info) {
         DB::table('campaign_payments')->insert([

@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('campaign_payments', function (Blueprint $table) {
-            $table->id();
+            $table->id('payment_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('campaign_type');
             $table->foreign('campaign_type')->references('id')->on('campaigns')->onDelete('cascade');
             $table->string('payment_method');
             $table->integer('subscription_period');
-            $table->string('payment_id')->unique();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
