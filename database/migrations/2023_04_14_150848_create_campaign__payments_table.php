@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('campaign_payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('campaign_type');
-            $table->foreign('campaign_type')->references('id')->on('campaigns')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('campaign_id')->constrained();
             $table->string('payment_method');
             $table->integer('subscription_period');
             $table->string('payment_id')->unique();
