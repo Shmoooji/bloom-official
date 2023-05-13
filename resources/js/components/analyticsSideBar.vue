@@ -1,9 +1,8 @@
 <template>
-    <b-col cols="1" class="side-nav">
+    <b-col cols="4" class="side-nav">
     
             <b-nav vertical>
                 <b-nav-item active >Reports</b-nav-item>
-                <br>
                 <b-nav-item>Graphs</b-nav-item>
                 <b-nav-item>Summary</b-nav-item>
             </b-nav>
