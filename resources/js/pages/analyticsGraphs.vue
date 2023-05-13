@@ -40,6 +40,7 @@ h3 {
   width: auto;
   box-sizing: border-box;
   font-size: 16px;
+  padding: 25px;
 }
 
 .content-table {
@@ -102,9 +103,9 @@ div {
             <navbar-component></navbar-component>
         </div>
         <b-row>
-            <b-col cols="4"><analytics-side-bar></analytics-side-bar></b-col>
+            <b-col><analytics-side-bar></analytics-side-bar></b-col>
                 
-            <b-col cols="8" style="margin-top: 100px;">
+            <b-col cols="8" style="margin-top: 50px;">
                 <div class="content-main">
         <div class="head-title">
             <h1>Tabluar Data</h1>
@@ -122,28 +123,12 @@ div {
 
             <tbody>
                 <tr class="table-row">
-                    <td></td>
-                    <td>(Arranged in Descending order)</td>
-                    <td>(Arranged by Count)</td>
-                    <td>(Arranged by Average Rating)</td>
                 </tr>
                 <tr class="table-row">
-                    <td>Campaign 1</td>
-                    <td>Php 15,000</td>
-                    <td>Adverts</td>
-                    <td>4.0</td>
                 </tr>
                 <tr class="table-row" >
-                    <td>Campaign 2</td>
-                    <td>Php 12,050</td>
-                    <td>Emails & Sponsors</td>
-                    <td>3.8</td>
                 </tr>
                 <tr class="table-row">
-                    <td>Campaign 3</td>
-                    <td>Php 11,100</td>
-                    <td>Others</td>
-                    <td>3.7</td>
                 </tr>
 
             </tbody>
@@ -170,7 +155,19 @@ export default {
     name: "Analytics Graphs",
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
-        $("#datatable").DataTable();
+        axios.get('/graph/fetch_campaign_list')
+        .then(function(response) {
+            $('#datatable').DataTable({
+                data: response.data,
+                columns: [
+                    { title: 'Campaigns', data: 'id' },
+                    { title: 'Sales for Campaigns', data: 'amount' },
+                    { title: 'Sources', data: 'amount' },
+                    { title: 'Customer Satisfaction', data: 'amount' },
+                ]
+            });
+        });
+
     },
 };
 

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Analytics extends Model
 {
     use HasFactory;
+
+    private function fetch_campaign_list(){
+        
+    }
 }

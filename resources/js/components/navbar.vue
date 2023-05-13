@@ -7,7 +7,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <b-nav-item href="#" class="border-left">Home</b-nav-item>
+                    <b-nav-item href="/analytics" class="border-left">Home</b-nav-item>
                     <b-nav-item href="#" class="border-left"
                         >Customer</b-nav-item
                     >
@@ -44,7 +44,7 @@
                             <em>User</em>
                         </template>
                         <b-dropdown-item href="#">Profile</b-dropdown-item>
-                        <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                        <b-dropdown-item href="#">Sign x</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
@@ -57,5 +57,8 @@
 <script>
 export default {
     name: "NavBar",
+    mounted() {
+            console.log('Component mounted.')
+        }
 };
 </script>
