@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,10 @@ Route::get('/analytics', function () {
     return view('analytics');
 });
 
-Route::get('/graphs', function () {
+//Route::resource('/graphs', AnalyticsController::class);
+
+Route::get('/graphs', function(){
     return view('graphs');
 });
+
+Route::get('/graphs', [AnalyticsController::class,'index']);

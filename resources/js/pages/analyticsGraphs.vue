@@ -134,6 +134,10 @@ div {
     width: 100vw;
 }
 
+.sidenav{
+    width: 10%;
+}
+
 </style>
 
 
@@ -145,53 +149,15 @@ div {
             <navbar-component></navbar-component>
         </div>
         <b-row>
-            <b-col><analytics-side-bar></analytics-side-bar></b-col>
+            <analytics-side-bar></analytics-side-bar>
+            <b-col cols="7">
                 
-            <b-col>
-                <div class="content-main">
-        <div class="head-title">
-            <h1>Tabluar Data</h1>
-            <h4>(dummy data)</h4>
-        </div>
-        <table class="content-table">
-            <thead>
-                <tr>
-                    <th>Campaigns</th>
-                    <th>Sales for Campaigns</th>
-                    <th>Sources</th>
-                    <th>Customer satisfaction</th>
-                </tr>
-            </thead>
+            <!--<b-table striped hover v-for="data in analytics_data" :key="data.id">></b-table>-->
+            <!--<b-table striped hover :data="analytics_data" :key="data.id"></b-table>-->
+            <b-table striped hover :data="items" ></b-table>
 
-            <tbody>
-                <tr class="table-row">
-                    <td></td>
-                    <td>(Arranged in Descending order)</td>
-                    <td>(Arranged by Count)</td>
-                    <td>(Arranged by Average Rating)</td>
-                </tr>
-                <tr class="table-row">
-                    <td>Campaign 1</td>
-                    <td>Php 15,000</td>
-                    <td>Adverts</td>
-                    <td>4.0</td>
-                </tr>
-                <tr class="table-row" >
-                    <td>Campaign 2</td>
-                    <td>Php 12,050</td>
-                    <td>Emails & Sponsors</td>
-                    <td>3.8</td>
-                </tr>
-                <tr class="table-row">
-                    <td>Campaign 3</td>
-                    <td>Php 11,100</td>
-                    <td>Others</td>
-                    <td>3.7</td>
-                </tr>
 
-            </tbody>
-        </table>
-    </div>
+                <analytics-bar-sales></analytics-bar-sales>
             </b-col>
         </b-row>
             
@@ -201,13 +167,47 @@ div {
 <script>
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
+import analyticsBarSales from "../components/analyticsBarSales.vue"; 
+import { afterMain } from '@popperjs/core';
+import { onMounted } from 'vue';
+
 
 export default {
-    components: {AnalyticsSideBar, navBar},
-    name: "Analytics Graphs",
-    mounted() {
-        console.log("Analytics Graphs Shown in the Screen");
+    components: {AnalyticsSideBar, navBar, analyticsBarSales},
+    props:{
+        
     },
+    name: "Analytics Graphs",
+    data() {
+        return {
+            analytics_data: [],
+            items: [
+          { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+          { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+          { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
+          { age: 38, first_name: 'Jami', last_name: 'Carney' }
+        ]
+        }
+    },
+    beforeMount(){
+        //this.get_campaign_payments();
+    },
+    methods:{
+         get_campaign_payments(){
+            axios.get('graphs').then(response=>{
+                this.analytics_data = response.data;
+                console.log(response.data);
+                console.log("DATA SUCCESS!!");
+               //this.analytics_data.push(response.data);
+            }).catch(error=>{
+                console.log(error.data);
+            })
+        }
+    },
+    mounted(){
+        this.get_campaign_payments();
+    }
+    
 };
 
 

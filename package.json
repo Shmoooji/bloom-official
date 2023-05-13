@@ -23,6 +23,8 @@
     "dependencies": {
         "bootstrap-vue": "^2.23.1",
         "bootstrap-vue-3": "^0.5.1",
-        "bootstrap-vue-next": "^0.8.7"
+        "bootstrap-vue-next": "^0.8.7",
+        "chart.js": "^4.3.0",
+        "vue-chartjs": "^5.2.0"
     }
 }

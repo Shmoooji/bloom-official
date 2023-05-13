@@ -4,10 +4,10 @@
             <nav-bar></nav-bar>
         </div>
         <b-row>
-            <b-col><analytics-side-bar></analytics-side-bar></b-col>
-                
-            <b-col>
+            <analytics-side-bar></analytics-side-bar>
+            <b-col  cols="12" md="auto"  >
                 <!-- CONTENT AREA -->
+                test
             </b-col>
         </b-row>
             

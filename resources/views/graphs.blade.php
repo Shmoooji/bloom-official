@@ -45,7 +45,7 @@
 
 <body class="antialiased">
     <div id="app">
-                <analytics-graphs-component></analytics-graphs-component>
+                <analytics-graphs-component :data="{{$analytics_data}}"></analytics-graphs-component>
             </div>
         </div>
     </div>
