@@ -1,8 +1,8 @@
 <template>
     <div class="analytics-page">
-        <div>
+        <b-row>
             <nav-bar></nav-bar>
-        </div>
+            </b-row>
         <b-row>
             <analytics-side-bar></analytics-side-bar>
             <b-col  cols="12" md="auto"  >

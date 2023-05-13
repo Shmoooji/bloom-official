@@ -77,4 +77,6 @@ Route::get('/graphs', function(){
     return view('graphs');
 });
 
-Route::get('/graphs', [AnalyticsController::class,'index']);
+//Route::get('/graphs', [AnalyticsController::class,'index']);
+
+Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);

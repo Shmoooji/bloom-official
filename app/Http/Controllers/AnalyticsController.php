@@ -25,6 +25,14 @@ class AnalyticsController extends Controller
         //return CampaignPayment::all();
     }
 
+    public function getPrefPaymentMethod(){
+        $paymaya = CampaignPayment::where('payment_method', 'PayMaya')->count();
+        $gcash = CampaignPayment::where('payment_method', 'GCash')->count();
+        $paypal = CampaignPayment::where('payment_method', 'PayPal')->count();
+        $prefPaymentMethod = json_encode(['PayMaya'=>$paymaya, 'GCash'=>$gcash, 'PayPal'=>$paypal]);
+        return view('graphs',['prefPaymentMethod' => $prefPaymentMethod]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
