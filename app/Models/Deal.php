@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Deal extends Model
 {
     use HasFactory;
-    
-    public function get_deal(){
-        return DB::table('deals')->get();
-    }
 }
