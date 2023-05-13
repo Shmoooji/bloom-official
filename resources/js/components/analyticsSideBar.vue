@@ -1,12 +1,14 @@
 <template>
-    <div class="side-nav">
-            <b-nav vertical class="w-25">
+    <b-col cols="1" class="side-nav">
+    
+            <b-nav vertical>
                 <b-nav-item active >Reports</b-nav-item>
                 <br>
                 <b-nav-item>Graphs</b-nav-item>
                 <b-nav-item>Summary</b-nav-item>
             </b-nav>
-    </div>
+
+</b-col>
 </template>
 <script>
 
@@ -22,7 +24,6 @@ export default {
 .side-nav{
     color:black;
     background-color: rgba(var(--bs-light-rgb));
-    width: 10vw;
     height: 93vh;
 }
 
