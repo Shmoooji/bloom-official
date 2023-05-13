@@ -72,6 +72,12 @@
                     small
                     @filtered="onFiltered"
                 >
+
+                <!-- Define your table columns using b-table-column -->
+                <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
+                    <!-- Use the "key" attribute to map the column with the corresponding item property -->
+                    {{ item[field.key] }}
+                </b-table-column>
                     <template #cell(name)="row">
                         {{ row.value.first }} {{ row.value.last }}
                     </template>
@@ -93,7 +99,7 @@
                     v-model="currentPage"
                     :total-rows="totalRows"
                     :per-page="perPage"
-                    align="center"
+                    :align="center"
                     size="m"
                     class="my-0"
                 ></b-pagination>
@@ -109,83 +115,23 @@ export default {
     name: "Sales",
     data() {
         return {
-            selected: null,
+            //selected: null,
             // items: null,
             //placeholder items
-            items: [
-                {
-                    deal_name: "deal1",
-                    date_issued: "1/23/21",
-                    closing_date: "3/3/21",
-                    priority: "high",
-                    deal_stage: "negotiations",
-                    deal_type: "overstock",
-                    contact: "contact1",
-                    company: "comp1",
-                    amount: 30000,
-                },
-                {
-                    deal_name: "deal2",
-                    date_issued: "2/23/21",
-                    closing_date: "4/3/21",
-                    priority: "medium",
-                    deal_stage: "complete",
-                    deal_type: "price bundling",
-                    contact: "contact2",
-                    company: "comp2",
-                    amount: 13000,
-                },
-                {
-                    deal_name: "deal3",
-                    date_issued: "1/23/20",
-                    closing_date: "3/3/20",
-                    priority: "low",
-                    deal_stage: "negotiations",
-                    deal_type: "loyalty discounts",
-                    contact: "contact3",
-                    company: "comp3",
-                    amount: 18000,
-                },
-                {
-                    deal_name: "deal4",
-                    date_issued: "3/23/21",
-                    closing_date: "5/3/21",
-                    priority: "low",
-                    deal_stage: "negotiations",
-                    deal_type: "free shipping",
-                    contact: "contact4",
-                    company: "comp4",
-                    amount: 30000,
-                },
-                {
-                    deal_name: "deal5",
-                    date_issued: "8/23/21",
-                    closing_date: "10/3/21",
-                    priority: "medium",
-                    deal_stage: "complete",
-                    deal_type: "free shipping",
-                    contact: "contact5",
-                    company: "comp5",
-                    amount: 150000,
-                },
-                {
-                    deal_name: "deal6",
-                    date_issued: "5/23/20",
-                    closing_date: "7/3/20",
-                    priority: "medium",
-                    deal_stage: "negotiations",
-                    deal_type: "price bundling",
-                    contact: "contact6",
-                    company: "comp",
-                    amount: 14000,
-                },
-            ],
+            
 
             fields: [
-                { key: "deal_name", label: "Deal Name", sortable: true },
+                { key: "id", label: "Deal Name", sortable: true },
+                { key: "campaign_payment_id", label: "Deal Name", sortable: true },
                 {
-                    key: "date_issued",
+                    key: "created_at",
                     label: "Date Issued",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "updated_at",
+                    label: "Date Updated",
                     sortable: true,
                     class: "text-center",
                 },
@@ -196,8 +142,8 @@ export default {
                     class: "text-center",
                 },
                 { key: "priority", label: "Priority", sortable: true },
-                { key: "deal_stage", label: "Deal Stage", sortable: true },
-                { key: "deal_type", label: "Deal Type", sortable: true },
+                { key: "stage_deal", label: "Deal Stage", sortable: true },
+                { key: "type_deal", label: "Deal Type", sortable: true },
                 { key: "contact", label: "Contact", sortable: true },
                 { key: "company", label: "Company", sortable: true },
                 {
@@ -210,11 +156,11 @@ export default {
 
             options: [
                 { value: null, text: "Select Attribute" },
-                { value: "priority", text: "Priority" },
-                { value: "deal_stage", text: "Deal Stage" },
-                { value: "deal_type", text: "Deal Type" },
+                { value: "Priority", text: "Priority" },
+                { value: "Deal_Stage", text: "Deal Stage" },
+                { value: "Deal_Type", text: "Deal Type" },
             ],
-            totalRows: 1,
+            totalRows: null,
             currentPage: 1,
             perPage: 5,
             pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
@@ -226,17 +172,20 @@ export default {
         };
     },
 
-    mounted() {
-        this.totalRows = this.items.length;
+    mounted: function(){
+        this.get_deal();
     },
-
+   
     methods: {
-        get_sales() {
+        get_deal() {
             axios
-                .get("/get_sales")
+                .get("/get_deal")
                 .then((response) => {
                     console.log(response.data);
                     this.items = response.data;
+                    console.log(this.items);
+                    this.totalRows = Object.keys(response.data).length;
+                    console.log(this.totalRows);
                 })
                 .catch((error) => {
                     console.log(error.data);
@@ -245,7 +194,7 @@ export default {
     },
 
     beforeMount() {
-        this.get_sales();
+        this.get_deal();
     },
 
     onFiltered(filteredItems) {
