@@ -69,3 +69,5 @@ Route::get('/payment/options', function () {
 Route::get('/analytics', function () {
     return view('analytics');
 });
+
+Route::get('/get_deal', [DealController::class, 'get_deal']);
