@@ -3,8 +3,7 @@
     
             <b-nav vertical>
                 <b-nav-item active >Reports</b-nav-item>
-                <br>
-                <b-nav-item>Graphs</b-nav-item>
+                <b-nav-item href="/graphs">Graphs</b-nav-item>
                 <b-nav-item>Summary</b-nav-item>
             </b-nav>
 
@@ -25,6 +24,7 @@ export default {
     color:black;
     background-color: rgba(var(--bs-light-rgb));
     height: 93vh;
+    padding-right: 110px;
 }
 
 

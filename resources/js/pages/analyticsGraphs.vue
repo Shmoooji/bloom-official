@@ -33,24 +33,19 @@ h3 {
 }
 
 .content-main {
-  position: absolute;
-  top: 45%;
-  left: 55%;
-  transform: translate(-50%, -50%);
   border: solid 2px #4b4237;
   border-radius: 20px;
-  padding: 20px;
-  padding-bottom: 40px;
   min-width: 1300px;
   max-width: 80%;
   width: auto;
   box-sizing: border-box;
   font-size: 16px;
+  padding: 25px;
 }
 
 .content-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 25px;
   font-size: 18px;
   width: 100%;
   table-layout: fixed;
@@ -58,45 +53,7 @@ h3 {
   margin: auto;
 }
 
-/* Adjustments for smaller screens */
-@media only screen and (max-width: 1200px) {
-  .content-main {
-    top: 45%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    padding: 10px;
-    padding-bottom: 20px;
-    min-width:80%;
-    max-width: 600px;
-    font-size: 14px;
-  }
 
-  .content-table {
-    margin: 10px 0;
-    font-size: 16px;
-  }
-}
-
-/* Adjustments for even smaller screens */
-@media only screen and (max-width: 480px) {
-  .content-main {
-    top: 60%;
-    left:60%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    padding: 5px;
-    padding-bottom: 10px;
-    min-width: 80%;
-    max-width: 80%;
-    font-size: 12px;
-  }
-
-  .content-table {
-    margin: 5px 0;
-    font-size: 14px;
-  }
-}
 
 .content-table thead tr {
     background-color: #b3b3b3;
@@ -140,20 +97,21 @@ div {
 
 <template>
 
-    <div class="analytics-graphs">
+    <div class="analytics-graphs container">
+    
         <div>
             <navbar-component></navbar-component>
         </div>
         <b-row>
             <b-col><analytics-side-bar></analytics-side-bar></b-col>
                 
-            <b-col>
+            <b-col cols="8" style="margin-top: 50px;">
                 <div class="content-main">
         <div class="head-title">
             <h1>Tabluar Data</h1>
             <h4>(dummy data)</h4>
         </div>
-        <table class="content-table">
+        <table id="datatable" class="content-table" style="padding: 25px;">
             <thead>
                 <tr>
                     <th>Campaigns</th>
@@ -165,28 +123,12 @@ div {
 
             <tbody>
                 <tr class="table-row">
-                    <td></td>
-                    <td>(Arranged in Descending order)</td>
-                    <td>(Arranged by Count)</td>
-                    <td>(Arranged by Average Rating)</td>
                 </tr>
                 <tr class="table-row">
-                    <td>Campaign 1</td>
-                    <td>Php 15,000</td>
-                    <td>Adverts</td>
-                    <td>4.0</td>
                 </tr>
                 <tr class="table-row" >
-                    <td>Campaign 2</td>
-                    <td>Php 12,050</td>
-                    <td>Emails & Sponsors</td>
-                    <td>3.8</td>
                 </tr>
                 <tr class="table-row">
-                    <td>Campaign 3</td>
-                    <td>Php 11,100</td>
-                    <td>Others</td>
-                    <td>3.7</td>
                 </tr>
 
             </tbody>
@@ -201,12 +143,31 @@ div {
 <script>
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import axios from "axios";
+import $ from "jquery";
 
 export default {
     components: {AnalyticsSideBar, navBar},
     name: "Analytics Graphs",
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
+        axios.get('/graph/fetch_campaign_list')
+        .then(function(response) {
+            $('#datatable').DataTable({
+                data: response.data,
+                columns: [
+                    { title: 'Campaigns', data: 'id' },
+                    { title: 'Sales for Campaigns', data: 'amount' },
+                    { title: 'Sources', data: 'amount' },
+                    { title: 'Customer Satisfaction', data: 'amount' },
+                ]
+            });
+        });
+
     },
 };
 
