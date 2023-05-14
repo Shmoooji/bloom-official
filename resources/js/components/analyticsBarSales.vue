@@ -2,7 +2,10 @@
   <div>
   <h1>Preferred Payment Method</h1>
   <b-card class="barGraph">
-  <Pie :data = "chartData" :options="chartOptions"/>
+  <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
+    <template v-else>
+        <p>NO DATA! Nothing to show for now.</p>
+      </template>
   </b-card>
   </div>
   
@@ -93,7 +96,6 @@ export default {
           }
   },
   mounted(){
-  
     console.log("BarGraph Mounted");
     console.log(this.data)
     

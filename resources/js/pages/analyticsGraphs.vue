@@ -1,64 +1,5 @@
-<style>
-.content-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.content-body analytics-sidebar {
-    display: flex;
-    justify-content: left;
-}
-h3 {
-    text-align: center;
-}
-.head-title {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.head-title h1 {
-    margin: 0 auto 0 auto;
-    text-align: center;
-    flex-grow: 1;
-}
-.head-title h4 {
-    text-align: center;
-    flex-grow: 1;
-    color: white;
-}
-.content-main {
-  border: solid 2px #4b4237;
-  border-radius: 20px;
-  min-width: 1300px;
-  max-width: 80%;
-  width: auto;
-  box-sizing: border-box;
-  font-size: 16px;
-  padding: 25px;
-}
-.content-table {
-  border-collapse: collapse;
-  margin: 25px;
-  font-size: 18px;
-  width: 100%;
-  table-layout: fixed;
-  font-weight: bold;
-  margin: auto;
-}
-.content-table thead tr {
-    background-color: #b3b3b3;
-    color: #4b4237;
-    text-align: center;
-    border-radius: 100px;
-    border: solid 1px #736b60;
-}
+<style scoped>
 
-div {
-    font-family: "Jost", sans-serif !important;
-}
-.navbar{
-    width: 100vw;
-}
 </style>
 <template>
     <div class="analytics-graphs container">
@@ -70,7 +11,8 @@ div {
             <b-col cols="2"><analytics-side-bar></analytics-side-bar></b-col>
 
             <b-col cols="6" style="margin-top: 50px;">
-                <analytics-bar-sales :data="data"></analytics-bar-sales>
+                   <analytics-bar-sales :data="data"></analytics-bar-sales>
+                   <analytics-location-graphs-component></analytics-location-graphs-component>
                 
             </b-col>
         </b-row>
@@ -82,6 +24,7 @@ div {
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
 import analyticsBarSales from "../components/analyticsBarSales.vue"; 
+import analyticsLocationGraph from '../components/analyticsLocationGraph.vue';
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -92,7 +35,7 @@ import $ from "jquery";
 
 export default {
     name: "Analytics Graphs",
-    components: {AnalyticsSideBar, navBar, analyticsBarSales},
+    components: {AnalyticsSideBar, navBar, analyticsBarSales, analyticsLocationGraph},
     props:{
         data: null  
     },
@@ -102,8 +45,6 @@ export default {
     },
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
-    },
-    mounted(){
     }
     
 };
