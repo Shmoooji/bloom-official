@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,9 +25,8 @@ Route::get('/index', function () {
     return view('index');
 });
 
-// Campaigns
-Route::get('/campaigns', function () {
-    return view('campaigns');
+Route::get('/login', function () {
+    return view('login');
 });
 
 // About
@@ -32,40 +34,49 @@ Route::get("/about", function () {
     return view('about');
 });
 
-// Subscription
-Route::get("/subscription", function () {
-    return view('subscription');
-});
-
 // Contact Us
 Route::get("/contactUs", function () {
     return view('contactUs');
 });
 
-// Works
-Route::get("/works", function () {
-    return view('works');
-});
+Route::middleware('auth')->group(function () {
 
-// Cutserv
-Route::get("/customerservice", function () {
-    return view('customerservice');
-});
+    // Campaigns
+    Route::get('/campaigns', function () {
+        return view('campaigns');
+    });
 
-//Marketing Automation
-Route::get("/marketing-automation", function () {
-    return view('marketingAutomation');
-});
 
-// Sales
-Route::get("/sales", function () {
-    return view('sales');
-});
+    // Subscription
+    Route::get("/subscription", function () {
+        return view('subscription');
+    });
 
-Route::get('/payment/options', function () {
-    return view('payment_options');
-});
+    // Works
+    Route::get("/works", function () {
+        return view('works');
+    });
 
-Route::get('/analytics', function () {
-    return view('analytics');
+    // Cutserv
+    Route::get("/customerservice", function () {
+        return view('customerservice');
+    });
+
+    //Marketing Automation
+    Route::get("/marketing-automation", function () {
+        return view('marketingAutomation');
+    });
+
+    // Sales
+    Route::get("/sales", function () {
+        return view('sales');
+    });
+
+    Route::get('/payment/options', function () {
+        return view('payment_options');
+    });
+
+    Route::get('/analytics', function () {
+        return view('analytics');
+    });
 });
