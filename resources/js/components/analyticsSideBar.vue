@@ -22,7 +22,8 @@ export default {
 <style scoped>
 .side-nav {
   background-color: #fff;
-  height: 100%;
+  height: 102vh;
+  width: 10vw;
 }
 
 </style>

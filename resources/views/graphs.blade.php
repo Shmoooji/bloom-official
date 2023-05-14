@@ -29,7 +29,7 @@
             }
 
             body {
-                height: 100vh;
+                height: 100%;
                 display: flex;
                 font-family: 'Nunito', sans-serif;
                 background-color: #3F4F34 !important;

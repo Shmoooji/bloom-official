@@ -19,7 +19,7 @@
         <!-- Styles -->
         <style>
             body {
-                height: 100vh;
+                height: 100%;
                 display: flex;
                 background-color:#3F4F34 !important;
             }

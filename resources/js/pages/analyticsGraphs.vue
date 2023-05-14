@@ -1,5 +1,4 @@
 <style scoped>
-
 </style>
 
 <template>
@@ -11,12 +10,21 @@
         <b-row>
             <b-col cols="2"><analytics-side-bar></analytics-side-bar></b-col>
 
-            <b-col cols="6" style="margin-top: 50px;">
-                   <analytics-bar-sales :data="data"></analytics-bar-sales>
-                   <analytics-location-graphs-component></analytics-location-graphs-component>
+                <b-col cols="10" style="margin-top: 50px;">
+                    <b-row style="float:left;">
+                        <b-col cols ="16"><analytics-bar-sales :data="data"></analytics-bar-sales><br>
+                        <analytics-location-graphs-component></analytics-location-graphs-component>
+                    </b-col>
+                    </b-row>
+                    <b-row >
+                            Some Components here
+                    </b-row>
+
                 
             </b-col>
+            
         </b-row>
+
             
    
 </div>

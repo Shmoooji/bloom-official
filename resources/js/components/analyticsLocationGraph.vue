@@ -1,6 +1,7 @@
 <template>
     <div>
-    <h1>Location Frequency Graph</h1>
+    <h2>Location Frequency Graph</h2>
+    <h5>This shows the country where the campaign is paid from.</h5>
     <b-card class="LocationGraph">
     <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
         <template v-else>
@@ -14,12 +15,15 @@
   <style scoped>
   .LocationGraph{
     background-color: #86A760;
-    width: 50vw;
+    width: 40vw;
   }
   
-  h1{
+  h2{
     color: #908d6a;
     color :#cb9f52
+  }
+  h5{
+    color: #86A760;
   }
   </style>
   

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <h1>Preferred Payment Method</h1>
+  <h2>Preferred Payment Method</h2>
   <b-card class="barGraph">
   <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
     <template v-else>
@@ -14,10 +14,10 @@
 <style>
 .barGraph{
   background-color: #86A760;
-  width: 50vw;
+
 }
 
-h1{
+h2{
   color: #908d6a;
   color :#cb9f52
 }
