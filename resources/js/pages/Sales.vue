@@ -64,7 +64,6 @@
                 <!-- Sales Table -->
                 <b-table
                     class="bloom"
-                    striped
                     hover
                     :items="items"
                     :fields="fields"
@@ -233,6 +232,11 @@
 
     ::v-deep .bloom td{
         color: #86A760;
+    }
+
+    ::v-deep .bloom tr:hover{
+        background-color: #86A760;
+        color: #242108;
     }
 
     .bloom-set{
