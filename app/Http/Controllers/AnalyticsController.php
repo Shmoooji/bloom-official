@@ -33,6 +33,14 @@ public function fetch_campaign_list(){
 
 }
 
+public function getCampaignLocations(){
+    $locations = CampaignPayment::select('bill_country', \DB::raw('count(*) as count'))
+                 ->groupBy('bill_country')
+                 ->get();
+
+    return response()->json($locations);
+}
+
 private function campaign_label($campaign_list){
 
     $collection = collect($campaign_list);

@@ -1,8 +1,8 @@
 <template>
-    <b-col cols="1" class="side-nav">
+    <b-col class="side-nav">
     
             <b-nav vertical>
-                <b-nav-item href="/analytics">Reports and Summary</b-nav-item>
+                <b-nav-item href="/analytics" class="navitem">Reports and Summary</b-nav-item>
                 <b-nav-item href="/graphs">Graphs</b-nav-item>
 
             </b-nav>
@@ -19,16 +19,10 @@ export default {
 };
 </script>
 
-<style>
-.side-nav{
-    background-color: #fff;
-    height: 93vh;
-    padding-right: 110px;
+<style scoped>
+.side-nav {
+  background-color: #fff;
+  height: 100%;
 }
-
-::v-deep .navitem{
-    color:#ffffff !important;
-}
-
 
 </style>

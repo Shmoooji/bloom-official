@@ -72,7 +72,7 @@ Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name
 
 // Fetch Campaign List
 Route::get('/analytics/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
-
+Route::get('/graphs/getCampaignLocations', [AnalyticsController::class, 'getCampaignLocations'])->name('campaign-locations');
 Route::get('/graphs', function(){
     return view('graphs');
 });

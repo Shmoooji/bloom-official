@@ -1,10 +1,5 @@
-<style>
-div {
-    font-family: "Jost", sans-serif !important;
-}
-.navbar{
-    width: 100vw;
-}
+<style scoped>
+
 </style>
 
 <template>
@@ -17,7 +12,8 @@ div {
             <b-col cols="2"><analytics-side-bar></analytics-side-bar></b-col>
 
             <b-col cols="6" style="margin-top: 50px;">
-                <analytics-bar-sales :data="data"></analytics-bar-sales>
+                   <analytics-bar-sales :data="data"></analytics-bar-sales>
+                   <analytics-location-graphs-component></analytics-location-graphs-component>
                 
             </b-col>
         </b-row>
@@ -29,6 +25,7 @@ div {
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
 import analyticsBarSales from "../components/analyticsBarSales.vue"; 
+import analyticsLocationGraph from '../components/analyticsLocationGraph.vue';
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -39,7 +36,7 @@ import $ from "jquery";
 
 export default {
     name: "Analytics Graphs",
-    components: {AnalyticsSideBar, navBar, analyticsBarSales},
+    components: {AnalyticsSideBar, navBar, analyticsBarSales, analyticsLocationGraph},
     props:{
         data: null  
     },
@@ -49,8 +46,6 @@ export default {
     },
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
-    },
-    mounted(){
     }
     
 };
