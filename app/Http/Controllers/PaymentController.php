@@ -18,49 +18,80 @@ class PaymentController extends Controller
     }
 
     public function index() {
-        return view('payment_options');
+        return view('payment.options');
     }
 
     public function createPaymentPaypal(Request $request) {
-        try {
-           
+        try 
+        {
             $response = $this->gateway->purchase(array(
-                'amount' => $request->amount,
-                'currency' => env('PAYPAL_CURRENCY'),
+                'amount'    => $request->amount,
+                'currency'  => env('PAYPAL_CURRENCY'),
                 'returnUrl' => url('/payment/success'),
                 'cancelUrl' => url('/payment/error'),
-
             ))->send();
 
             if ($response->isRedirect()) {
-                $info = $request->all();
-
-                $info['user_id'] = 4;
-                $info['campaign_type'] = 3;
-                $info['payment_method'] = 'PayPal';
-                $info['subscription_period'] = 6;
-
-
-                CampaignPayment::savePaymentInfo($info);
-
                 $response->redirect();
-            } else {
-                return $response->getMessage();
             }
-
-        } catch (\Throwable $th) {
+            
+            return redirect()->back()->with([
+                'message' => $response->getMessage(),
+            ]);
+        } 
+        catch (\Throwable $th) 
+        {
             return $th->getMessage();
         }
     }
 
-    public function success(Request $request) {
-        $paymentID = $request->query('paymentId');
-        $payerID = $request->query('PayerID');
+    public function handleSuccess(Request $request) {
+        try 
+        {
+            $PayerID = $request->query('PayerID');
+            $PaymentID = $request->query('paymentId');
+    
+            if (!$PayerID || !$PaymentID) {
+                return redirect()->route('payment/option');
+            }
+    
+            $transaction = $this->gateway->completePurchase(array(
+                'payer_id'             => $PayerID,
+                'transactionReference' => $PaymentID,
+            ));
+    
+            $response = $transaction->send();
+    
+            if (!$response->isSuccessful()) {
+                return redirect()->route('payment/option');
+            }
+    
+            $info = array_merge($request->all(), array(
+                'user_id'             => 4,
+                'campaign_type'       => 3,
+                'payment_method'      => 'PayPal',
+                'subscription_period' => 6,
+                'payment_id'          => $PaymentID
+            ));
+    
+            if (!CampaignPayment::paymentIsUnique($info['payment_id'])) {
+                return redirect()->route('payment/option');
+            }
 
-        if (!empty($paymentID) && !empty($payerID)) {
-            return view('payment_success')
-            ->with('paymentID', $paymentID)
-            ->with('payerID', $payerID);
+            CampaignPayment::savePaypalInfo($info);
+    
+            return view('payment.success')
+                 ->with('paymentID', $PaymentID)
+                 ->with('payerID', $PayerID);
         }
+        catch (Throwable $th)
+        {
+            $th->getMessage();
+        }
+        
+    }
+
+    public function handleError() {
+        return view('payment.error');
     }
 }
