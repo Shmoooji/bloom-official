@@ -1,26 +1,14 @@
 <template>
-    <div class="campaign-page">
-        <div>
-            <navbar-component></navbar-component>
+    <b-div>
+        <div class="row">
+            <div v-for="campaign in campaigns" :key="campaign.id" class="col-md-6 my-3">
+            <b-card class="px-3 py-3 c-card"> <h2><strong>{{ campaign.name }}</strong></h2>
+            <b-card-text class="my-5 c-text">{{ campaign.desc }}</b-card-text>
+            <b-button href="#" class="c-button">Subscribe</b-button>
+            </b-card>
         </div>
-        <b-container>
-            <b-row class="mb-5 mt-5">
-                <h1 class="pt-5">Choose a Campaign that's</h1>
-                <h1>perfect for your Business</h1>
-            </b-row>
-
-            <b-div>
-                <div class="row">
-                    <div v-for="campaign in campaigns" :key="campaign.id" class="col-md-6 my-3">
-                    <b-card bg-variant="white" text-variant="dark" class="px-3 py-3"> <h2><strong>{{ campaign.name }}</strong></h2>
-                    <b-card-text class="my-5">{{ campaign.desc }}</b-card-text>
-                    <b-button href="/payment" variant="primary">Subscribe</b-button>
-                    </b-card>
-                </div>
-                </div>
-            </b-div>
-        </b-container>
-    </div>
+        </div>
+    </b-div>
 
 </template>
 
@@ -28,7 +16,7 @@
 
 	export default {
 
-        name: "campaigns",
+        name: "CampaignCard",
 
     	data(){
     		return {
