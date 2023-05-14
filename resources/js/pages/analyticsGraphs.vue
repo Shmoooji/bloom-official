@@ -1,6 +1,7 @@
 <style scoped>
 
 </style>
+
 <template>
     <div class="analytics-graphs container">
     
