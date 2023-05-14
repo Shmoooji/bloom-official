@@ -69,15 +69,12 @@ Route::get('/payment/options', function () {
 
 
 Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name('analytics.index');
-// Fetch Campaign List
-Route::get('/graph/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
 
-//Route::resource('/graphs', AnalyticsController::class);
+// Fetch Campaign List
+Route::get('/analytics/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
 
 Route::get('/graphs', function(){
     return view('graphs');
 });
-
-//Route::get('/graphs', [AnalyticsController::class,'index']);
 
 Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);

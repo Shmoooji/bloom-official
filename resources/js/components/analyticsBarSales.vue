@@ -1,8 +1,10 @@
 <template>
+  <div>
   <h1>Preferred Payment Method</h1>
   <b-card class="barGraph">
   <Pie :data = "chartData" :options="chartOptions"/>
   </b-card>
+  </div>
   
 </template>
 

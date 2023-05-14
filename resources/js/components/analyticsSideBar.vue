@@ -2,20 +2,14 @@
     <b-col cols="1" class="side-nav">
     
             <b-nav vertical>
-                <b-nav-item active class="navitem">Reports</b-nav-item>
-                <br>
-                <b-nav-item class="navitem">Graphs</b-nav-item>
-                <b-nav-item class="navitem">Summary</b-nav-item>
-
-                <b-nav-item active >Reports</b-nav-item>
+                <b-nav-item href="/analytics">Reports and Summary</b-nav-item>
                 <b-nav-item href="/graphs">Graphs</b-nav-item>
-                <b-nav-item>Summary</b-nav-item>
 
             </b-nav>
 
 </b-col>
 </template>
-<script>
+<script >
 
 export default {
     name: "AnalyticsSideBar",

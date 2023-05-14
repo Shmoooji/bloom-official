@@ -12,9 +12,7 @@ class AnalyticsController extends Controller
     
 
 public function index(){
-
     return view('analytics');
-
 }
 
 public function getPrefPaymentMethod(){
@@ -31,9 +29,6 @@ public function fetch_campaign_list(){
     $campaign_list = $campaign_model->fetch_campaign_list();
     $campaign_list = $this->campaign_label($campaign_list);
     $campaign_list = $this->money_format($campaign_list);
-
-    
-
     return response()->json($campaign_list);
 
 }

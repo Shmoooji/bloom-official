@@ -21,7 +21,7 @@
             body {
                 height: 100vh;
                 display: flex;
-                background-color:#3F4F34;
+                background-color:#3F4F34 !important;
             }
             h1 {
                 font-family: sans-serif;
@@ -38,7 +38,7 @@
             }
 
             #app{
-                /*margin-top: -3vh;*/
+
             }
         </style>
         </head>
