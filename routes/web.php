@@ -67,9 +67,10 @@ Route::get('/payment/options', function () {
     return view('payment_options');
 });
 
-Route::get('/analytics', function () {
-    return view('analytics');
-});
+
+Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name('analytics.index');
+// Fetch Campaign List
+Route::get('/graph/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
 
 //Route::resource('/graphs', AnalyticsController::class);
 

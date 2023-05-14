@@ -1,101 +1,82 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Analytics;
 use App\Models\CampaignPayment;
 use Illuminate\Http\Request;
 use View;
+use App\Models\Campaign;
 
 class AnalyticsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
-        // echo $analytics_data;
-        //return view('/graphs', $analytics_data]));
-        $analytics_data = CampaignPayment::all();
-        return view('graphs', ['analytics_data' => $analytics_data]);
-        //return ($analytics_data);
-        //return CampaignPayment::all();
-    }
+    
 
-    public function getPrefPaymentMethod(){
+public function index(){
+
+    return view('analytics');
+
+}
+
+public function getPrefPaymentMethod(){
         $paymaya = CampaignPayment::where('payment_method', 'PayMaya')->count();
         $gcash = CampaignPayment::where('payment_method', 'GCash')->count();
         $paypal = CampaignPayment::where('payment_method', 'PayPal')->count();
         $prefPaymentMethod = json_encode(['PayMaya'=>$paymaya, 'GCash'=>$gcash, 'PayPal'=>$paypal]);
         return view('graphs',['prefPaymentMethod' => $prefPaymentMethod]);
-    }
+}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+public function fetch_campaign_list(){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $campaign_model = new Campaign();
+    $campaign_list = $campaign_model->fetch_campaign_list();
+    $campaign_list = $this->campaign_label($campaign_list);
+    $campaign_list = $this->money_format($campaign_list);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Analytic  $analytic
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Analytics $analytic)
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Analytic  $analytic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Analytics $analytic)
-    {
-        //
-    }
+    return response()->json($campaign_list);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Analytic  $analytic
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Analytics $analytic)
-    {
-        //
-    }
+}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Analytic  $analytic
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Analytics $analytic)
-    {
-        //
-    }
+private function campaign_label($campaign_list){
+
+    $collection = collect($campaign_list);
+
+    $campaign_list = $collection->map(function($item){
+
+        $id_label = "Campaign ".$item->id;
+
+        $item->id_label = $id_label;
+
+
+        return $item;
+
+    });
+
+    return $campaign_list->all();
+
+}
+
+private function money_format($campaign_list){
+
+    $collection = collect($campaign_list);
+
+    $campaign_list = $collection->map(function($item){
+
+        $amount = number_format($item->amount,'2','.',',');
+
+        $item->amount = $amount;
+
+
+        return $item;
+
+    });
+
+    return $campaign_list->all();
+
+}
+
+
+
+
 }
