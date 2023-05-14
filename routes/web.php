@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,12 @@ Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name
 // Fetch Campaign List
 Route::get('/graph/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
 
-Route::get('/graphs', function () {
+//Route::resource('/graphs', AnalyticsController::class);
+
+Route::get('/graphs', function(){
     return view('graphs');
 });
+
+//Route::get('/graphs', [AnalyticsController::class,'index']);
+
+Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);

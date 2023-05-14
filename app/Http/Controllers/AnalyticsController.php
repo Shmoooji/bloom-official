@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Analytics;
+use App\Models\CampaignPayment;
 use Illuminate\Http\Request;
+use View;
 use App\Models\Campaign;
 
 class AnalyticsController extends Controller
@@ -13,6 +15,14 @@ public function index(){
 
     return view('analytics');
 
+}
+
+public function getPrefPaymentMethod(){
+        $paymaya = CampaignPayment::where('payment_method', 'PayMaya')->count();
+        $gcash = CampaignPayment::where('payment_method', 'GCash')->count();
+        $paypal = CampaignPayment::where('payment_method', 'PayPal')->count();
+        $prefPaymentMethod = json_encode(['PayMaya'=>$paymaya, 'GCash'=>$gcash, 'PayPal'=>$paypal]);
+        return view('graphs',['prefPaymentMethod' => $prefPaymentMethod]);
 }
 
 public function fetch_campaign_list(){
@@ -65,7 +75,6 @@ private function money_format($campaign_list){
     return $campaign_list->all();
 
 }
-
 
 
 

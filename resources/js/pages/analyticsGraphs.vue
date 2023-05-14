@@ -1,15 +1,5 @@
 
 <style>
-.content-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.content-body analytics-sidebar {
-    display: flex;
-    justify-content: left;
-}
 
 h3 {
     text-align: center;
@@ -103,6 +93,7 @@ div {
             <navbar-component></navbar-component>
         </div>
         <b-row>
+        
             <b-col><analytics-side-bar></analytics-side-bar></b-col>
                 
             <b-col cols="8" style="margin-top: 50px;">
@@ -131,9 +122,8 @@ div {
                 <tr class="table-row">
                 </tr>
 
-            </tbody>
-        </table>
-    </div>
+                <analytics-bar-sales :data="data"></analytics-bar-sales>
+                
             </b-col>
         </b-row>
             
@@ -143,6 +133,7 @@ div {
 <script>
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
+import analyticsBarSales from "../components/analyticsBarSales.vue"; 
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -150,9 +141,17 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import axios from "axios";
 import $ from "jquery";
 
+
 export default {
-    components: {AnalyticsSideBar, navBar},
     name: "Analytics Graphs",
+    components: {AnalyticsSideBar, navBar, analyticsBarSales},
+    props:{
+        data: null  
+    },
+    data() {
+        return {
+        }
+    },
     mounted() {
         console.log("Analytics Graphs Shown in the Screen");
         axios.get('/graph/fetch_campaign_list')
@@ -167,10 +166,13 @@ export default {
                 ]
             });
         });
-
     },
+    mounted(){
+        //this.get_campaign_payments();
+        //console.log(this.data);
+    }
+    
 };
-
 
 </script>
 

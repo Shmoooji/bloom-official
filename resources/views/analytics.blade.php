@@ -21,7 +21,7 @@
             body {
                 height: 100vh;
                 display: flex;
-                background: linear-gradient(to top left, #28b487, #7dd56f);
+                background-color:#3F4F34;
             }
             h1 {
                 font-family: sans-serif;

@@ -2,9 +2,15 @@
     <b-col cols="1" class="side-nav">
     
             <b-nav vertical>
+                <b-nav-item active class="navitem">Reports</b-nav-item>
+                <br>
+                <b-nav-item class="navitem">Graphs</b-nav-item>
+                <b-nav-item class="navitem">Summary</b-nav-item>
+
                 <b-nav-item active >Reports</b-nav-item>
                 <b-nav-item href="/graphs">Graphs</b-nav-item>
                 <b-nav-item>Summary</b-nav-item>
+
             </b-nav>
 
 </b-col>
@@ -21,12 +27,14 @@ export default {
 
 <style>
 .side-nav{
-    color:black;
-    background-color: rgba(var(--bs-light-rgb));
+    background-color: #fff;
     height: 93vh;
     padding-right: 110px;
 }
 
+::v-deep .navitem{
+    color:#ffffff !important;
+}
 
 
 </style>
