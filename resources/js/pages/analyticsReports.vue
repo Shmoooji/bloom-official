@@ -58,10 +58,10 @@
     padding: 25px;
     background-color: #86A760;
     max-height: 60vh;
-    max-width: 90vw;
     overflow-y: auto;
-    overflow-x: hidden;
+    max-width: 90vw;
     margin-top: -4vh;
+    display: block;
 }
 
 .content-table {
@@ -70,7 +70,7 @@
     width: 80%;
     table-layout: fixed;
     font-weight: bold;
-    
+    max-height: 70vh;   
 }
 
 .content-table thead tr {
@@ -89,13 +89,14 @@
 td {
     padding: 12px 15px;
     text-align: center;
+    justify-content: center;
 }
 
 .content-table tbody {
-    max-height: calc(60vh - 40px);
+    max-height: calc(50vh - 68px);
     overflow-y: auto;
-}
 
+}
 .content-table tbody tr:hover {
     background-color: rgba(94, 80, 80, 0.05);
     cursor: not-allowed;
@@ -107,12 +108,6 @@ td {
 
 div {
     font-family: "Jost", sans-serif !important;
-}
-
-tbody {
-    max-height: 40vh;
-    max-width: 90vw;
-    overflow-y: scroll;
 }
 
 .navbar {
@@ -144,11 +139,11 @@ tbody {
                                 <tr>
                                     <th>Campaigns</th>
                                     <th>Sales for Campaigns</th>
-                                    <th>Sources</th>
+                                    <th> Sources</th>
                                     <th>Customer satisfaction</th>
                                 </tr>
                             </thead>
-                            <div class="content-container">
+                         
                                 <tbody>
                                     <tr class="table-row">
                                     </tr>
@@ -161,7 +156,7 @@ tbody {
 
                                 </tbody>
 
-                            </div>
+                        
                         </table>
                     </div>
                 </div>
