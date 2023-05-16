@@ -50,46 +50,43 @@ class PaymentController extends Controller
 
     public function handleSuccess(Request $request) 
     {
-        
-        $PayerID = $request->query('PayerID');
-        $PaymentID = $request->query('paymentId');
-
-        if (!$PayerID || !$PaymentID) {
-            return abort(400);
-        }
-
-        $transaction = $this->gateway->completePurchase(array(
-            'payer_id'             => $PayerID,
-            'transactionReference' => $PaymentID,
-        ));
-
-        $response = $transaction->send();
-
-        if (!$response->isSuccessful()) {
-            return abort(400);
-        }
-
-        $info = array_merge($request->all(), array(
-            'user_id'             => 4,
-            'campaign_type'       => 3,
-            'payment_method'      => 'PayPal',
-            'subscription_period' => 6,
-            'payment_id'          => $PaymentID
-        ));
-
-        if (!CampaignPayment::paymentIsUnique($info['payment_id'])) {
-            return redirect()->route('payment/option');
-        }
-
         try {
-            CampaignPayment::savePaypalInfo($info);
+            $PayerID = $request->query('PayerID');
+            $PaymentID = $request->query('paymentId');
+
+            if (!$PayerID || !$PaymentID) {
+                return abort(400);
+            }
+
+            $transaction = $this->gateway->completePurchase(array(
+                'payer_id'             => $PayerID,
+                'transactionReference' => $PaymentID,
+            ));
+
+            $response = $transaction->send();
+
+            if (!$response->isSuccessful()) {
+                return abort(400);
+            }
+
+            $info = array_merge($request->all(), array(
+                'user_id'             => 4,
+                'campaign_type'       => 3,
+                'payment_method'      => 'PayPal',
+                'subscription_period' => 6,
+                'payment_id'          => $PaymentID
+            ));
+
+            if (CampaignPayment::paymentIsUnique($info['payment_id'])) {
+                CampaignPayment::savePaypalInfo($info);
+            }
+
+            return view('payment.success')
+                    ->with('paymentID', $PaymentID)
+                    ->with('payerID', $PayerID);
         } catch (\Throwable $th) {
             return abort(500);
         }
-        
-        return view('payment.success')
-                ->with('paymentID', $PaymentID)
-                ->with('payerID', $PayerID);
     }
 
     public function handleError() 
