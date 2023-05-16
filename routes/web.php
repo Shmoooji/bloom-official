@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\PaymentController;
 
@@ -14,6 +16,8 @@ use App\Http\Controllers\PaymentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,14 +33,19 @@ Route::get('/campaigns', function () {
     return view('campaigns');
 });
 
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::post('/register', [RegisterController::class, 'create']);
+
 // About
 Route::get("/about", function () {
     return view('about');
-});
-
-// Subscription
-Route::get("/subscription", function () {
-    return view('subscription');
 });
 
 // Contact Us
@@ -44,24 +53,46 @@ Route::get("/contactUs", function () {
     return view('contactUs');
 });
 
-// Works
-Route::get("/works", function () {
-    return view('works');
-});
+Route::middleware('auth')->group(function () {
 
-// Cutserv
-Route::get("/customerservice", function () {
-    return view('customerservice');
-});
+    // Campaigns
+    Route::get('/campaigns', function () {
+        return view('campaigns');
+    })->name('home');
 
-//Marketing Automation
-Route::get("/marketing-automation", function () {
-    return view('marketingAutomation');
-});
 
-// Sales
-Route::get("/sales", function () {
-    return view('sales');
+    // Subscription
+    Route::get("/subscription", function () {
+        return view('subscription');
+    });
+
+    // Works
+    Route::get("/works", function () {
+        return view('works');
+    });
+
+    // Cutserv
+    Route::get("/customerservice", function () {
+        return view('customerservice');
+    });
+
+    //Marketing Automation
+    Route::get("/marketing-automation", function () {
+        return view('marketingAutomation');
+    });
+
+    // Sales
+    Route::get("/sales", function () {
+        return view('sales');
+    });
+
+    Route::get('/payment/options', function () {
+        return view('payment_options');
+    });
+
+    Route::get('/analytics', function () {
+        return view('analytics');
+    });
 });
 
 // Payment
