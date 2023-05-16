@@ -4,10 +4,10 @@
                 <b-row class="inner-row">
                     <h1>Welcome to Bloom</h1>
                     <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipis cing elit. Proin sollicitudin, est quis porta consequat, sem nisi 
-                        pulvinar lorem, at ornare lorem eros id sapien. Ut enim lacus, egestas eu egest as et, auctor eget libero. Aenean 
-                        elementum massa vitae risus c onvallis, ac posuere libero pharetra. Sed et augue nec ex imperdiet sodales. Aenean 
-                        euismod, odio eget aliquam pretium, nisl lectus posuere metus, et condimentum qu am nibh nec leo. Quisque et urna 
+                    <p>Lorem ipsum dolor sit amet, consectetur adipis cing elit. Proin sollicitudin, est quis porta consequat, sem nisi
+                        pulvinar lorem, at ornare lorem eros id sapien. Ut enim lacus, egestas eu egest as et, auctor eget libero. Aenean
+                        elementum massa vitae risus c onvallis, ac posuere libero pharetra. Sed et augue nec ex imperdiet sodales. Aenean
+                        euismod, odio eget aliquam pretium, nisl lectus posuere metus, et condimentum qu am nibh nec leo. Quisque et urna
                         velit. Maecenas est arcu dapibus ut risus in, posuere tempus arcu</p>
                     <br>
                     <b-button class="landing-page-btn">GET STARTED</b-button>
@@ -15,19 +15,19 @@
             </b-row>
             <b-row class="footer">
                 <div class="links">
-                    <a href="#">Privacy Policy</a> 
+                    <a href="#">Privacy Policy</a>
                     <span> | </span>
-                    <a href="#">Safe Guarding Statement</a> 
+                    <a href="#">Safe Guarding Statement</a>
                     <span> | </span>
                     <a href="/about">About</a>
                     <span> | </span>
                     <a href="/contactUs">Contact Us</a>
                 </div>
 
-                <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin, est quis porta consequat, sem nisi 
-                    pulvinar lorem, at ornare lorem eros id sapien. Ut enim lacus, egestas eu egestas et, auctor eget libero. 
+                <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin, est quis porta consequat, sem nisi
+                    pulvinar lorem, at ornare lorem eros id sapien. Ut enim lacus, egestas eu egestas et, auctor eget libero.
                     Quisque et urna velit. Maecenas est arcu, dapibus ut risus in, posuere tempus arcu.</p>
-            </b-row>  
+            </b-row>
     </b-container>
 </template>
 
@@ -52,8 +52,8 @@
     }
 
     .welcome-container {
-        min-width: 100%; 
-        height: 100vh; 
+        min-width: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
     }
@@ -63,7 +63,7 @@
         bottom: 0;
         padding: 10px;
         flex:none;
-        font-size: 16px;  
+        font-size: 16px;
     }
 
     .footer a, .footer a:hover, .footer span {
@@ -71,7 +71,7 @@
         text-decoration: none;
         font-weight: bold;
     }
-    
+
     .landing-page-content {
         display: flex;
         flex-grow: 1;
@@ -80,7 +80,7 @@
     }
 
     .landing-page-content p {
-        font-size: 16px;            
+        font-size: 16px;
     }
 
     .inner-row {
@@ -104,5 +104,3 @@
         color: black;
     }
 </style>
-
-

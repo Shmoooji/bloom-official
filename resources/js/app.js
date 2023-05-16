@@ -6,7 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
-//import "bootstrap-icons/font/bootstrap-icons.css";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
@@ -17,10 +17,13 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
  * to use in your application's views. An example is included for you.
  */
 import campaigns from "./components/campaigns.vue";
-import NavBar from "./components/NavBar.vue";
+import navbar from "./components/NavBar.vue";
+import sales from "./pages/Sales.vue";
+import welcome from "./pages/Welcome.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
 import analyticsReports from "./pages/analyticsReports.vue";
-import analyticsSideBar from "./components/analyticsSideBar.vue"; 
+import analyticsSideBar from "./components/analyticsSideBar.vue";
 import sales from "./pages/Sales.vue";
 import welcome from "./pages/Welcome.vue";
 import about from "./pages/About.vue";
@@ -39,13 +42,9 @@ const app = createApp({});
 
 app.component("marketing-automation-component", marketingAutomation)
     .component("campaigns-component", campaigns)
-    .component("navbar-component", NavBar)
+    .component("navbar-component", navbar)
     .component("sales-component", sales)
     .component("welcome-component", welcome)
-    .component("about-component", about)
-    .component("works-component", works)
-    .component("subscription-component", subscription)
-    .component("contact-us-component", contactUs)
     .component("payment-component", PaymentComponent)
     .component("analytics-reports-component", analyticsReports)
     .component("analytics-sidebar-component", analyticsSideBar)
