@@ -1,18 +1,24 @@
 <template>
   <div>
   <h2>Preferred Payment Method</h2>
-  <b-card class="barGraph">
+  <h5>A pie chart where it shows the frequency of each payment method used.</h5>
+  <b-card class="pieGraph">
   <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
     <template v-else>
-        <p>NO DATA! Nothing to show for now.</p>
+      <div class="d-flex justify-content-center mb-3">
+      <b-spinner variant="primary" label="Text Centered"></b-spinner>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+      <p>NO DATA! Nothing to show for now.</p>
+    </div>
       </template>
   </b-card>
   </div>
   
 </template>
 
-<style>
-.barGraph{
+<style scoped>
+.pieGraph{
   background-color: #86A760;
 
 }
@@ -21,6 +27,10 @@ h2{
   color: #908d6a;
   color :#cb9f52
 }
+
+h5{
+    color: #86A760;
+  }
 </style>
 
 
@@ -35,7 +45,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
  
 
 export default {
-  name: 'AnalyticsBarSales',
+  name: 'AnalyticsPieSales',
   components: { Bar, Pie },
   props:{
     data:{
@@ -72,32 +82,13 @@ export default {
       ],
         borderColor: '#000000',
         borderWidth: 1,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              fontColor: 'black'
-            },
-            gridLines: {
-              color: 'rgba(0, 0, 0, 0.1)'
-            }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: 'black'
-            },
-            gridLines: {
-              color: 'rgba(0, 0, 0, 0.1)'
-            }
-          }]
-        },
         maintainAspectRatio: false,
             }
           }
   },
   mounted(){
-    console.log("BarGraph Mounted");
-    console.log(this.data)
+    console.log("Pie Sales Graph Mounted");
+    //console.log(this.data)
     
   }
 }

@@ -32,6 +32,8 @@ import customerService from "./pages/CustomerService.vue";
 import index from "./pages/Index.vue";
 import analyticsGraphs from "./pages/analyticsGraphs.vue";
 import analyticsLocationGraph from "./components/analyticsLocationGraph.vue";
+import analyticsPieSales from "./components/analyticsPieSales.vue";
+import analyticsStageDealRatio from "./components/analyticsStageDealRatio.vue";
 
 const app = createApp({});
 
@@ -50,6 +52,8 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("customer-service-component", customerService)
     .component("analytics-graphs-component", analyticsGraphs)
     .component("analytics-location-graphs-component", analyticsLocationGraph)
+    .component("analytics-stage-deals-graphs-component", analyticsStageDealRatio)
+    .component("analytics-pie-sales-component", analyticsPieSales)
     .component("index-page", index)
     .use(BootstrapVue3)
     .mount("#app");

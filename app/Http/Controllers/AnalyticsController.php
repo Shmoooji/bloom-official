@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Analytics;
 use App\Models\CampaignPayment;
+use App\Models\Deal;
 use Illuminate\Http\Request;
 use View;
 use App\Models\Campaign;
@@ -77,6 +78,20 @@ private function money_format($campaign_list){
 
     return $campaign_list->all();
 
+}
+
+public function getStageDealRatio(){
+    $totaldeals = Deal::all()->count();
+    $new = Deal::where('stage_deal', 'New')->count();
+    $inprogress = Deal::where('stage_deal', 'In Progress')->count();
+    $closed = Deal::where('stage_deal', 'Closed')->count();
+    $new = ($new / $totaldeals)*100;
+    $inprogress = ($inprogress / $totaldeals)*100;
+    $closed = ($closed/$totaldeals)*100;
+    $data = [$new, $inprogress, $closed];
+    $labels = ["New", "In Progress", "Closed"];
+    $retval = json_encode(['labels'=>$labels, 'data'=>$data]);
+    return $retval;
 }
 
 

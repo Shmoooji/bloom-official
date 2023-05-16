@@ -1,8 +1,8 @@
 <template>
     <div>
-    <h2>Location Frequency Graph</h2>
-    <h5>This shows the country where the campaign is paid from.</h5>
-    <b-card class="LocationGraph">
+    <h2>Stage Deal Ratio</h2>
+    <h5>This shows the ratio of deals.</h5>
+    <b-card class="StageDealRatio">
     <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
         <template v-else>
       <div class="d-flex justify-content-center mb-3">
@@ -18,10 +18,9 @@
   </template>
   
   <style scoped>
-  .LocationGraph{
+  .StageDealRatio{
     background-color: #86A760;
     width: 40vw;
-    height: 60vh;
   }
   
   h2{
@@ -46,48 +45,43 @@
    
   
   export default {
-    name: 'AnalyticsLocationGraph',
+    name: 'AnalyticsStageDealRatio',
     components: {Pie},
     data() {
       return {
         chartData: {
           labels: [],
           datasets: [{
-            label: 'Count',
+            
+            label: 'Percentage(%)',
             data: [],
             backgroundColor: []
           }],
         },
-        chartOptions: {
+    chartOptions: {
       responsive: true,
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: 'Location Frequency Graph'
+        text: 'Stage Deals Ratio'
       },
-
-        },
+    },
         
         colors: [
-  'rgb(46, 204, 113)',
-  'rgb(52, 152, 219)',
-  'rgb(149, 165, 166)',
-  'rgb(155, 89, 182)',
-  'rgb(241, 196, 15)',
-  'rgb(230, 126, 34)',
-  'rgb(231, 76, 60)',
-  'rgb(52, 73, 94)'
-]
-        }
+          'rgb(46, 204, 113)',
+          'rgb(52, 152, 219)',
+          'rgb(149, 165, 166)'
+        ]
+      }
     },
     mounted(){
-        axios.get("/graphs/getCampaignLocations").then((response) => {
-            let locations = response.data;
-            this.chartData.labels = locations.map(location => String(location.bill_country));
-            this.chartData.datasets[0].data = locations.map(location => Number(location.count));
+        axios.get("/graphs/getStageDealRatio").then((response) => {
+            let res = response.data;
+            this.chartData.labels = res.labels
+            this.chartData.datasets[0].data = res.data
             this.chartData.datasets[0].backgroundColor = this.colors;
-            
             /*This is for debugging*/
+            //console.log(res);
             //console.log(this.chartData.labels);
             //console.log(this.chartData.labels);
             //console.log(this.chartData.datasets[0].data);
@@ -96,7 +90,7 @@
       }).catch((error) => {
         console.error(error);
     });
-        console.log("Mounted Location Graphs");
+        console.log("Mounted Stage Deals Ratio");
 }
   }
   </script>
