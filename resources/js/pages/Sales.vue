@@ -144,6 +144,7 @@
         data() {
             return {
                 d_forecast: null,
+                items: [],
 
                 fields: [
                     { key: "id", label: "Deal Name", sortable: true, class: "text-center"},
