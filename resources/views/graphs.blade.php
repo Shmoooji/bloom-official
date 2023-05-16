@@ -18,11 +18,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Styles -->
         <style>
-            body {
-                height: 100vh;
-                display: flex;
-                background: linear-gradient(to top left, #28b487, #7dd56f);
-            }
             h1 {
                 font-family: sans-serif;
                 font-size: 50px;
@@ -34,7 +29,10 @@
             }
 
             body {
+                height: 100%;
+                display: flex;
                 font-family: 'Nunito', sans-serif;
+                background-color: #3F4F34 !important;
             }
 
             #app{
@@ -45,7 +43,7 @@
 
 <body class="antialiased">
     <div id="app">
-                <analytics-graphs-component></analytics-graphs-component>
+                <analytics-graphs-component :data="{{$prefPaymentMethod}}"></analytics-graphs-component>
             </div>
         </div>
     </div>

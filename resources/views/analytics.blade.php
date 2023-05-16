@@ -19,9 +19,9 @@
         <!-- Styles -->
         <style>
             body {
-                height: 100vh;
+                height: 100%;
                 display: flex;
-                background: linear-gradient(to top left, #28b487, #7dd56f);
+                background-color:#3F4F34 !important;
             }
             h1 {
                 font-family: sans-serif;
@@ -38,7 +38,7 @@
             }
 
             #app{
-                /*margin-top: -3vh;*/
+
             }
         </style>
         </head>
