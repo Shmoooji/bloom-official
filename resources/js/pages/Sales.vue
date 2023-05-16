@@ -6,9 +6,22 @@
                 <div class="sales-header">
                     <h1>Sales</h1>
                 </div> 
+                
             </b-row>  
 
             <b-row align-h="end">
+                <b-col lg="6" class="my-1">
+                    <div>
+                        <h5>
+                            <b>Deal Forecast:
+                            ${{ d_forecast }} 
+                            </b> 
+                            <br/>
+                            From latest two deals
+                        </h5>
+                    </div>
+                </b-col>
+
                 <b-col lg="3" class="my-1">
                     <!-- Filter Deals form group-->
                     <b-form-group
@@ -36,9 +49,9 @@
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                <!--</b-col>
+                </b-col>
 
-                <b-col lg="3" class="my-1"> -->
+                <b-col lg="3" class="my-1">
                     <!-- Filter By form group -->
                     <b-form-group
                             v-model="sortDirection"
@@ -57,7 +70,7 @@
                                 size="m"
                             />
                     </b-form-group>
-                    <span>Deal Forecast : {{ d_forecast }}</span>
+                    
                 </b-col>
             </b-row>
 
@@ -124,12 +137,10 @@
         name: "Sales",
         data() {
             return {
-                // items: null,
-                //placeholder items
-
+                d_forecast: null,
                 fields: [
                     { key: "id", label: "Deal Name", sortable: true },
-                    { key: "campaign_payment_id", label: "Campaaign Name", sortable: true },
+                    { key: "campaign_payment_id", label: "Campaign Name", sortable: true },
                     {
                         key: "created_at",
                         label: "Date Issued",
@@ -161,7 +172,6 @@
                     },
                 ],
 
-                // selected: null,
                 options: [
                     { value: null, text: "Select Attribute" },
                     { value: "Priority", text: "Priority" },
@@ -233,20 +243,24 @@
         font-weight: bold;
     }
 
+    .deal-forecast {
+        margin-top: 30px;
+    }
+
     .bloom-style {
         background-color: #3F4F34;
         color: #86A760;
     }
 
-    ::v-deep .bloom thead{
+    :deep .bloom thead{
         color: #C88512;
     }
 
-    ::v-deep .bloom td{
+    :deep .bloom td{
         color: #86A760;
     }
 
-    ::v-deep .bloom tr:hover{
+    :deep .bloom tr:hover{
         background-color: #86A760;
         color: #242108;
     }
