@@ -6,6 +6,8 @@ use App\Models\CampaignPayment;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 
+use Auth;
+
 class PaymentController extends Controller
 {
     private $gateway;
@@ -70,10 +72,10 @@ class PaymentController extends Controller
             }
 
             $info = array_merge($request->all(), array(
-                'user_id'             => 4,
+                'user_id'             => Auth::id(),
                 'campaign_type'       => 3,
                 'payment_method'      => 'PayPal',
-                'subscription_period' => 6,
+                'subscription_period' => 3,
                 'payment_id'          => $PaymentID
             ));
 
