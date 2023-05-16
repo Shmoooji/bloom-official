@@ -90,7 +90,7 @@
                     :sort-direction="sortDirection"
                     stacked="md"
                     show-empty
-                    small
+                    medium
                     @filtered="onFiltered"
                 >
 
@@ -99,19 +99,21 @@
                     <!-- Use the "key" attribute to map the column with the corresponding item property -->
                     {{ item[field.key] }}
                 </b-table-column>
-                    <template #cell(name)="row">
-                        {{ row.value.first }} {{ row.value.last }}
-                    </template>
+                
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
 
-                    <template #row-details="row">
-                        <b-card>
-                            <ul>
-                                <li v-for="(value, key) in row.item" :key="key">
-                                    {{ key }}: {{ value }}
-                                </li>
-                            </ul>
-                        </b-card>
-                    </template>
+                <template #row-details="row">
+                    <b-card>
+                        <ul>
+                            <li v-for="(value, key) in row.item" :key="key">
+                                {{ key }}: {{ value }}
+                            </li>
+                        </ul>
+                    </b-card>
+                </template>
+
                 </b-table>
             </b-row>
             
@@ -213,7 +215,7 @@
                     .get("/get_deal_forecast")
                     .then(response => {
                         console.log(response.data);
-                        this.d_forecast = response.data;
+                        this.d_forecast = response.data.toFixed(2);
                     })
                     .catch((error) => {
                         console.log(error.data);
