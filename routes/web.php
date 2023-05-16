@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Index
+Route::get('/index', function () {
+    return view('index')->name('index');
 });
 
 // Campaigns
@@ -43,8 +50,8 @@ Route::get("/works", function () {
 });
 
 // Cutserv
-Route::get("/custserv", function () {
-    return view('custserv');
+Route::get("/customerservice", function () {
+    return view('customerservice');
 });
 
 //Marketing Automation
@@ -57,6 +64,18 @@ Route::get("/sales", function () {
     return view('sales');
 });
 
-Route::get('/payment/options', function () {
-    return view('payment_options');
+// Payment
+Route::prefix('payment')->group(function () {
+    Route::get('/option', [PaymentController::class, 'index'])->name('payment/option');
+
+    Route::post('/gcash', [PaymentController::class, 'index']);
+    Route::post('/paymaya', [PaymentController::class, 'index']);
+    Route::post('/paypal', [PaymentController::class, 'createPaymentPaypal']);
+
+    Route::get('/success', [PaymentController::class, 'handleSuccess']);
+    Route::get('/error', [PaymentController::class, 'handleError']);
+});
+
+Route::get('/analytics', function () {
+    return view('analytics');
 });
