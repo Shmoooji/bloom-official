@@ -1,12 +1,16 @@
 <template>
-    <div>
-        <b-container fluid="sm">
+    <b-container class="bloom-style">
+        <b-container fluid="lg" >
+            <!-- Module Header -->
             <b-row>
+                <div class="sales-header">
+                    <h1>Sales</h1>
+                </div> 
+            </b-row>  
+
+            <b-row align-h="end">
                 <b-col lg="3" class="my-1">
-                    <div>
-                        <h1 class="display-5 fw-bold">Sales</h1>
-                    </div>
-                    
+                    <!-- Filter Deals form group-->
                     <b-form-group
                         label-for="filter-input"
                         label-align-sm="left"
@@ -19,44 +23,48 @@
                                 v-model="filter"
                                 type="search"
                                 placeholder="Filter Deals"
-                            ></b-form-input>
+                            />
 
                             <b-input-group-append>
                                 <b-button
                                     :disabled="!filter"
                                     @click="filter = ''"
-                                    >Clear</b-button
-                                >
+                                    class="bloom-set fw-bold"
+                                    >
+                                    Clear
+                                </b-button>
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                <!-- </b-col>
+                <!--</b-col>
+
                 <b-col lg="3" class="my-1"> -->
+                    <!-- Filter By form group -->
                     <b-form-group
-                        v-model="sortDirection"
-                        label="By"
-                        label-cols-sm="2"
-                        label-align-sm="left"
-                        label-size="m"
-                        class="mb-0"
-                        v-slot="{ ariaDescribedby }"
-                    >
-                        <b-form-select
-                            v-model="filterOn"
-                            :options="options"
-                            :aria-describedby="ariaDescribedby"
-                            class="mt-0"
-                            size="m"
-                            placeholder="category"
+                            v-model="sortDirection"
+                            label="By"
+                            label-cols-sm="2"
+                            label-align-sm="right"
+                            label-size="m"
+                            class="mb-0 fw-bold"
+                            v-slot="{ ariaDescribedby }"
                         >
-                        </b-form-select>
+                            <b-form-select
+                                v-model="filterOn"
+                                :options="options"
+                                :aria-describedby="ariaDescribedby"
+                                class="mt-0"
+                                size="m"
+                            />
                     </b-form-group>
+                    <span>Deal Forecast : {{ d_forecast }}</span>
                 </b-col>
             </b-row>
 
-            <b-row class="my-4">
+            <b-row class="my-2">
+                <!-- Sales Table -->
                 <b-table
-                    striped
+                    class="bloom"
                     hover
                     :items="items"
                     :fields="fields"
@@ -73,7 +81,7 @@
                     @filtered="onFiltered"
                 >
 
-                <!-- Define your table columns using b-table-column -->
+                <!-- Define table columns -->
                 <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
                     <!-- Use the "key" attribute to map the column with the corresponding item property -->
                     {{ item[field.key] }}
@@ -93,119 +101,159 @@
                     </template>
                 </b-table>
             </b-row>
-
-            <div class="mt-3">
-                <b-pagination
-                    v-model="currentPage"
-                    :total-rows="totalRows"
-                    :per-page="perPage"
-                    :align="center"
-                    size="m"
-                    class="my-0"
-                ></b-pagination>
-            </div>
+            
+            <!-- Pagination feature -->
+            <b-row align-h="end" class="overflow-auto">
+                <div class="mt-2">
+                    <b-pagination
+                        v-model="currentPage"
+                        :total-rows="totalRows"
+                        :per-page="perPage"
+                        size="m"
+                        class="my-0"
+                        align="center"
+                    />
+                </div>
+            </b-row>
         </b-container>
-    </div>
+    </b-container>
 </template>
 
 <script>
-// import { assertExpressionStatement } from "@babel/types";
+    export default {
+        name: "Sales",
+        data() {
+            return {
+                // items: null,
+                //placeholder items
 
-export default {
-    name: "Sales",
-    data() {
-        return {
-            //selected: null,
-            // items: null,
-            //placeholder items
-            
+                fields: [
+                    { key: "id", label: "Deal Name", sortable: true },
+                    { key: "campaign_payment_id", label: "Campaaign Name", sortable: true },
+                    {
+                        key: "created_at",
+                        label: "Date Issued",
+                        sortable: true,
+                        class: "text-center",
+                    },
+                    {
+                        key: "updated_at",
+                        label: "Date Updated",
+                        sortable: true,
+                        class: "text-center",
+                    },
+                    {
+                        key: "closing_date",
+                        label: "Closing Date",
+                        sortable: true,
+                        class: "text-center",
+                    },
+                    { key: "priority", label: "Priority", sortable: true },
+                    { key: "stage_deal", label: "Deal Stage", sortable: true },
+                    { key: "type_deal", label: "Deal Type", sortable: true },
+                    { key: "contact", label: "Contact", sortable: true },
+                    { key: "company", label: "Company", sortable: true },
+                    {
+                        key: "amount",
+                        label: "Amount",
+                        sortable: true,
+                        class: "text-center",
+                    },
+                ],
 
-            fields: [
-                { key: "id", label: "Deal Name", sortable: true },
-                { key: "campaign_payment_id", label: "Deal Name", sortable: true },
-                {
-                    key: "created_at",
-                    label: "Date Issued",
-                    sortable: true,
-                    class: "text-center",
-                },
-                {
-                    key: "updated_at",
-                    label: "Date Updated",
-                    sortable: true,
-                    class: "text-center",
-                },
-                {
-                    key: "closing_date",
-                    label: "Closing Date",
-                    sortable: true,
-                    class: "text-center",
-                },
-                { key: "priority", label: "Priority", sortable: true },
-                { key: "stage_deal", label: "Deal Stage", sortable: true },
-                { key: "type_deal", label: "Deal Type", sortable: true },
-                { key: "contact", label: "Contact", sortable: true },
-                { key: "company", label: "Company", sortable: true },
-                {
-                    key: "amount",
-                    label: "Amount",
-                    sortable: true,
-                    class: "text-center",
-                },
-            ],
-
-            options: [
-                { value: null, text: "Select Attribute" },
-                { value: "Priority", text: "Priority" },
-                { value: "Deal_Stage", text: "Deal Stage" },
-                { value: "Deal_Type", text: "Deal Type" },
-            ],
-            totalRows: null,
-            currentPage: 1,
-            perPage: 5,
-            pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
-            sortBy: "",
-            sortDesc: false,
-            sortDirection: "asc",
-            filter: null,
-            filterOn: [],
-        };
-    },
-
-    mounted: function(){
-        this.get_deal();
-    },
-   
-    methods: {
-        get_deal() {
-            axios
-                .get("/get_deal")
-                .then((response) => {
-                    console.log(response.data);
-                    this.items = response.data;
-                    console.log(this.items);
-                    this.totalRows = Object.keys(response.data).length;
-                    console.log(this.totalRows);
-                })
-                .catch((error) => {
-                    console.log(error.data);
-                });
+                // selected: null,
+                options: [
+                    { value: null, text: "Select Attribute" },
+                    { value: "Priority", text: "Priority" },
+                    { value: "Deal_Stage", text: "Deal Stage" },
+                    { value: "Deal_Type", text: "Deal Type" },
+                ],
+                totalRows: null,
+                currentPage: 1,
+                perPage: 5,
+                pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+                sortBy: "",
+                sortDesc: false,
+                sortDirection: "asc",
+                filter: null,
+                filterOn: [],
+            };
         },
-    },
 
-    beforeMount() {
-        this.get_deal();
-    },
+        mounted: function(){
+            //this.get_deal();
+        },
+    
+        methods: {
+            get_deal() {
+                axios
+                    .get("/get_deal")
+                    .then((response) => {
+                        console.log(response.data);
+                        this.items = response.data;
+                        console.log(this.items);
+                        this.totalRows = Object.keys(response.data).length;
+                    })
+                    .catch((error) => {
+                        console.log(error.data);
+                    });
+            },
+            get_deal_forecast() {
+                axios
+                    .get("/get_deal_forecast")
+                    .then(response => {
+                        console.log(response.data);
+                        this.d_forecast = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error.data);
+                    });
+            },
+        },
 
-    onFiltered(filteredItems) {
-        this.totalRows = filteredItems.length;
-        this.currentPage = 1;
-    },
-};
+        beforeMount() {
+            this.get_deal();
+            this.get_deal_forecast();
+        },
+
+        onFiltered(filteredItems) {
+            this.totalRows = filteredItems.length;
+            this.currentPage = 1;
+        },
+    };
 </script>
 
 <style scoped>
-div {
-    margin-top: 50px;
-}
+    .sales-header {
+        margin-top: 50px;
+        color: #C88512;
+    }
+
+    .sales-header h1{
+        font-weight: bold;
+    }
+
+    .bloom-style {
+        background-color: #3F4F34;
+        color: #86A760;
+    }
+
+    ::v-deep .bloom thead{
+        color: #C88512;
+    }
+
+    ::v-deep .bloom td{
+        color: #86A760;
+    }
+
+    ::v-deep .bloom tr:hover{
+        background-color: #86A760;
+        color: #242108;
+    }
+
+    .bloom-set{
+        background-color:#86A760;
+        color:#4D4114;
+    }
+
 </style>
