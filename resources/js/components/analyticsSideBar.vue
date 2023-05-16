@@ -1,6 +1,6 @@
 <template>
     <b-col class="side-nav">
-    
+
             <b-nav vertical>
                 <b-nav-item href="/analytics" class="navitem">Reports and Summary</b-nav-item>
                 <b-nav-item href="/graphs">Graphs</b-nav-item>
