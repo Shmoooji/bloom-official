@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Index
+Route::get('/index', function () {
+    return view('index');
+});
+
 // Campaigns
 Route::get('/campaigns', function () {
     return view('campaigns');
@@ -43,8 +48,8 @@ Route::get("/works", function () {
 });
 
 // Cutserv
-Route::get("/custserv", function () {
-    return view('custserv');
+Route::get("/customerservice", function () {
+    return view('customerservice');
 });
 
 //Marketing Automation
@@ -64,3 +69,5 @@ Route::get('/payment/options', function () {
 Route::get('/analytics', function () {
     return view('analytics');
 });
+
+Route::get('/get_deal', [DealController::class, 'get_deal']);

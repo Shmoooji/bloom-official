@@ -7,8 +7,8 @@
                         <li><a href="#summary" class="">Summary</a></li>
 
                     </ul>
-                
-                    
+
+
                 </div>
                 <div class="content">
                         <analytics-content-reports></analytics-content-reports>
@@ -82,9 +82,7 @@ export default {
                 text-align: center;
                 height: 94vh;
                 /*border: 1px solid black;*/
-                
+
             }
 
         </style>
-
-

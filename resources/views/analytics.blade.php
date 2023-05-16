@@ -7,7 +7,7 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Scripts -->
-        
+
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="{{ mix('js/app.js') }}" defer></script>
         <!-- Styles -->
@@ -42,6 +42,7 @@
         </div>
             <analytics-navbar></analytics-navbar>
             <analytics-sidebar></analytics-sidebar>
+            <analytics-contentreports></analytics-contentreports>
             </div>
     </body>
 </html>
