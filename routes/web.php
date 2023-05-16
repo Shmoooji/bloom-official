@@ -68,8 +68,8 @@ Route::get("/sales", function () {
 Route::prefix('payment')->group(function () {
     Route::get('/option', [PaymentController::class, 'index'])->name('payment/option');
 
-    Route::post('/gcash', [PaymentController::class, 'createPaymentGcash']);
-    Route::post('/paymaya', [PaymentController::class, 'createPaymentPaymaya']);
+    Route::post('/gcash', [PaymentController::class, 'index']);
+    Route::post('/paymaya', [PaymentController::class, 'index']);
     Route::post('/paypal', [PaymentController::class, 'createPaymentPaypal']);
 
     Route::get('/success', [PaymentController::class, 'handleSuccess']);
