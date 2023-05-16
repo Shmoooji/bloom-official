@@ -76,20 +76,5 @@ export default {
             }
         },
     },
-    methods: {
-        goToPaymentPage() {
-            switch (this.paymentMethod) {
-                case "GCash":
-                    this.$router.push("/");
-                    break;
-                case "PayMaya":
-                    this.$router.push("/");
-                    break;
-                case "PayPal":
-                    this.$router.push("/");
-                    break;
-            }
-        },
-    },
 };
 </script>
