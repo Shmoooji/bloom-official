@@ -22,7 +22,7 @@ class CampaignPayment extends Model
    {
         return is_null(DB::table('campaign_payments')
                          ->where('payment_id', $paymentID)
-                         ->first(););
+                         ->first());
     }
                        
     public static function savePaypalInfo(array $info) {
