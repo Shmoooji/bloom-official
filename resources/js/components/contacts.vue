@@ -57,7 +57,7 @@
                                 </b-button>
                             </template>
                         </b-table>
-                        <b-pagination 
+                        <b-pagination
                             id="customPagination"
                             v-model="currentPage"
                             :total-rows="rows"
@@ -125,6 +125,8 @@ h1 {
 
 <script>
 import axios from "axios";
+import navBar from "./NavBar.vue";
+
 
 export default {
     data() {

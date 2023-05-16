@@ -1,11 +1,6 @@
 <template>
     <div>
-        <b-navbar
-            toggleable="lg"
-            type="light"
-            variant="light"
-            class="fixed-top"
-        >
+        <b-navbar toggleable="lg" type="light" variant="light">
             <b-navbar-brand href="#">BLOOM</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -57,18 +52,10 @@
     </div>
 </template>
 
-<style>
-.fixed-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-}
-</style>
+<style scoped></style>
 
 <script>
 export default {
-    name: "navBar",
+    name: "NavBar",
 };
 </script>
