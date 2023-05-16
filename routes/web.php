@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
 use App\Http\Controllers\PaymentController;
 
 /*
@@ -23,17 +23,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Index
-Route::get('/index', function () {
-    return view('index')->name('index');
-});
-
 // Campaigns
 Route::get('/campaigns', function () {
     return view('campaigns');
 });
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::post('/login', [LoginController::class, 'store']);
 
@@ -86,8 +81,16 @@ Route::middleware('auth')->group(function () {
         return view('sales');
     });
 
-    Route::get('/payment/options', function () {
-        return view('payment_options');
+    // Payment
+    Route::prefix('payment')->group(function () {
+        Route::get('/option', [PaymentController::class, 'index'])->name('payment/option');
+
+        Route::post('/gcash', [PaymentController::class, 'index']);
+        Route::post('/paymaya', [PaymentController::class, 'index']);
+        Route::post('/paypal', [PaymentController::class, 'createPaymentPaypal']);
+
+        Route::get('/success', [PaymentController::class, 'handleSuccess']);
+        Route::get('/error', [PaymentController::class, 'handleError']);
     });
 
     Route::get('/analytics', function () {
@@ -95,18 +98,3 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Payment
-Route::prefix('payment')->group(function () {
-    Route::get('/option', [PaymentController::class, 'index'])->name('payment/option');
-
-    Route::post('/gcash', [PaymentController::class, 'index']);
-    Route::post('/paymaya', [PaymentController::class, 'index']);
-    Route::post('/paypal', [PaymentController::class, 'createPaymentPaypal']);
-
-    Route::get('/success', [PaymentController::class, 'handleSuccess']);
-    Route::get('/error', [PaymentController::class, 'handleError']);
-});
-
-Route::get('/analytics', function () {
-    return view('analytics');
-});
