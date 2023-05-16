@@ -14,12 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('campaign_payments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('campaign_id')->constrained();
-            $table->string('payment_method');
+            $table->string('payment_method')->primary();
             $table->integer('subscription_period');
-            $table->string('payment_id')->unique();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
