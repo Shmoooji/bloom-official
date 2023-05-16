@@ -77,6 +77,7 @@
             <b-row class="my-2">
                 <!-- Sales Table -->
                 <b-table
+                    id="sales-table"
                     class="bloom"
                     hover
                     :items="items"
@@ -92,27 +93,28 @@
                     show-empty
                     medium
                     @filtered="onFiltered"
+                    sort-icon-left
                 >
 
-                <!-- Define table columns -->
-                <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
-                    <!-- Use the "key" attribute to map the column with the corresponding item property -->
-                    {{ item[field.key] }}
-                </b-table-column>
+                    <!-- Define table columns -->
+                    <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
+                        <!-- Use the "key" attribute to map the column with the corresponding item property -->
+                        {{ item[field.key] }}
+                    </b-table-column>
                 
-                <template #cell(name)="row">
-                    {{ row.value.first }} {{ row.value.last }}
-                </template>
+                    <template #cell(name)="row">
+                        {{ row.value.first }} {{ row.value.last }}
+                    </template>
 
-                <template #row-details="row">
-                    <b-card>
-                        <ul>
-                            <li v-for="(value, key) in row.item" :key="key">
-                                {{ key }}: {{ value }}
-                            </li>
-                        </ul>
-                    </b-card>
-                </template>
+                    <template #row-details="row">
+                        <b-card>
+                            <ul>
+                                <li v-for="(value, key) in row.item" :key="key">
+                                    {{ key }}: {{ value }}
+                                </li>
+                            </ul>
+                        </b-card>
+                    </template>
 
                 </b-table>
             </b-row>
@@ -127,6 +129,7 @@
                         size="m"
                         class="my-0"
                         align="center"
+                        aria-controls="sales-table"
                     />
                 </div>
             </b-row>
@@ -137,41 +140,23 @@
 <script>
     export default {
         name: "Sales",
+        
         data() {
             return {
                 d_forecast: null,
+
                 fields: [
-                    { key: "id", label: "Deal Name", sortable: true },
-                    { key: "campaign_payment_id", label: "Campaign Name", sortable: true },
-                    {
-                        key: "created_at",
-                        label: "Date Issued",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    {
-                        key: "updated_at",
-                        label: "Date Updated",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    {
-                        key: "closing_date",
-                        label: "Closing Date",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    { key: "priority", label: "Priority", sortable: true },
-                    { key: "stage_deal", label: "Deal Stage", sortable: true },
-                    { key: "type_deal", label: "Deal Type", sortable: true },
-                    { key: "contact", label: "Contact", sortable: true },
-                    { key: "company", label: "Company", sortable: true },
-                    {
-                        key: "amount",
-                        label: "Amount",
-                        sortable: true,
-                        class: "text-center",
-                    },
+                    { key: "id", label: "Deal Name", sortable: true, class: "text-center"},
+                    { key: "campaign_payment_id", label: "Campaign Name", sortable: true, class: "text-center" },
+                    { key: "created_at", label: "Date Issued", sortable: true, class: "text-center"},
+                    { key: "updated_at", label: "Date Updated", sortable: true, class: "text-center"},
+                    { key: "closing_date", label: "Closing Date", sortable: true, class: "text-center"},
+                    { key: "priority", label: "Priority", sortable: true, class: "text-center" },
+                    { key: "stage_deal", label: "Deal Stage", sortable: true, class: "text-center" },
+                    { key: "type_deal", label: "Deal Type", sortable: true, class: "text-center" },
+                    { key: "contact", label: "Contact", sortable: true, class: "text-center" },
+                    { key: "company", label: "Company", sortable: true, class: "text-center" },
+                    { key: "amount", label: "Amount", sortable: true, class: "text-center"},
                 ],
 
                 options: [
@@ -180,6 +165,7 @@
                     { value: "Deal_Stage", text: "Deal Stage" },
                     { value: "Deal_Type", text: "Deal Type" },
                 ],
+
                 totalRows: null,
                 currentPage: 1,
                 perPage: 5,
@@ -192,8 +178,9 @@
             };
         },
 
-        mounted: function(){
-            //this.get_deal();
+        beforeMount() {
+            this.get_deal();
+            this.get_deal_forecast();
         },
     
         methods: {
@@ -223,14 +210,9 @@
             },
         },
 
-        beforeMount() {
-            this.get_deal();
-            this.get_deal_forecast();
-        },
-
         onFiltered(filteredItems) {
-            this.totalRows = filteredItems.length;
-            this.currentPage = 1;
+            this.totalRows = filteredItems.length
+            this.currentPage = 1
         },
     };
 </script>
@@ -244,11 +226,6 @@
     .sales-header h1{
         font-weight: bold;
     }
-
-    .deal-forecast {
-        margin-top: 30px;
-    }
-
     .bloom-style {
         background-color: #3F4F34;
         color: #86A760;
