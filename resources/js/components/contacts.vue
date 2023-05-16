@@ -28,8 +28,7 @@
                             </svg>
                         </b-button>
                     </b-col>
-                </b-row>
-                <b-row>
+                
                     <b-col>
                         <b-table
                             class="table-curve table"
@@ -71,7 +70,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .contacts-page {
     background-color: #fff;
     min-height: 100vh;
@@ -81,16 +80,19 @@
 }
 
 .contacts-container {
-    max-width: 1800px;
-    margin: 60px auto 40px auto;
-    padding: 90px;
+    margin: 2vh auto 2vh auto;
     flex-grow: 1;
+    padding: 3vh 3vh 7vh 3vh;
     background-color: #f2f2f2;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    border-radius: 5vh;
+    border-style: hidden;
 }
 
 .table-container {
-    margin-top: 30px;
+    padding-top: 3vh;
+    margin-bottom: 5%;
 }
 
 .table-curve {
@@ -125,7 +127,6 @@ h1 {
 
 <script>
 import axios from "axios";
-import navBar from "./NavBar.vue";
 
 
 export default {

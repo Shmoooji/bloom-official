@@ -51,7 +51,7 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("analytics-contentreports", analyticsContentReports)
     .component("customer-service-component", customerService)
     .component("index-page", index)
-    .component("contacts-component", contacts);
+    .component("contacts-component", contacts)
     .use(BootstrapVue3)
     .mount("#app");
 
