@@ -78,6 +78,8 @@ class RegisterController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
+        $attributes['password'] = Hash::make($attributes['password']);
+
         $user = User::create($attributes);
         // dd(Auth::check());
         // dd(Auth::user());
