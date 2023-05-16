@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,15 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::get('/register', function () {
+    return view('register');
 });
+
+Route::post('/register', [RegisterController::class, 'create']);
 
 // About
 Route::get("/about", function () {
@@ -44,7 +51,7 @@ Route::middleware('auth')->group(function () {
     // Campaigns
     Route::get('/campaigns', function () {
         return view('campaigns');
-    });
+    })->name('home');
 
 
     // Subscription

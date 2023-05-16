@@ -18,6 +18,7 @@
 	</head>
 	<body>
 		<div id="index">
+			index
 			<index-page></index-page>
 		</div>
 		<script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -20,7 +20,7 @@
     <body class="antialiased">
         <div id="app">
             <login-page></login-page>
-    </div>
+        </div>
     
         
     <script src="https://apis.google.com/js/platform.js" async defer></script>

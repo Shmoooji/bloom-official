@@ -1,58 +1,30 @@
 <template>
     <div class="container">
-        <form
-            action="/register"
-            method="post"
-            @submit="checkForm"
-            style="border: 1px solid #ccc"
-        >
-            <input type="hidden" name="_token" :value="csrf" />
-            <label for="fname"><b>First Name</b></label>
-            <input type="text" name="fname" v-model="fname" required />
-
-            <label for="lname"><b>Last Name</b></label>
-            <input type="text" name="lname" v-model="lname" required />
-
+        <h2>Login</h2>
+        <form method="post" @submit="login" style="border: 1px solid #ccc">
+            <!-- <input type="hidden" name="_token" :value="csrf" /> -->
             <label for="email"><b>Email Address</b></label>
-            <input type="email" name="email" v-model="email" required />
-
-            <label for="company"><b>Name of Company</b></label>
-            <input type="text" name="company" v-model="company" required />
+            <input type="email" name="email" v-nmodel="email" required />
 
             <label for="password"><b>Password</b></label>
             <input
                 type="password"
                 name="password"
                 v-model="password"
+                min="8"
                 required
             />
-
-            <label for="confirmpassword"><b>Confirm Password</b></label>
-            <input
-                type="password"
-                name="confirmpassword"
-                v-model="confirmpassword"
-                required
-            />
-
-            <label>
-                <input
-                    type="checkbox"
-                    checked="checked"
-                    v-model="checked"
-                    style="margin-bottom: 15px"
-                />
-                By clicking here, I have read and understood the terms and
-                conditions.
-            </label>
             <p v-if="errors.length">
                 <b>Please correct the following error(s):</b>
                 <ul>
-                    <li v-for="error in errors">{{ error }}</li>
+                    <li v-for="error in errors" style="color: red">
+                        <p  style="color: red">
+                            {{ error }}
+                        </p>
+                    </li>
                 </ul>
             </p>
-
-            <button type="submit" class="signupbtn">Sign Up</button>
+            <button type="submit" class="loginbtn">Login</button>
         </form>
     </div>
 </template>
@@ -61,36 +33,28 @@
 export default {
     data() {
         return {
-            csrf: document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content"),
-
-            fname: "",
-            lname: "",
+            // csrf: document
+            //     .querySelector('meta[name="csrf-token"]')
+            //     .getAttribute("content"),
             email: "",
-            company: "",
             password: "",
-            confirmpassword: "",
-            checked: false,
             errors: [],
         };
     },
-    methods: {
-        checkForm: function (e) {
-            if (this.name && this.age) {
-                return true;
-            }
-
-            this.errors = [];
-
-            if (!this.name) {
-                this.errors.push("Name required.");
-            }
-            if (!this.age) {
-                this.errors.push("Age required.");
-            }
-
-            e.preventDefault();
+    methhods: {
+        login() {
+            axios
+                .post("/login", {
+                    email: this.email,
+                    password: this.password,
+                })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    this.errors.push(error.response.data.message);
+                });
         },
     },
 };
@@ -100,19 +64,30 @@ export default {
 body {
     background-color: #3f4f34;
 }
+.row {
+    display: flex;
+}
 .column1 {
     flex: 50%;
     background-color: #3f4f34;
     text-align: center;
-    margin-top: 50%;
-    padding: 370px 0;
+    margin-top: 30%;
+    float: left;
 }
 h1 {
     color: #c88512;
+    font-family: "Lucida Console", monospace;
+    font-size: 32;
+    padding: 170px 0;
+}
+h2 {
+    text-align: center;
 }
 .column2 {
     background-color: #86a760;
     flex: 50%;
+    float: right;
+    margin-top: 20%;
 }
 input[type="text"],
 input[type="password"],
@@ -134,6 +109,7 @@ input[type="password"]:focus {
 
 .container {
     padding: 16px;
+    background-color: #86a760;
 }
 
 button {
