@@ -36,9 +36,9 @@
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                </b-col>
+                <!--</b-col>
 
-                <b-col lg="3" class="my-1">
+                <b-col lg="3" class="my-1"> -->
                     <!-- Filter By form group -->
                     <b-form-group
                             v-model="sortDirection"
@@ -57,6 +57,7 @@
                                 size="m"
                             />
                     </b-form-group>
+                    <span>Deal Forecast : {{ d_forecast }}</span>
                 </b-col>
             </b-row>
 
@@ -128,7 +129,7 @@
 
                 fields: [
                     { key: "id", label: "Deal Name", sortable: true },
-                    { key: "campaign_payment_id", label: "Deal Name", sortable: true },
+                    { key: "campaign_payment_id", label: "Campaaign Name", sortable: true },
                     {
                         key: "created_at",
                         label: "Date Issued",
@@ -180,7 +181,7 @@
         },
 
         mounted: function(){
-            this.get_deal();
+            //this.get_deal();
         },
     
         methods: {
@@ -192,7 +193,17 @@
                         this.items = response.data;
                         console.log(this.items);
                         this.totalRows = Object.keys(response.data).length;
-                        console.log(this.totalRows);
+                    })
+                    .catch((error) => {
+                        console.log(error.data);
+                    });
+            },
+            get_deal_forecast() {
+                axios
+                    .get("/get_deal_forecast")
+                    .then(response => {
+                        console.log(response.data);
+                        this.d_forecast = response.data;
                     })
                     .catch((error) => {
                         console.log(error.data);
@@ -202,6 +213,7 @@
 
         beforeMount() {
             this.get_deal();
+            this.get_deal_forecast();
         },
 
         onFiltered(filteredItems) {

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DealController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +71,5 @@ Route::get('/analytics', function () {
 });
 
 Route::get('/get_deal', [DealController::class, 'get_deal']);
+
+Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
