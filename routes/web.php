@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,8 +67,16 @@ Route::get('/payment/options', function () {
     return view('payment_options');
 });
 
-Route::get('/analytics', function () {
-    return view('analytics');
-});
 
+//Analytics
+Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name('analytics.index');
+Route::get('/analytics/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
+Route::get('/graphs/getCampaignLocations', [AnalyticsController::class, 'getCampaignLocations'])->name('campaign-locations');
+Route::get('/graphs', function(){
+    return view('graphs');
+});
+Route::get('/graphs/getStageDealRatio', [AnalyticsController::class, 'getStageDealRatio'])->name('graphs.getStageDealRatio');
+Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);
+
+//Deal
 Route::get('/get_deal', [DealController::class, 'get_deal']);

@@ -20,11 +20,20 @@ import campaigns from "./components/campaigns.vue";
 import navbar from "./components/NavBar.vue";
 import sales from "./pages/Sales.vue";
 import welcome from "./pages/Welcome.vue";
-import marketingAutomation from "./pages/MarketingAutomation.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
-import analyticsNav from "./components/analyticsNav.vue";
+import analyticsReports from "./pages/analyticsReports.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue";
-import analyticsContentReports from "./components/analyticsContentReports.vue";
+import about from "./pages/About.vue";
+import works from "./pages/Works.vue";
+import subscription from "./pages/Subscription.vue";
+import contactUs from "./pages/ContactUs.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
+import customerService from "./pages/CustomerService.vue";
+import index from "./pages/Index.vue";
+import analyticsGraphs from "./pages/analyticsGraphs.vue";
+import analyticsLocationGraph from "./components/analyticsLocationGraph.vue";
+import analyticsPieSales from "./components/analyticsPieSales.vue";
+import analyticsStageDealRatio from "./components/analyticsStageDealRatio.vue";
 
 const app = createApp({});
 
@@ -34,9 +43,14 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("sales-component", sales)
     .component("welcome-component", welcome)
     .component("payment-component", PaymentComponent)
-    .component("analytics-navbar", analyticsNav)
-    .component("analytics-sidebar", analyticsSideBar)
-    .component("analytics-contentreports", analyticsContentReports)
+    .component("analytics-reports-component", analyticsReports)
+    .component("analytics-sidebar-component", analyticsSideBar)
+    .component("customer-service-component", customerService)
+    .component("analytics-graphs-component", analyticsGraphs)
+    .component("analytics-location-graphs-component", analyticsLocationGraph)
+    .component("analytics-stage-deals-graphs-component", analyticsStageDealRatio)
+    .component("analytics-pie-sales-component", analyticsPieSales)
+    .component("index-page", index)
     .use(BootstrapVue3)
     .mount("#app");
 
