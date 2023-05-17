@@ -1,7 +1,7 @@
 <template>
     <div class="container flex-container">
             <div class="flex-items">
-                <div class="navbar">
+                <div class="analytics-navbar">
                 <ul>
                     <li><a class="logo"><b>BLOOM</b></a></li>
                     <li><a href="#home" class="border-left">Home</a></li>
@@ -24,7 +24,7 @@ export default {
 </script>
 <style>
 
-            .navbar li{
+            .analytics-navbar li{
             float: left;
             }
             ul{
@@ -32,7 +32,7 @@ export default {
             }
 
 
-            .navbar a {
+            .analytics-navbar a {
                 display: block;
                 padding-left: 1vw;
                 padding-right: 1vw;
@@ -51,7 +51,7 @@ export default {
             }
 
 
-            .navbar{
+            .analytics-navbar{
                 background-color: rgb(255,255,255);
                 width: 98vw;
                 height: 7vh;                

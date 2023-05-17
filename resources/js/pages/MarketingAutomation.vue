@@ -3,7 +3,6 @@
         <div>
             <NavBar />
         </div>
-
         <div class="container">
             <form>
                 <div class="form-group">
