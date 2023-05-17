@@ -31,7 +31,7 @@
     </div>
 </template>
 
-<style>
+<style  scoped>
     div {
         font-family: 'Nunito', sans-serif;
     }
