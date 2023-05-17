@@ -7,7 +7,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DealController;
->>>>>>> dev-branch
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +52,14 @@ Route::get("/contactUs", function () {
 Route::get("/customerservice", function () {
     return view('customerservice');
 });
+
+// Contacts
+Route::get("/contacts", function () {
+    return view('contacts');
+});
+Route::get("/contacts/list", [ContactController::class, 'index']);
+Route::get("/contacts/list/{id}", [ContactController::class, 'show']);
+Route::delete("/contacts/list/{id}", [ContactController::class, 'destroy']);
 
 Route::middleware('auth')->group(function () {
 
