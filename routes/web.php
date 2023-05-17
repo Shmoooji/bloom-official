@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\ContactController;
-=======
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PaymentController;
@@ -52,14 +50,13 @@ Route::get("/contactUs", function () {
     return view('contactUs');
 });
 
-Route::middleware('auth')->group(function () {
-
-<<<<<<< HEAD
 // Cutserv
 Route::get("/customerservice", function () {
     return view('customerservice');
 });
-=======
+
+Route::middleware('auth')->group(function () {
+
     // Campaigns
     Route::get('/campaigns', function () {
         return view('campaigns');
@@ -76,23 +73,12 @@ Route::get("/customerservice", function () {
         return view('works');
     });
 
-    // Cutserv
-    Route::get("/customerservice", function () {
-        return view('customerservice');
+    //Marketing Automation
+    Route::get("/marketing-automation", function () {
+        return view('marketingAutomation');
     });
->>>>>>> dev-branch
 
-//Marketing Automation
-Route::get("/marketing-automation", function () {
-    return view('marketingAutomation');
-});
-<<<<<<< HEAD
-Route::get("/marketing-automation-mail", function () {
-    return view('marketingAutomationMail');
-});
-
-Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.email');
-=======
+    Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.email');
 
     // Sales
     Route::get("/sales", function () {
@@ -110,7 +96,6 @@ Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.
         Route::get('/success', [PaymentController::class, 'handleSuccess']);
         Route::get('/error', [PaymentController::class, 'handleError']);
     });
->>>>>>> dev-branch
 
     //Deal
     Route::get('/get_deal', [DealController::class, 'get_deal']);
