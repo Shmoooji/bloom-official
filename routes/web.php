@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,12 @@ Route::get("/customerservice", function () {
 //Marketing Automation
 Route::get("/marketing-automation", function () {
     return view('marketingAutomation');
+
+    Route::get("/marketing", function () {
+    return view('marketingSendEmail');
+    });
+    
+Route::post('/send',[HomeController::class,"sendnotification"]);
 });
 
 // Sales
