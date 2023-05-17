@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Campaign extends Model
 {
     use HasFactory;
+    
+    public function get_campaigns(){
+        return DB::table('campaigns')->get();
+    }
 }
