@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Campaign_Payment extends Model
+class Analytics extends Model
 {
     use HasFactory;
+
+    private function fetch_campaign_list(){
+        
+    }
 }

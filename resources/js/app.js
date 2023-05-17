@@ -4,34 +4,72 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import "./bootstrap";
 import { createApp } from "vue";
+import "./bootstrap";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
+import campaigns from "./components/campaigns.vue";
+
+import NavBar from "./components/NavBar.vue";
+import PaymentComponent from "./components/PaymentComponent.vue";
+import analyticsLocationGraph from "./components/analyticsLocationGraph.vue";
+import analyticsNav from "./components/analyticsNav.vue";
+import analyticsPieSales from "./components/analyticsPieSales.vue";
+import analyticsSideBar from "./components/analyticsSideBar.vue";
+import analyticsStageDealRatio from "./components/analyticsStageDealRatio.vue";
+import contacts from "./components/contacts.vue";
+import about from "./pages/About.vue";
+import contactUs from "./pages/ContactUs.vue";
+import customerService from "./pages/CustomerService.vue";
+import index from "./pages/Index.vue";
+import login from "./pages/Login.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
+import register from "./pages/Register.vue";
+import sales from "./pages/Sales.vue";
+import subscription from "./pages/Subscription.vue";
+import welcome from "./pages/Welcome.vue";
+import works from "./pages/Works.vue";
+import analyticsGraphs from "./pages/analyticsGraphs.vue";
+import analyticsReports from "./pages/analyticsReports.vue";
 
 const app = createApp({});
 
-import ExampleComponent from "./components/ExampleComponent.vue";
-app.component("example-component", ExampleComponent);
-
-import navbar from "./components/navbar.vue";
-app.component("navbar-component", navbar);
-
-import campaigns from "./components/campaigns.vue";
-app.component("campaigns-component", campaigns);
-
-import contacts from "./components/contacts.vue";
-app.component("contacts-component", contacts);
-
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
-
-app.use(BootstrapVue3);
+app.component("marketing-automation-component", marketingAutomation)
+    .component("campaigns-component", campaigns)
+    .component("navbar-component", NavBar)
+    .component("sales-component", sales)
+    .component("welcome-component", welcome)
+    .component("about-component", about)
+    .component("works-component", works)
+    .component("subscription-component", subscription)
+    .component("contact-us-component", contactUs)
+    .component("payment-component", PaymentComponent)
+    .component("analytics-navbar", analyticsNav)
+    .component("analytics-sidebar", analyticsSideBar)
+    .component("analytics-reports-component", analyticsReports)
+    .component("analytics-sidebar-component", analyticsSideBar)
+    .component("customer-service-component", customerService)
+    .component("analytics-graphs-component", analyticsGraphs)
+    .component("analytics-location-graphs-component", analyticsLocationGraph)
+    .component(
+        "analytics-stage-deals-graphs-component",
+        analyticsStageDealRatio
+    )
+    .component("analytics-pie-sales-component", analyticsPieSales)
+    .component("index-page", index)
+    .component("login-page", login)
+    .component("register-page", register)
+    .component("contacts-component", contacts)
+    .use(BootstrapVue3)
+    .mount("#app");
 
 /**
  * The following block of code may be used to automatically register your
@@ -51,5 +89,7 @@ app.use(BootstrapVue3);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount("#app");
-app.mount("#campaigns");
+// app.mount("#app");
+// app.mount("#campaigns");
+// app.mount("#marketingAutomation");
+// app.mount("#sales");
