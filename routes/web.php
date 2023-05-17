@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -94,13 +94,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/error', [PaymentController::class, 'handleError']);
     });
 
+    //Deal
+    Route::get('/get_deal', [DealController::class, 'get_deal']);
+    Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
+
     Route::get('/analytics', function () {
         return view('analytics');
     });
 
-    Route::get('/get_deal', [DealController::class, 'get_deal']);
 
-    Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
-});
-
-
+    //Analytics
+    Route::get('/graphs', function(){
+        return view('graphs');
+    });
+    Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name('analytics.index');
+    Route::get('/analytics/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
+    Route::get('/graphs/getCampaignLocations', [AnalyticsController::class, 'getCampaignLocations'])->name('campaign-locations');
+    Route::get('/graphs/getStageDealRatio', [AnalyticsController::class, 'getStageDealRatio'])->name('graphs.getStageDealRatio');
+    Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);
