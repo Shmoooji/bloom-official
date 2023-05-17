@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Notification;
+use App\Notifications\SendEmailNotification;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function sendnotification(Request $request)
     {
-        $this->middleware('auth');
-    }
+        $user = User::all();
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+        $details = [
+            'greeting' => $request->greeting,
+            'title' => $request->title,
+            'body' => $request->body,
+            'lastline' => $request->lastline,
+        ];
+
+        Notification::send($user, new SendEmailNotification($details));
+        dd('Email Sent!');
     }
 }
