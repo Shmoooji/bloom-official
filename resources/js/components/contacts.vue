@@ -5,15 +5,15 @@
             <b-container class="table-container">
                 <b-row>
                     <b-col>
-                        <h1>Contacts</h1>
+                        <h1>CONTACTS</h1>
                     </b-col>
                     <b-col cols="7">
-                        <b-input-group>
+                        <b-input-group></b-input-group>
                             <b-form-input
                                 size="lg"
                                 type="search"
                                 v-model="keyword"
-                                placeholder="Search"
+                                placeholder="Isabel Leopoldo . . ."
                             ></b-form-input>
                             <b-input-group-append>
                                 <b-button
@@ -101,7 +101,7 @@
                                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"
                                         />
                                         <path
-                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0                   0 0 0 1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"
                                         />
                                     </svg>
                                 </b-button>
@@ -123,22 +123,40 @@
 
 <style scoped>
 .contacts-page {
-    background-color: #fff;
+    background-color: #f2ede7;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .contacts-container {
     margin: 2vh auto 2vh auto;
     flex-grow: 1;
     padding: 3vh 3vh 7vh 3vh;
-    background-color: #f2f2f2;
+    background-color: #e7d7c5;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     width: 90%;
     border-radius: 5vh;
     border-style: hidden;
+    animation: containerFadeIn 0.5s ease-in-out;
+    transform-origin: top;
+}
+
+@keyframes containerFadeIn {
+    0% {
+        opacity: 0;
+        transform: scaleY(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+.contacts-page:hover .contacts-container {
+    background-color: #f2ede7;
 }
 
 .table-container {
@@ -148,7 +166,7 @@
 
 .table-curve {
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc2b8;
 }
 
 .table thead th {
@@ -157,22 +175,52 @@
     text-align: center;
     font-weight: bold;
     white-space: nowrap;
+    color: #554d44;
 }
 
 .table tbody tr:hover {
-    background-color: #e6e6e6;
+    background-color: #d8c2a6;
+    color: #554d44;
 }
 
 .table tbody td {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc2b8;
     padding: 8px;
     text-align: center;
+    color: #554d44;
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 45px;
     font-weight: bold;
     padding-bottom: 20px;
+    color: #554d44;
+}
+
+@keyframes tableFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table {
+    animation: tableFadeIn 0.5s ease;
+}
+
+@keyframes buttonFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
 
@@ -195,46 +243,14 @@ export default {
                     sortable: true,
                     class: "text-center",
                 },
-                {
-                    key: "email",
-                    label: "Email",
-                    sortable: true,
-                },
-                {
-                    key: "phone",
-                    label: "Phone Number",
-                    sortable: true,
-                },
-                {
-                    key: "company",
-                    label: "Company",
-                    sortable: true,
-                },
-                {
-                    key: "status",
-                    label: "Status",
-                    sortable: false,
-                },
-                {
-                    key: "last_active",
-                    label: "Last Active",
-                    sortable: true,
-                },
-                {
-                    key: "created_at",
-                    label: "Created At",
-                    sortable: true,
-                },
-                {
-                    key: "updated_at",
-                    label: "Updated At",
-                    sortable: true,
-                },
-                {
-                    key: "actions",
-                    label: "Actions",
-                    sortable: false,
-                },
+                { key: "email", label: "Email", sortable: true },
+                { key: "phone", label: "Phone Number", sortable: true },
+                { key: "company", label: "Company", sortable: true },
+                { key: "status", label: "Status", sortable: false },
+                { key: "last_active", label: "Last Active", sortable: true },
+                { key: "created_at", label: "Created At", sortable: true },
+                { key: "updated_at", label: "Updated At", sortable: true },
+                { key: "actions", label: "Actions", sortable: false },
             ],
             contacts: [],
             itemsPerPage: 15,
@@ -242,8 +258,7 @@ export default {
             keyword: "",
         };
     },
-    mounted: function () {
-        console.log("mounted");
+    mounted() {
         axios
             .get("contacts/list")
             .then((response) => {
