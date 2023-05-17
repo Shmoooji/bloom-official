@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PaymentController;
@@ -16,8 +18,6 @@ use App\Http\Controllers\DealController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +48,19 @@ Route::get("/contactUs", function () {
     return view('contactUs');
 });
 
+// Cutserv
+Route::get("/customerservice", function () {
+    return view('customerservice');
+});
+
+// Contacts
+Route::get("/contacts", function () {
+    return view('contacts');
+});
+Route::get("/contacts/list", [ContactController::class, 'index']);
+Route::get("/contacts/list/{id}", [ContactController::class, 'show']);
+Route::delete("/contacts/list/{id}", [ContactController::class, 'destroy']);
+
 Route::middleware('auth')->group(function () {
 
     // Campaigns
@@ -66,15 +79,12 @@ Route::middleware('auth')->group(function () {
         return view('works');
     });
 
-    // Cutserv
-    Route::get("/customerservice", function () {
-        return view('customerservice');
+    //Marketing Automation
+    Route::get("/marketing-automation", function () {
+        return view('marketingAutomation');
     });
 
-//Marketing Automation
-Route::get("/marketing-automation", function () {
-    return view('marketingAutomation');
-});
+    Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.email');
 
     // Sales
     Route::get("/sales", function () {

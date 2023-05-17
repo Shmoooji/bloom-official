@@ -1,10 +1,10 @@
 
 
 <style scoped>
+
 .analytics-page{
     width:100%;
 }/* Add position relative to the content body */
-
 
 .head-title {
     display: flex;
