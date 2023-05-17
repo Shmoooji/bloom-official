@@ -69,3 +69,8 @@ Route::get('/payment/options', function () {
 Route::get('/analytics', function () {
     return view('analytics');
 });
+
+// Campaigns
+Route::get('/campaigns', [CampaignController::class, 'index'] );
+
+Route::get('/get_campaigns', [CampaignController:: class, 'get_campaigns']);

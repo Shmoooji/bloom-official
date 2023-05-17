@@ -16,7 +16,8 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
-import campaigns from "./components/campaigns.vue";
+import campaignCard from "./components/campaignCard.vue";
+import campaigns from "./pages/Campaigns.vue";
 import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
 import analyticsNav from "./components/analyticsNav.vue";
@@ -35,6 +36,7 @@ import index from "./pages/Index.vue";
 const app = createApp({});
 
 app.component("marketing-automation-component", marketingAutomation)
+    .component("campaign-card-component", campaignCard)
     .component("campaigns-component", campaigns)
     .component("navbar-component", NavBar)
     .component("sales-component", sales)
