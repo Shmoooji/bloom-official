@@ -97,8 +97,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/analytics', function () {
         return view('analytics');
     });
+
+    Route::get('/get_deal', [DealController::class, 'get_deal']);
+
+    Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
 });
 
-Route::get('/get_deal', [DealController::class, 'get_deal']);
 
-Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
