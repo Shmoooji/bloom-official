@@ -1,9 +1,6 @@
 <template>
   <body>
   <div class="marketing-page">
-      <div>
-        <navbar-component></navbar-component>
-      </div>
     <div>
       <label for="exampleFormControlInput1" class="display-6">
         Automated Email</label>
@@ -52,7 +49,7 @@
 </body>
 </template>
 <script>
-  import Navbar from "../components/navbar.vue"
+  //import Navbar from "../components/navbar.vue"
   import axios from 'axios';
 
 //js for actual email sending
@@ -64,9 +61,6 @@
       contacts: []
     };
   },
-  components: {
-      Navbar
-    },
   mounted() {
     this.fetchContacts();
   },
