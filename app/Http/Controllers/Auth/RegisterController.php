@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -50,8 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'f_name' => ['required', 'string', 'max:255'],
+            'l_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company_name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -62,12 +67,25 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    public function create(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $attributes = $request->validate([
+            'f_name' => 'required',
+            'l_name' => 'required',
+            'email' => 'required|email|unique:users',
+            'company_name' => 'required|string',
+            'address' => 'required|string',
+            'password' => 'required|confirmed|min:8',
         ]);
+
+        $attributes['password'] = Hash::make($attributes['password']);
+
+        $user = User::create($attributes);
+        // dd(Auth::check());
+        // dd(Auth::user());
+        // var_dump(Auth::user());
+        // Auth::login($user);
+
+        return redirect('/login');
     }
 }
