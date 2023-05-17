@@ -32,9 +32,41 @@ import contactUs from "./pages/ContactUs.vue";
 import marketingAutomation from "./pages/MarketingAutomation.vue";
 import customerService from "./pages/CustomerService.vue";
 import index from "./pages/Index.vue";
+import campaigns from "./components/campaigns.vue";
+import NavBar from "./components/NavBar.vue";
+import PaymentComponent from "./components/PaymentComponent.vue";
+import analyticsNav from "./components/analyticsNav.vue";
+import analyticsSideBar from "./components/analyticsSideBar.vue";
+import analyticsContentReports from "./components/analyticsContentReports.vue";
+import sales from "./pages/Sales.vue";
+import welcome from "./pages/Welcome.vue";
+import about from "./pages/About.vue";
+import works from "./pages/Works.vue";
+import subscription from "./pages/Subscription.vue";
+import contactUs from "./pages/ContactUs.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
+import customerService from "./pages/CustomerService.vue";
+import index from "./pages/Index.vue";
 
 const app = createApp({});
 
+app.component("marketing-automation-component", marketingAutomation)
+    .component("campaigns-component", campaigns)
+    .component("navbar-component", NavBar)
+    .component("sales-component", sales)
+    .component("welcome-component", welcome)
+    .component("about-component", about)
+    .component("works-component", works)
+    .component("subscription-component", subscription)
+    .component("contact-us-component", contactUs)
+    .component("payment-component", PaymentComponent)
+    .component("analytics-navbar", analyticsNav)
+    .component("analytics-sidebar", analyticsSideBar)
+    .component("analytics-contentreports", analyticsContentReports)
+    .component("customer-service-component", customerService)
+    .component("index-page", index)
+    .use(BootstrapVue3)
+    .mount("#app");
 app.component("marketing-automation-component", marketingAutomation)
     .component("campaigns-component", campaigns)
     .component("navbar-component", NavBar)

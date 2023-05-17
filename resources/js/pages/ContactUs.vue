@@ -1,22 +1,31 @@
 <template>
-    <b-container fluid="sm" class="container">
-        <h1>Contact Us Page</h1>
+    <div>
+        <navbarAlt></navbarAlt>
+    </div>
+  
+    <b-container fluid="sm" class="works-content">
+        <b-row>
+            <h1 class="text-color">Contact Us Page</h1>
+        </b-row>
 
-        <a href="/about">About</a>
-        <br>
-        <a href="/works">Works</a>
-        <br>
-        <a href="/subscription">Subscription</a>
-        <br>
-        <a href="/contactUs">Contact Us</a>
+  
+        <b-row class="footer-bottom">
+                <footerT></footerT>
+        </b-row>
     </b-container>
 </template>
 
 <script>
+import navbarAlt from "../components/navbarAlt.vue";
+import footerT from "../components/footer.vue";
 export default {
     name: "ContactUs",
+    components: {
+        navbarAlt,
+        footerT,
+    },
     mounted() {
-        console.log("ContactUs mounted.");
+        console.log("Works mounted.");
     },
 };
 </script>
@@ -25,10 +34,19 @@ export default {
     body {
         height: 100vh;
         font-family: 'Nunito', sans-serif;
+    } 
+
+    .works-content {
+        min-width: 100%; 
     }
 
-    .container {
-        min-width: 100%; 
-        height: 100vh; 
+    .text-color {
+        color: #4d4114;
+    }
+
+    .footer-bottom{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
     }
 </style>

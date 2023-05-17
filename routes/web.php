@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -23,6 +24,11 @@ Route::get('/index', function () {
     return view('index');
 });
 
+// Index
+Route::get('/index', function () {
+    return view('index');
+});
+
 // Campaigns
 Route::get('/campaigns', function () {
     return view('campaigns');
@@ -30,20 +36,24 @@ Route::get('/campaigns', function () {
 
 // About
 Route::get("/about", function () {
+Route::get("/about", function () {
     return view('about');
 });
 
 // Subscription
+Route::get("/subscription", function () {
 Route::get("/subscription", function () {
     return view('subscription');
 });
 
 // Contact Us
 Route::get("/contactUs", function () {
+Route::get("/contactUs", function () {
     return view('contactUs');
 });
 
 // Works
+Route::get("/works", function () {
 Route::get("/works", function () {
     return view('works');
 });
