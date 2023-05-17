@@ -1,6 +1,8 @@
 <template>
     <div class="index-page">
-        <navbarAlt></navbarAlt>
+        <div>
+            <nav-bar></nav-bar>
+        </div>
         <!-- Image section -->
         <section class="image-section">
             <div>
@@ -166,20 +168,47 @@
             </div>
         </section>
         <!-- Footer section -->
-        <footer class="text-center">
-            <footerT></footerT>
+        <footer class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li class="list-inline-item">|</li>
+                            <li class="list-inline-item">
+                                <a href="#">Safe Guarding Statement</a>
+                            </li>
+                            <li class="list-inline-item">|</li>
+                            <li class="list-inline-item">
+                                <a href="/about">About Us</a>
+                            </li>
+                            <li class="list-inline-item">|</li>
+                            <li class="list-inline-item">
+                                <a href="/contactUs">Contact Us</a>
+                            </li>
+                        </ul>
+                        <p class="mb-0 mt-3">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Proin sollicitudin, est quis porta consequat,
+                            sem nisi pulvinar lorem, a t ornare lorem eros id
+                            sapien. Ut enim lacus, egestas eu egestas et, auctor
+                            eget libero. Quisque et urna velit. Maecenas est
+                            arcu, dapibus ut risus in, posuere tempus arcu.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 </template>
 <script>
-import navbarAlt from "../components/navbarAlt.vue";
-import footerT from "../components/footer.vue";
+import navBar from "../components/NavBar.vue";
 
 export default {
-    name: "Index",
     components: {
-        navbarAlt,
-        footerT,
+        navBar,
     },
 };
 </script>
