@@ -61,7 +61,7 @@ Route::get("/marketing-automation-mail", function () {
     return view('marketingAutomationMail');
 });
 
-Route::post('/send-email',[ContactController::class,'sendEmail'])->name('send.email');
+Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.email');
 
 // Sales
 Route::get("/sales", function () {

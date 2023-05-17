@@ -6,6 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
+import "bootstrap-icons/font/bootstrap-icons.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";

@@ -1,18 +1,12 @@
 <template>
-    <b-container class="bloom-style">
-        <b-container fluid="lg" >
-            <!-- Module Header -->
+    <div>
+        <b-container fluid="sm">
             <b-row>
-                <div class="sales-header">
-                    <h1>Sales</h1>
-                </div> 
-            </b-row>  
-
-            <b-row align-h="end">
                 <b-col lg="3" class="my-1">
-                    <!-- Filter Deals form group-->
                     <b-form-group
+                        label="Filter"
                         label-for="filter-input"
+                        label-cols-sm="2"
                         label-align-sm="left"
                         label-size="m"
                         class="mb-0"
@@ -22,48 +16,45 @@
                                 id="filter-input"
                                 v-model="filter"
                                 type="search"
-                                placeholder="Filter Deals"
-                            />
+                                placeholder="Type to Search"
+                            ></b-form-input>
 
                             <b-input-group-append>
                                 <b-button
                                     :disabled="!filter"
                                     @click="filter = ''"
-                                    class="bloom-set fw-bold"
-                                    >
-                                    Clear
-                                </b-button>
+                                    >Clear</b-button
+                                >
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                 </b-col>
-
                 <b-col lg="3" class="my-1">
-                    <!-- Filter By form group -->
                     <b-form-group
-                            v-model="sortDirection"
-                            label="By"
-                            label-cols-sm="2"
-                            label-align-sm="right"
-                            label-size="m"
-                            class="mb-0 fw-bold"
-                            v-slot="{ ariaDescribedby }"
+                        v-model="sortDirection"
+                        label="By"
+                        label-cols-sm="2"
+                        label-align-sm="left"
+                        label-size="m"
+                        class="mb-0"
+                        v-slot="{ ariaDescribedby }"
+                    >
+                        <b-form-select
+                            v-model="filterOn"
+                            :options="options"
+                            :aria-describedby="ariaDescribedby"
+                            class="mt-0"
+                            size="m"
+                            placeholder="category"
                         >
-                            <b-form-select
-                                v-model="filterOn"
-                                :options="options"
-                                :aria-describedby="ariaDescribedby"
-                                class="mt-0"
-                                size="m"
-                            />
+                        </b-form-select>
                     </b-form-group>
                 </b-col>
             </b-row>
 
-            <b-row class="my-2">
-                <!-- Sales Table -->
+            <b-row class="my-4">
                 <b-table
-                    class="bloom"
+                    striped
                     hover
                     :items="items"
                     :fields="fields"
@@ -79,12 +70,6 @@
                     small
                     @filtered="onFiltered"
                 >
-
-                <!-- Define table columns -->
-                <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
-                    <!-- Use the "key" attribute to map the column with the corresponding item property -->
-                    {{ item[field.key] }}
-                </b-table-column>
                     <template #cell(name)="row">
                         {{ row.value.first }} {{ row.value.last }}
                     </template>
@@ -100,148 +85,188 @@
                     </template>
                 </b-table>
             </b-row>
-            
-            <!-- Pagination feature -->
-            <b-row align-h="end" class="overflow-auto">
-                <div class="mt-2">
-                    <b-pagination
-                        v-model="currentPage"
-                        :total-rows="totalRows"
-                        :per-page="perPage"
-                        size="m"
-                        class="my-0"
-                        align="center"
-                    />
-                </div>
-            </b-row>
+
+            <div class="mt-3">
+                <b-pagination
+                    v-model="currentPage"
+                    :total-rows="totalRows"
+                    :per-page="perPage"
+                    align="center"
+                    size="m"
+                    class="my-0"
+                ></b-pagination>
+            </div>
         </b-container>
-    </b-container>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: "Sales",
-        data() {
-            return {
-                // items: null,
-                //placeholder items
+// import { assertExpressionStatement } from "@babel/types";
 
-                fields: [
-                    { key: "id", label: "Deal Name", sortable: true },
-                    { key: "campaign_payment_id", label: "Deal Name", sortable: true },
-                    {
-                        key: "created_at",
-                        label: "Date Issued",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    {
-                        key: "updated_at",
-                        label: "Date Updated",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    {
-                        key: "closing_date",
-                        label: "Closing Date",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                    { key: "priority", label: "Priority", sortable: true },
-                    { key: "stage_deal", label: "Deal Stage", sortable: true },
-                    { key: "type_deal", label: "Deal Type", sortable: true },
-                    { key: "contact", label: "Contact", sortable: true },
-                    { key: "company", label: "Company", sortable: true },
-                    {
-                        key: "amount",
-                        label: "Amount",
-                        sortable: true,
-                        class: "text-center",
-                    },
-                ],
+export default {
+    name: "Sales",
+    data() {
+        return {
+            selected: null,
+            // items: null,
+            //placeholder items
+            items: [
+                {
+                    deal_name: "deal1",
+                    date_issued: "1/23/21",
+                    closing_date: "3/3/21",
+                    priority: "high",
+                    deal_stage: "negotiations",
+                    deal_type: "overstock",
+                    contact: "contact1",
+                    company: "comp1",
+                    amount: 30000,
+                },
+                {
+                    deal_name: "deal2",
+                    date_issued: "2/23/21",
+                    closing_date: "4/3/21",
+                    priority: "medium",
+                    deal_stage: "complete",
+                    deal_type: "price bundling",
+                    contact: "contact2",
+                    company: "comp2",
+                    amount: 13000,
+                },
+                {
+                    deal_name: "deal3",
+                    date_issued: "1/23/20",
+                    closing_date: "3/3/20",
+                    priority: "low",
+                    deal_stage: "negotiations",
+                    deal_type: "loyalty discounts",
+                    contact: "contact3",
+                    company: "comp3",
+                    amount: 18000,
+                },
+                {
+                    deal_name: "deal4",
+                    date_issued: "3/23/21",
+                    closing_date: "5/3/21",
+                    priority: "low",
+                    deal_stage: "negotiations",
+                    deal_type: "free shipping",
+                    contact: "contact4",
+                    company: "comp4",
+                    amount: 30000,
+                },
+                {
+                    deal_name: "deal5",
+                    date_issued: "8/23/21",
+                    closing_date: "10/3/21",
+                    priority: "medium",
+                    deal_stage: "complete",
+                    deal_type: "free shipping",
+                    contact: "contact5",
+                    company: "comp5",
+                    amount: 150000,
+                },
+                {
+                    deal_name: "deal6",
+                    date_issued: "5/23/20",
+                    closing_date: "7/3/20",
+                    priority: "medium",
+                    deal_stage: "negotiations",
+                    deal_type: "price bundling",
+                    contact: "contact6",
+                    company: "comp",
+                    amount: 14000,
+                },
+            ],
 
-                // selected: null,
-                options: [
-                    { value: null, text: "Select Attribute" },
-                    { value: "Priority", text: "Priority" },
-                    { value: "Deal_Stage", text: "Deal Stage" },
-                    { value: "Deal_Type", text: "Deal Type" },
-                ],
-                totalRows: null,
-                currentPage: 1,
-                perPage: 5,
-                pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
-                sortBy: "",
-                sortDesc: false,
-                sortDirection: "asc",
-                filter: null,
-                filterOn: [],
-            };
-        },
+            fields: [
+                { key: "id", label: "Deal Name", sortable: true },
+                {
+                    key: "campaign_payment_id",
+                    label: "Deal Name",
+                    sortable: true,
+                },
+                {
+                    key: "created_at",
+                    label: "Date Issued",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "updated_at",
+                    label: "Date Updated",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "closing_date",
+                    label: "Closing Date",
+                    sortable: true,
+                    class: "text-center",
+                },
+                { key: "priority", label: "Priority", sortable: true },
+                { key: "stage_deal", label: "Deal Stage", sortable: true },
+                { key: "type_deal", label: "Deal Type", sortable: true },
+                { key: "contact", label: "Contact", sortable: true },
+                { key: "company", label: "Company", sortable: true },
+                {
+                    key: "amount",
+                    label: "Amount",
+                    sortable: true,
+                    class: "text-center",
+                },
+            ],
 
-        mounted: function(){
-            this.get_deal();
-        },
-    
-        methods: {
-            get_deal() {
-                axios
-                    .get("/get_deal")
-                    .then((response) => {
-                        console.log(response.data);
-                        this.items = response.data;
-                        console.log(this.items);
-                        this.totalRows = Object.keys(response.data).length;
-                        console.log(this.totalRows);
-                    })
-                    .catch((error) => {
-                        console.log(error.data);
-                    });
-            },
-        },
+            // selected: null,
+            options: [
+                { value: null, text: "Select Attribute" },
+                { value: "Priority", text: "Priority" },
+                { value: "Deal_Stage", text: "Deal Stage" },
+                { value: "Deal_Type", text: "Deal Type" },
+            ],
+            totalRows: null,
+            currentPage: 1,
+            perPage: 5,
+            pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+            sortBy: "",
+            sortDesc: false,
+            sortDirection: "asc",
+            filter: null,
+            filterOn: [],
+        };
+    },
 
-        beforeMount() {
-            this.get_deal();
-        },
+    mounted() {
+        this.totalRows = this.items.length;
+    },
 
-        onFiltered(filteredItems) {
-            this.totalRows = filteredItems.length;
-            this.currentPage = 1;
+    methods: {
+        get_sales() {
+            axios
+                .get("/get_sales")
+                .then((response) => {
+                    console.log(response.data);
+                    this.items = response.data;
+                })
+                .catch((error) => {
+                    console.log(error.data);
+                });
         },
-    };
+    },
+
+    beforeMount() {
+        this.get_deal();
+    },
+
+    onFiltered(filteredItems) {
+        this.totalRows = filteredItems.length;
+        this.currentPage = 1;
+    },
+};
 </script>
 
 <style scoped>
-    .sales-header {
-        margin-top: 50px;
-        color: #C88512;
-    }
-
-    .sales-header h1{
-        font-weight: bold;
-    }
-
-    .bloom-style {
-        background-color: #3F4F34;
-        color: #86A760;
-    }
-
-    ::v-deep .bloom thead{
-        color: #C88512;
-    }
-
-    ::v-deep .bloom td{
-        color: #86A760;
-    }
-
-    ::v-deep .bloom tr:hover{
-        background-color: #86A760;
-        color: #242108;
-    }
-
-    .bloom-set{
-        background-color:#86A760;
-        color:#4D4114;
-    }
-
+div {
+    margin-top: 50px;
+}
 </style>

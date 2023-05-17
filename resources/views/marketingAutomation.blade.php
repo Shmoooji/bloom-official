@@ -20,8 +20,7 @@
 
     </head>
     <body class="antialiased">
-        <div id="app">
-            <navbar-component></navbar-component>
+        <div id="app" style="padding-top: 100px;">
             <marketing-automation-component></marketing-automation-component>
         </div>
         <script src="https://apis.google.com/js/platform.js" async defer></script>

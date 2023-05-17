@@ -1,115 +1,91 @@
 <template>
-  <body>
-  <div class="marketing-page">
-    <div>
-      <label for="exampleFormControlInput1" class="display-6">
-        Automated Email</label>
+    <div class="marketing-page">
+        <div>
+            <NavBar />
+        </div>
+
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Subject"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        placeholder="Say something convincing!"
+                    ></textarea>
+                </div>
+            </form>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+            >
+                Send
+            </button>
+
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                Marketing Automation
+                            </h1>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+
+                        <div class="modal-body">Marketing emails sent!</div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--FORM!!!-->
-  <div class="container">
-    <form name="myForm" onsubmit="return validateForm()" method="post" required >
-      <div class="form-group">
-      <input type="text" v-model="emailTitle" class="email-subject form-control" id="exampleFormControlInput1" placeholder="Subject:">
-  </div>
-  <hr>
-
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1"></label>
-    <textarea v-model="emailBody" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Say something convincing!"></textarea>
-  </div>
-  </form>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-            Automated Marketing
-        </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-body">
-        Marketing emails sent!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-  </div>
-
-  <!--BUTTON -->
-  <button type="submit" value="Submit" onsubmit="validateForm()" @click="sendEmails" class="btn btn-secondary close-button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
-</body>
 </template>
+
 <script>
-  //import Navbar from "../components/navbar.vue"
-  import axios from 'axios';
-
-//js for actual email sending
-  export default {
-  data() {
-    return {
-      emailTitle: "",
-      emailBody: "",
-      contacts: []
-    };
-  },
-  mounted() {
-    this.fetchContacts();
-  },
-  methods: {
-    fetchContacts() {
-      // EMAIL ENDPOINT HERE PLS CHRISTIANNNNNN THANJKS
-      axios.get('YOUR_API_ENDPOINT/contacts')
-        .then(response => {
-          this.contacts = response.data;
-        })
-        .catch(error => {
-          console.error(error);
-        });
+import NavBar from "../components/NavBar.vue";
+export default {
+    name: "MarketingAutomation",
+    components: {
+        NavBar,
     },
-    sendEmails() {
-      // Loop each contact and send email
-      this.contacts.forEach(contact => {
-        this.sendEmail(contact.email, this.emailTitle, this.emailBody);
-      });
-    },
-    sendEmail(email, title, body) {
-      // Code to send email to the specified email address
-      // IMPLEMENTATION FOR SENDING EMAILS TBH IDK THISSS!!
-      console.log(`Sending email to ${email}`);
-      console.log(`Title: ${title}`);
-      console.log(`Body: ${body}`);
-    }
-  }
 };
-
-function validateForm(){
-  var x = document.forms["myForm"]["email"].value;
-  if (x == "" || x == null) {
-    alert("Name must be filled out");
-    return false;
-  }
-}
-
 </script>
 
 <style scoped>
-body {
-  background-color: #3F4F34;
-}
-h1{
-  color: #C88512;
-}
-  .close-button {
-    margin-top: 2rem;
+.sendbutton {
     border-radius: 50%;
     font-weight: 600;
     height: 2.1rem;
@@ -185,5 +161,4 @@ h1{
     height: 80vh;
   }
 }
-
 </style>
