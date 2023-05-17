@@ -9,7 +9,7 @@
                 
             </b-row>  
 
-            <b-row align-h="end">
+            <b-row align-h="start">
                 <b-col lg="6" class="my-1">
                     <div>
                         <h5>
@@ -22,8 +22,8 @@
                     </div>
                 </b-col>
 
-                <b-col lg="3" class="my-1">
-                    <!-- Filter Deals form group-->
+                <!-- <b-col lg="3" class="my-1">
+                    Filter Deals form group
                     <b-form-group
                         label-for="filter-input"
                         label-align-sm="left"
@@ -49,10 +49,10 @@
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                </b-col>
+                
 
                 <b-col lg="3" class="my-1">
-                    <!-- Filter By form group -->
+                    Filter By form group
                     <b-form-group
                             v-model="sortDirection"
                             label="By"
@@ -72,6 +72,7 @@
                     </b-form-group>
                     
                 </b-col>
+                -->
             </b-row>
 
             <b-row class="my-2">
@@ -211,10 +212,10 @@
             },
         },
 
-        onFiltered(filteredItems) {
-            this.totalRows = filteredItems.length
-            this.currentPage = 1
-        },
+        // onFiltered(filteredItems) {
+        //     this.totalRows = filteredItems.length
+        //     this.currentPage = 1
+        // },
     };
 </script>
 
