@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/success', [PaymentController::class, 'handleSuccess']);
         Route::get('/error', [PaymentController::class, 'handleError']);
     });
+});
 
     //Deal
     Route::get('/get_deal', [DealController::class, 'get_deal']);
@@ -120,7 +121,6 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/analytics', 'App\Http\Controllers\AnalyticsController@index')->name('analytics.index');
     Route::get('/analytics/fetch_campaign_list', 'App\Http\Controllers\AnalyticsController@fetch_campaign_list')->name('analytics.fetch_campaign_list');
-    Route::get('/graphs/getCampaignLocations', [AnalyticsController::class, 'getCampaignLocations'])->name('campaign-locations');
+    Route::get('/graphs/getTypeDeal', [AnalyticsController::class, 'getTypeDeal'])->name('graphs.getTypeDeal');
     Route::get('/graphs/getStageDealRatio', [AnalyticsController::class, 'getStageDealRatio'])->name('graphs.getStageDealRatio');
     Route::get('/graphs', [AnalyticsController::class,'getPrefPaymentMethod']);
-});

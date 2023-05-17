@@ -1,18 +1,10 @@
 
 
 <style scoped>
-.content-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-    /* Add position relative to the content body */
-}
 
-.content-body analytics-sidebar {
-    display: flex;
-    justify-content: left;
-}
+.analytics-page{
+    width:100%;
+}/* Add position relative to the content body */
 
 .head-title {
     display: flex;
@@ -40,8 +32,7 @@
 
 .content-container {
     border-radius: 20px;
-    min-width: 1000px;
-    max-width: 75%;
+    max-width: 100%;
     width: auto;
     box-sizing: border-box;
     font-size: 16px;
@@ -51,7 +42,6 @@
 
 .content-main {
     border-radius: 20px;
-    min-width: 1000px;
     width: auto;
     box-sizing: border-box;
     font-size: 16px;
@@ -60,14 +50,13 @@
     max-height: 60vh;
     overflow-y: auto;
     max-width: 90vw;
-    margin-top: -4vh;
     display: block;
 }
 
 .content-table {
     border-collapse: collapse;
     font-size: 18px;
-    width: 80%;
+    width: 100%;
     table-layout: fixed;
     font-weight: bold;
     max-height: 70vh;   
@@ -110,10 +99,6 @@ div {
     font-family: "Jost", sans-serif !important;
 }
 
-.navbar {
-    width: 100vw;
-}
-
 #datatable {
     color: C88512;
 }
@@ -131,20 +116,24 @@ div {
                 <div class="content-container">
                     <div class="head-title">
                         <h1><b>Reports and Summary</b></h1>
+                        <h3 style="text-align: center; color:white">Sales Table</h3>
                     </div>
+                    <b-card>
                     <div class="content-main">
-
                         <table id="datatable" class="content-table" style="padding: 25px;">
                             <thead>
                                 <tr>
-                                    <th>Campaigns</th>
-                                    <th>Sales for Campaigns</th>
-                                    <th> Sources</th>
-                                    <th>Customer satisfaction</th>
+                                    <th>Campaigns ID</th>
+                                    <th>Type</th>
+                                    <th>Price</th>
+                                    <th>Count</th>
+                                    <th>Total Sales</th>
                                 </tr>
                             </thead>
                          
                                 <tbody>
+                                    <tr class="table-row">
+                                    </tr>
                                     <tr class="table-row">
                                     </tr>
                                     <tr class="table-row">
@@ -159,7 +148,15 @@ div {
                         
                         </table>
                     </div>
+                </b-card>
+                    
                 </div>
+                        <div style="margin-top: 1.5vh;">
+                        <b-row>
+                                <b-col cols="2"><b-button  variant="warning" @click="exportToPdf" >Export to PDF</b-button></b-col>
+                                <b-col cols="1"><b-button  variant="warning" @click="exportToCsv" >Export to CSV</b-button></b-col>
+                        </b-row>
+                        </div>
             </b-col>
         </b-row>
 
@@ -174,6 +171,10 @@ import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import axios from "axios";
 import $ from "jquery";
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
+import BootstrapVue from 'bootstrap-vue';
+
 
 export default {
     components: { AnalyticsSideBar, navBar },
@@ -186,15 +187,42 @@ export default {
                     data: response.data,
                     lengthMenu: [5, 10],
                     columns: [
-                        { title: 'Campaigns', data: 'id' },
-                        { title: 'Sales for Campaigns', data: 'amount' },
-                        { title: 'Sources', data: 'amount' },
-                        { title: 'Customer Satisfaction', data: 'amount' },
+                        { title: 'Campaigns ID', data: 'id' },
+                        { title: 'Type', data: 'type' },
+                        { title: 'Price', data: 'price' },
+                        { title: 'Count', data: 'count' },
+                        { title: 'Total Sales', data: 'amount' },
                     ]
                 });
             });
 
     },
+    methods:{
+    exportToPdf() {
+    const doc = new jsPDF();
+    doc.autoTable({ html: "#datatable" });
+    let date = String(Date());
+    doc.save("Analytics Sales Report - "+date+".pdf");
+  },
+  exportToCsv() {
+    let date = String(Date());
+    const rows = Array.from(document.querySelectorAll("#datatable tbody tr"));
+    const csvContent = rows
+      .map(row => Array.from(row.querySelectorAll("td")).map(td => td.innerText).join(","))
+      .join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", "Analytics Sales Report - "+date+".csv");
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+}
 };
 
 

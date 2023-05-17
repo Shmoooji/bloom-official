@@ -19,8 +19,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import campaigns from "./components/campaigns.vue";
 import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
-import analyticsLocationGraph from "./components/analyticsLocationGraph.vue";
-import analyticsNav from "./components/analyticsNav.vue";
+import AnalyticsTypeDealGraph from "./components/analyticsTypeDealGraph.vue";
 import analyticsPieSales from "./components/analyticsPieSales.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue";
 import analyticsStageDealRatio from "./components/analyticsStageDealRatio.vue";
@@ -60,17 +59,13 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("subscription-component", subscription)
     .component("contact-us-component", contactUs)
     .component("payment-component", PaymentComponent)
-    .component("analytics-navbar", analyticsNav)
     .component("analytics-sidebar", analyticsSideBar)
     .component("analytics-reports-component", analyticsReports)
     .component("analytics-sidebar-component", analyticsSideBar)
     .component("customer-service-component", customerService)
     .component("analytics-graphs-component", analyticsGraphs)
-    .component("analytics-location-graphs-component", analyticsLocationGraph)
-    .component(
-        "analytics-stage-deals-graphs-component",
-        analyticsStageDealRatio
-    )
+    .component("analytics-type-deal-graphs-component", AnalyticsTypeDealGraph)
+    .component("analytics-stage-deals-graphs-component",analyticsStageDealRatio)
     .component("analytics-pie-sales-component", analyticsPieSales)
     .component("index-page", index)
     .component("login-page", login)

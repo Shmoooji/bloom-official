@@ -22,6 +22,8 @@
                 height: 100%;
                 display: flex;
                 background-color:#3F4F34 !important;
+                font-family: 'Nunito', sans-serif;
+
             }
             h1 {
                 font-family: sans-serif;
@@ -33,12 +35,8 @@
                 color: white;
             }
 
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-
             #app{
-
+                width: 100%;
             }
         </style>
         </head>
