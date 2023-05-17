@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="antialiased" style="background-image: url('{{ asset('img/landing-page-bg.jpg')}}');">
+    <body class="antialiased">
         <div id="app">
             <welcome-component></welcome-component> 
     </body>

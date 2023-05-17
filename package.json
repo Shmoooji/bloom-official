@@ -11,18 +11,24 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
-        "axios": "^1.1.2",
+        "axios": "^1.4.0",
         "bootstrap": "^5.2.3",
+        "browser-sync": "^2.29.1",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.49",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "sass": "^1.56.1",
         "vue": "^3.2.37",
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.10.5",
         "bootstrap-vue": "^2.23.1",
         "bootstrap-vue-3": "^0.5.1",
-        "bootstrap-vue-next": "^0.8.7"
+        "bootstrap-vue-next": "^0.8.7",
+        "chart.js": "^4.3.0",
+        "datatables.net-dt": "^1.13.4",
+        "jquery": "^3.7.0",
+        "vue-chartjs": "^5.2.0"
     }
 }
