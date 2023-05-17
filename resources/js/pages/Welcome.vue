@@ -10,7 +10,7 @@
                         focus on the objectives of the business which is to increase the sales and revenue. That's Bloom.
                     </p>
                     <br>
-                    <b-button class="landing-page-btn" href="/index">Get Started</b-button>
+                    <b-button class="landing-page-btn" href="/login">Get Started</b-button>
                 </b-row>
             </b-row>
             <b-row class="footer">

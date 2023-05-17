@@ -2,28 +2,28 @@
     <div class="menu-nav">
         <ul>
             <li>
-                <a href="inbox.php">
+                <a href="#">
                     <p>Inbox</p>
                 </a>
             </li>
             <br />
             <li>
-                <a href="unread.php">
+                <a href="#">
                     <p>Unread</p>
                 </a>
             </li>
             <li>
-                <a href="unread.php">
+                <a href="#">
                     <p>Important</p>
                 </a>
             </li>
             <li>
-                <a href="unread.php">
+                <a href="#">
                     <p>Sent</p>
                 </a>
             </li>
             <li>
-                <a href="unread.php">
+                <a href="#">
                     <p>Trash</p>
                 </a>
             </li>
@@ -31,15 +31,27 @@
     </div>
 
     <div class="main-menu">
-        <a href="email.php" style="display: inline-block; margin-right: 200px"
-            ><h1>Email</h1></a
-        >
-        <a
-            href="livechat.php"
-            style="display: inline-block; margin-right: 200px"
-            ><h1>Live Chat</h1></a
-        >
-        <a href="tickets.php" style="display: inline-block"><h1>Tickets</h1></a>
+        <a href="#" class="menu-item">
+            <div class="menu-item-box">
+                <img :src="'/images/email-icon.png'" alt="Email" class="menu-icon">
+
+                <p class="menu-item-text">Email</p>
+            </div>
+        </a>
+        <a href="#" class="menu-item">
+            <div class="menu-item-box">
+                <img :src="'/images/livechat-icon.png'" alt="Live Chat" class="menu-icon">
+
+                <p class="menu-item-text">Live Chat</p>
+            </div>
+        </a>
+        <a href="#" class="menu-item">
+            <div class="menu-item-box">
+                <img :src="'/images/tickets-icon.png'" alt="Tickets" class="menu-icon">
+
+                <p class="menu-item-text">Tickets</p>
+            </div>
+        </a>
     </div>
 </template>
 
@@ -137,16 +149,55 @@ header {
 /*------------------------------------------------*/
 
 .menu-nav {
+    position: absolute;
     width: 20%;
     height: 100%;
-    background-color: rgb(165, 165, 165);
+    background: #8A8A8A;
     color: white;
     font-family: "Meera Inimai", sans-serif;
 }
+
 .main-menu {
     position: absolute;
     left: 40%;
     top: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin: 30px;
+}
+
+.menu-item-box {
+    width: 150px;
+    height: 150px;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu-icon {
+    position: center;
+    max-width: 40%;
+    max-height: 40%;
+}
+
+.menu-item-text {
+    color: black;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
 }
 
 a {
