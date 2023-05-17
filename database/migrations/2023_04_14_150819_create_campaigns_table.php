@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->string('description');
             $table->unsignedFloat('price');
         });
     }
