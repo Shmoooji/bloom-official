@@ -221,15 +221,15 @@
             },
         },
 
-        beforeMount() {
-            this.get_deal();
-        },
+    beforeMount() {
+        this.get_deal();
+    },
 
-        onFiltered(filteredItems) {
-            this.totalRows = filteredItems.length;
-            this.currentPage = 1;
-        },
-    };
+    onFiltered(filteredItems) {
+        this.totalRows = filteredItems.length;
+        this.currentPage = 1;
+    },
+};
 </script>
 
 <style scoped>
