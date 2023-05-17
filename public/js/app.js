@@ -21075,22 +21075,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(campaign.desc), 1 /* TEXT */)];
                   }),
 
-                  _: 2 /* DYNAMIC */
-                }, 1024 /* DYNAMIC_SLOTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_b_button, {
-                  href: "#",
-                  variant: "primary"
-                }, {
-                  "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Subscribe")];
-                  }),
-                  _: 1 /* STABLE */
-                })];
-              }),
+/***/ }),
 
-              _: 2 /* DYNAMIC */
-            }, 1024 /* DYNAMIC_SLOTS */)]);
-          }), 128 /* KEYED_FRAGMENT */))])];
-        }),
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Works.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Works.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
         _: 1 /* STABLE */
       })];
@@ -21355,6 +21346,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+<<<<<<< HEAD
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"side-nav\"><ul><li><a href=\"#report\" class=\"\"><span style=\"font-size:3vh;\">⇤</span> Report</a></li><br><br><li><a href=\"#graphs\" class=\"\">Graphs</a></li><li><a href=\"#summary\" class=\"\">Summary</a></li></ul></div>", 1);
 var _hoisted_2 = {
   "class": "content"
@@ -21363,6 +21355,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_analytics_content_reports = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("analytics-content-reports");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_analytics_content_reports)])], 64 /* STABLE_FRAGMENT */);
 }
+=======
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+
+window.axios = axios__WEBPACK_IMPORTED_MODULE_1__["default"];
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+// window.axios.defaults.headers.common = {
+//     "X-CSRF-TOKEN": document
+//         .querySelector('meta[name="csrf-token"]')
+//         .getAttribute("content"),
+//     "X-Requested-With": "XMLHttpRequest",
+// };
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+
+// import Echo from 'laravel-echo';
+
+// import Pusher from 'pusher-js';
+// window.Pusher = Pusher;
+
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: import.meta.env.VITE_PUSHER_APP_KEY,
+//     wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
+//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
+//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
+//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
+//     enabledTransports: ['ws', 'wss'],
+// });
+>>>>>>> origin/authentication
 
 /***/ }),
 

@@ -6,7 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
-import "bootstrap-icons/font/bootstrap-icons.css";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
@@ -31,6 +31,8 @@ import contactUs from "./pages/ContactUs.vue";
 import marketingAutomation from "./pages/MarketingAutomation.vue";
 import customerService from "./pages/CustomerService.vue";
 import index from "./pages/Index.vue";
+import login from "./pages/Login.vue";
+import register from "./pages/Register.vue";
 
 const app = createApp({});
 
@@ -49,6 +51,8 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("analytics-contentreports", analyticsContentReports)
     .component("customer-service-component", customerService)
     .component("index-page", index)
+    .component("login-page", login)
+    .component("register-page", register)
     .use(BootstrapVue3)
     .mount("#app");
 
