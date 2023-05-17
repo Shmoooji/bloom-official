@@ -25,21 +25,27 @@ public function getPrefPaymentMethod(){
 }
 
 public function fetch_campaign_list(){
-
-    $campaign_model = new Campaign();
-    $campaign_list = $campaign_model->fetch_campaign_list();
-    $campaign_list = $this->campaign_label($campaign_list);
+    // $campaign_model = new Campaign();
+    // $campaign_list = $campaign_model->fetch_campaign_list();
+    // $campaign_list = $this->campaign_label($campaign_list);
+    // $campaign_list = $this->money_format($campaign_list);
+    //return response()->json($campaign_list);
+    $campaign_list = CampaignPayment::join('campaigns', 'campaign_payments.campaign_id', '=', 'campaigns.id')
+        ->select('campaigns.id', 'campaigns.type', 'campaigns.price', \DB::raw('count(*) as count'))
+        ->groupBy('campaigns.id', 'campaigns.type', 'campaigns.price')
+        ->get();
+        //echo $campaign_list;
     $campaign_list = $this->money_format($campaign_list);
-    return response()->json($campaign_list);
 
+    return response()->json($campaign_list);
 }
 
-public function getCampaignLocations(){
-    $locations = CampaignPayment::select('bill_country', \DB::raw('count(*) as count'))
-                 ->groupBy('bill_country')
+public function getTypeDeal(){
+    $typedeal = Deal::select('type_deal', \DB::raw('count(*) as count'))
+                 ->groupBy('type_deal')
                  ->get();
 
-    return response()->json($locations);
+    return response()->json($typedeal);
 }
 
 private function campaign_label($campaign_list){
@@ -71,7 +77,7 @@ private function money_format($campaign_list){
 
         $item->amount = $amount;
 
-
+        $item->amount = $item->count * $item->price;
         return $item;
 
     });

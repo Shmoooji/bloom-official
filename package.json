@@ -29,6 +29,8 @@
         "chart.js": "^4.3.0",
         "datatables.net-dt": "^1.13.4",
         "jquery": "^3.7.0",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.5.28",
         "vue-chartjs": "^5.2.0"
     }
 }

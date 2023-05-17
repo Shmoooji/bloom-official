@@ -1,8 +1,8 @@
 <template>
     <div>
-    <h2>Location Frequency Graph</h2>
-    <h5>This shows the country where the campaign is paid from.</h5>
-    <b-card class="LocationGraph">
+    <h2>Type of Deal</h2>
+    <h5>This shows the type of deals in a Pie graph.</h5>
+    <b-card class="TypeDealGraph">
     <Pie :data = "chartData" v-if="chartData.datasets[0].data.length > 0" :options="chartOptions"/>
         <template v-else>
       <div class="d-flex justify-content-center mb-3">
@@ -18,7 +18,7 @@
   </template>
   
   <style scoped>
-  .LocationGraph{
+  .TypeDealGraph{
     background-color: #86A760;
     width: 40vw;
     height: 60vh;
@@ -46,7 +46,7 @@
    
   
   export default {
-    name: 'AnalyticsLocationGraph',
+    name: 'AnalyticsTypeDealGraph',
     components: {Pie},
     data() {
       return {
@@ -81,10 +81,10 @@
         }
     },
     mounted(){
-        axios.get("/graphs/getCampaignLocations").then((response) => {
-            let locations = response.data;
-            this.chartData.labels = locations.map(location => String(location.bill_country));
-            this.chartData.datasets[0].data = locations.map(location => Number(location.count));
+        axios.get("/graphs/getTypeDeal").then((response) => {
+            let deal = response.data;
+            this.chartData.labels = deal.map(deal => String(deal.type_deal));
+            this.chartData.datasets[0].data = deal.map(deal => Number(deal.count));
             this.chartData.datasets[0].backgroundColor = this.colors;
             
             /*This is for debugging*/

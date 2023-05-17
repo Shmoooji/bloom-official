@@ -10,7 +10,7 @@
                     <!-- CONTENT AREA -->
                     <b-row style="float:left;">
                         <b-col><analytics-pie-sales :data="data"></analytics-pie-sales><br>
-                        <analytics-location-graphs-component></analytics-location-graphs-component>
+                        <analytics-type-deal-graphs-component></analytics-type-deal-graphs-component>
                     </b-col>
                     </b-row>
                     <b-row >
@@ -32,7 +32,7 @@
 import AnalyticsSideBar from '../components/analyticsSideBar.vue';
 import navBar from "../components/NavBar.vue";
 import analyticsPieSales from "../components/analyticsPieSales.vue"; 
-import analyticsLocationGraph from '../components/analyticsLocationGraph.vue';
+import analyticsLocationGraph from '../components/analyticsTypeDealGraph.vue';
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
