@@ -83,10 +83,22 @@ class ContactController extends Controller
         try {
             $contact = Contact::find($id);
             $contact->delete();
-        } catch(\Illuminate\Database\QueryException $ex){
-            return "Unable to delete ID: ".$id." due to ".$ex;        
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return "Unable to delete ID: " . $id . " due to " . $ex;
         }
 
-        return "Successfully deleted ID: ".$id;
+        return "Successfully deleted ID: " . $id;
+    }
+
+    public function sendEmail(Request $req)
+    {
+        //validation form
+        $data = [
+            'name' => $req->name,
+            'email' => $req->email,
+            'message' => $req->message,
+        ];
+        Mail::to('receiver@gmail.com')->send(new ContactMail($data));
+        return 'Email Sent! Thanks for reaching out!';
     }
 }
