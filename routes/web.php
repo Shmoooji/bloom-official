@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,11 @@ Route::get("/customerservice", function () {
 Route::get("/marketing-automation", function () {
     return view('marketingAutomation');
 });
+Route::get("/marketing-automation-mail", function () {
+    return view('marketingAutomationMail');
+});
+
+Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send.email');
 
 // Sales
 Route::get("/sales", function () {
@@ -69,3 +75,5 @@ Route::get('/payment/options', function () {
 Route::get('/analytics', function () {
     return view('analytics');
 });
+
+Route::get('/get_deal', [DealController::class, 'get_deal']);

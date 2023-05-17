@@ -180,10 +180,21 @@ export default {
             ],
 
             fields: [
-                { key: "deal_name", label: "Deal Name", sortable: true },
+                { key: "id", label: "Deal Name", sortable: true },
                 {
-                    key: "date_issued",
+                    key: "campaign_payment_id",
+                    label: "Deal Name",
+                    sortable: true,
+                },
+                {
+                    key: "created_at",
                     label: "Date Issued",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "updated_at",
+                    label: "Date Updated",
                     sortable: true,
                     class: "text-center",
                 },
@@ -194,8 +205,8 @@ export default {
                     class: "text-center",
                 },
                 { key: "priority", label: "Priority", sortable: true },
-                { key: "deal_stage", label: "Deal Stage", sortable: true },
-                { key: "deal_type", label: "Deal Type", sortable: true },
+                { key: "stage_deal", label: "Deal Stage", sortable: true },
+                { key: "type_deal", label: "Deal Type", sortable: true },
                 { key: "contact", label: "Contact", sortable: true },
                 { key: "company", label: "Company", sortable: true },
                 {
@@ -206,13 +217,14 @@ export default {
                 },
             ],
 
+            // selected: null,
             options: [
                 { value: null, text: "Select Attribute" },
-                { value: "priority", text: "Priority" },
-                { value: "deal_stage", text: "Deal Stage" },
-                { value: "deal_type", text: "Deal Type" },
+                { value: "Priority", text: "Priority" },
+                { value: "Deal_Stage", text: "Deal Stage" },
+                { value: "Deal_Type", text: "Deal Type" },
             ],
-            totalRows: 1,
+            totalRows: null,
             currentPage: 1,
             perPage: 5,
             pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
@@ -243,7 +255,7 @@ export default {
     },
 
     beforeMount() {
-        this.get_sales();
+        this.get_deal();
     },
 
     onFiltered(filteredItems) {
