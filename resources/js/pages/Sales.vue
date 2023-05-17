@@ -97,9 +97,9 @@
                 >
 
                     <!-- Define table columns -->
-                    <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable="field.sortable" :class="field.class">
+                    <b-table-column v-for="field in fields" :key="field.key" :label="field.label" :sortable=field.sortable :class="field.class">
                         <!-- Use the "key" attribute to map the column with the corresponding item property -->
-                        {{ item[field.key] }}
+                        {{ items[field.key] }}
                     </b-table-column>
                 
                     <template #cell(name)="row">
