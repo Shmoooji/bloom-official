@@ -1,6 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\AnalyticsController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -72,10 +71,10 @@ Route::middleware('auth')->group(function () {
         return view('customerservice');
     });
 
-    //Marketing Automation
-    Route::get("/marketing-automation", function () {
-        return view('marketingAutomation');
-    });
+//Marketing Automation
+Route::get("/marketing-automation", function () {
+    return view('marketingAutomation');
+});
 
     // Sales
     Route::get("/sales", function () {
