@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\DealController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +99,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('/get_deal', [DealController::class, 'get_deal']);
+
+Route::get('/get_deal_forecast', [DealController::class, 'get_deal_forecast']);
