@@ -8,7 +8,7 @@
                         <h1>CONTACTS</h1>
                     </b-col>
                     <b-col cols="7">
-                        <b-input-group></b-input-group>
+                        <b-input-group>
                             <b-form-input
                                 size="lg"
                                 type="search"
@@ -146,7 +146,7 @@
 
 @keyframes containerFadeIn {
     0% {
-        opacity: 0;
+        opacity: 0.8;
         transform: scaleY(0.98);
     }
     100% {
@@ -224,6 +224,7 @@ h1 {
 }
 </style>
 
+
 <script>
 import axios from "axios";
 
@@ -243,14 +244,46 @@ export default {
                     sortable: true,
                     class: "text-center",
                 },
-                { key: "email", label: "Email", sortable: true },
-                { key: "phone", label: "Phone Number", sortable: true },
-                { key: "company", label: "Company", sortable: true },
-                { key: "status", label: "Status", sortable: false },
-                { key: "last_active", label: "Last Active", sortable: true },
-                { key: "created_at", label: "Created At", sortable: true },
-                { key: "updated_at", label: "Updated At", sortable: true },
-                { key: "actions", label: "Actions", sortable: false },
+                {
+                    key: "email",
+                    label: "Email",
+                    sortable: true,
+                },
+                {
+                    key: "phone",
+                    label: "Phone Number",
+                    sortable: true,
+                },
+                {
+                    key: "company",
+                    label: "Company",
+                    sortable: true,
+                },
+                {
+                    key: "status",
+                    label: "Status",
+                    sortable: false,
+                },
+                {
+                    key: "last_active",
+                    label: "Last Active",
+                    sortable: true,
+                },
+                {
+                    key: "created_at",
+                    label: "Created At",
+                    sortable: true,
+                },
+                {
+                    key: "updated_at",
+                    label: "Updated At",
+                    sortable: true,
+                },
+                {
+                    key: "actions",
+                    label: "Actions",
+                    sortable: false,
+                },
             ],
             contacts: [],
             itemsPerPage: 15,
