@@ -1,12 +1,28 @@
 <template>
-    <div>
-        <b-container fluid="sm">
+    <b-container class="bloom-style">
+        <b-container fluid="lg">
+            <!-- Module Header -->
             <b-row>
-                <b-col lg="3" class="my-1">
+                <div class="sales-header">
+                    <h1>Sales</h1>
+                </div>
+            </b-row>
+
+            <b-row align-h="start">
+                <b-col lg="6" class="my-1">
+                    <div>
+                        <h5>
+                            <b>Deal Forecast: ${{ d_forecast }} </b>
+                            <br />
+                            From latest two deals
+                        </h5>
+                    </div>
+                </b-col>
+
+                <!-- <b-col lg="3" class="my-1">
+                    Filter Deals form group
                     <b-form-group
-                        label="Filter"
                         label-for="filter-input"
-                        label-cols-sm="2"
                         label-align-sm="left"
                         label-size="m"
                         class="mb-0"
@@ -16,45 +32,51 @@
                                 id="filter-input"
                                 v-model="filter"
                                 type="search"
-                                placeholder="Type to Search"
-                            ></b-form-input>
+                                placeholder="Filter Deals"
+                            />
 
                             <b-input-group-append>
                                 <b-button
                                     :disabled="!filter"
                                     @click="filter = ''"
-                                    >Clear</b-button
-                                >
+                                    class="bloom-set fw-bold"
+                                    >
+                                    Clear
+                                </b-button>
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
-                </b-col>
+                
+
                 <b-col lg="3" class="my-1">
+                    Filter By form group
                     <b-form-group
-                        v-model="sortDirection"
-                        label="By"
-                        label-cols-sm="2"
-                        label-align-sm="left"
-                        label-size="m"
-                        class="mb-0"
-                        v-slot="{ ariaDescribedby }"
-                    >
-                        <b-form-select
-                            v-model="filterOn"
-                            :options="options"
-                            :aria-describedby="ariaDescribedby"
-                            class="mt-0"
-                            size="m"
-                            placeholder="category"
+                            v-model="sortDirection"
+                            label="By"
+                            label-cols-sm="2"
+                            label-align-sm="right"
+                            label-size="m"
+                            class="mb-0 fw-bold"
+                            v-slot="{ ariaDescribedby }"
                         >
-                        </b-form-select>
+                            <b-form-select
+                                v-model="filterOn"
+                                :options="options"
+                                :aria-describedby="ariaDescribedby"
+                                class="mt-0"
+                                size="m"
+                            />
                     </b-form-group>
+                    
                 </b-col>
+                -->
             </b-row>
 
-            <b-row class="my-4">
+            <b-row class="my-2">
+                <!-- Sales Table -->
                 <b-table
-                    striped
+                    id="sales-table"
+                    class="bloom"
                     hover
                     :items="items"
                     :fields="fields"
@@ -67,9 +89,22 @@
                     :sort-direction="sortDirection"
                     stacked="md"
                     show-empty
-                    small
+                    medium
                     @filtered="onFiltered"
+                    sort-icon-left
                 >
+                    <!-- Define table columns -->
+                    <b-table-column
+                        v-for="field in fields"
+                        :key="field.key"
+                        :label="field.label"
+                        :sortable="field.sortable"
+                        :class="field.class"
+                    >
+                        <!-- Use the "key" attribute to map the column with the corresponding item property -->
+                        {{ items[field.key] }}
+                    </b-table-column>
+
                     <template #cell(name)="row">
                         {{ row.value.first }} {{ row.value.last }}
                     </template>
@@ -86,105 +121,45 @@
                 </b-table>
             </b-row>
 
-            <div class="mt-3">
-                <b-pagination
-                    v-model="currentPage"
-                    :total-rows="totalRows"
-                    :per-page="perPage"
-                    align="center"
-                    size="m"
-                    class="my-0"
-                ></b-pagination>
-            </div>
+            <!-- Pagination feature -->
+            <b-row align-h="end" class="overflow-auto">
+                <div class="mt-2">
+                    <b-pagination
+                        v-model="currentPage"
+                        :total-rows="totalRows"
+                        :per-page="perPage"
+                        size="m"
+                        class="my-0"
+                        align="center"
+                        aria-controls="sales-table"
+                    />
+                </div>
+            </b-row>
         </b-container>
-    </div>
+    </b-container>
 </template>
 
 <script>
-// import { assertExpressionStatement } from "@babel/types";
-
 export default {
     name: "Sales",
+
     data() {
         return {
-            selected: null,
-            // items: null,
-            //placeholder items
-            items: [
-                {
-                    deal_name: "deal1",
-                    date_issued: "1/23/21",
-                    closing_date: "3/3/21",
-                    priority: "high",
-                    deal_stage: "negotiations",
-                    deal_type: "overstock",
-                    contact: "contact1",
-                    company: "comp1",
-                    amount: 30000,
-                },
-                {
-                    deal_name: "deal2",
-                    date_issued: "2/23/21",
-                    closing_date: "4/3/21",
-                    priority: "medium",
-                    deal_stage: "complete",
-                    deal_type: "price bundling",
-                    contact: "contact2",
-                    company: "comp2",
-                    amount: 13000,
-                },
-                {
-                    deal_name: "deal3",
-                    date_issued: "1/23/20",
-                    closing_date: "3/3/20",
-                    priority: "low",
-                    deal_stage: "negotiations",
-                    deal_type: "loyalty discounts",
-                    contact: "contact3",
-                    company: "comp3",
-                    amount: 18000,
-                },
-                {
-                    deal_name: "deal4",
-                    date_issued: "3/23/21",
-                    closing_date: "5/3/21",
-                    priority: "low",
-                    deal_stage: "negotiations",
-                    deal_type: "free shipping",
-                    contact: "contact4",
-                    company: "comp4",
-                    amount: 30000,
-                },
-                {
-                    deal_name: "deal5",
-                    date_issued: "8/23/21",
-                    closing_date: "10/3/21",
-                    priority: "medium",
-                    deal_stage: "complete",
-                    deal_type: "free shipping",
-                    contact: "contact5",
-                    company: "comp5",
-                    amount: 150000,
-                },
-                {
-                    deal_name: "deal6",
-                    date_issued: "5/23/20",
-                    closing_date: "7/3/20",
-                    priority: "medium",
-                    deal_stage: "negotiations",
-                    deal_type: "price bundling",
-                    contact: "contact6",
-                    company: "comp",
-                    amount: 14000,
-                },
-            ],
+            d_forecast: null,
+            items: [],
 
             fields: [
-                { key: "id", label: "Deal Name", sortable: true },
                 {
-                    key: "campaign_payment_id",
+                    key: "id",
                     label: "Deal Name",
                     sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "campaign_payment_id",
+                    label: "Campaign Name",
+                    sortable: true,
+                    class: "text-center",
                 },
                 {
                     key: "created_at",
@@ -204,11 +179,36 @@ export default {
                     sortable: true,
                     class: "text-center",
                 },
-                { key: "priority", label: "Priority", sortable: true },
-                { key: "stage_deal", label: "Deal Stage", sortable: true },
-                { key: "type_deal", label: "Deal Type", sortable: true },
-                { key: "contact", label: "Contact", sortable: true },
-                { key: "company", label: "Company", sortable: true },
+                {
+                    key: "priority",
+                    label: "Priority",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "stage_deal",
+                    label: "Deal Stage",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "type_deal",
+                    label: "Deal Type",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "contact",
+                    label: "Contact",
+                    sortable: true,
+                    class: "text-center",
+                },
+                {
+                    key: "company",
+                    label: "Company",
+                    sortable: true,
+                    class: "text-center",
+                },
                 {
                     key: "amount",
                     label: "Amount",
@@ -217,13 +217,13 @@ export default {
                 },
             ],
 
-            // selected: null,
             options: [
                 { value: null, text: "Select Attribute" },
                 { value: "Priority", text: "Priority" },
                 { value: "Deal_Stage", text: "Deal Stage" },
                 { value: "Deal_Type", text: "Deal Type" },
             ],
+
             totalRows: null,
             currentPage: 1,
             perPage: 5,
@@ -236,17 +236,31 @@ export default {
         };
     },
 
-    mounted() {
-        this.totalRows = this.items.length;
+    beforeMount() {
+        this.get_deal();
+        this.get_deal_forecast();
     },
 
     methods: {
-        get_sales() {
+        get_deal() {
             axios
-                .get("/get_sales")
+                .get("/get_deal")
                 .then((response) => {
                     console.log(response.data);
                     this.items = response.data;
+                    console.log(this.items);
+                    this.totalRows = Object.keys(response.data).length;
+                })
+                .catch((error) => {
+                    console.log(error.data);
+                });
+        },
+        get_deal_forecast() {
+            axios
+                .get("/get_deal_forecast")
+                .then((response) => {
+                    console.log(response.data);
+                    this.d_forecast = response.data.toFixed(2);
                 })
                 .catch((error) => {
                     console.log(error.data);
@@ -254,19 +268,42 @@ export default {
         },
     },
 
-    beforeMount() {
-        this.get_deal();
-    },
-
-    onFiltered(filteredItems) {
-        this.totalRows = filteredItems.length;
-        this.currentPage = 1;
-    },
+    // onFiltered(filteredItems) {
+    //     this.totalRows = filteredItems.length
+    //     this.currentPage = 1
+    // },
 };
 </script>
 
 <style scoped>
-div {
+.sales-header {
     margin-top: 50px;
+    color: #c88512;
+}
+
+.sales-header h1 {
+    font-weight: bold;
+}
+.bloom-style {
+    background-color: #3f4f34;
+    color: #86a760;
+}
+
+:deep .bloom thead {
+    color: #c88512;
+}
+
+:deep .bloom td {
+    color: #86a760;
+}
+
+:deep .bloom tr:hover {
+    background-color: #86a760;
+    color: #242108;
+}
+
+.bloom-set {
+    background-color: #86a760;
+    color: #4d4114;
 }
 </style>

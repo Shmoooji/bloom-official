@@ -18,7 +18,7 @@ class DealFactory extends Factory
     public function definition()
     {
         return [
-            'campaign_payment_id' => CampaignPayment::all()->random()->id,
+            'campaign_payment_id' => CampaignPayment::all()->random()->payment_id,
             'closing_date' => fake()->date(),
             'priority' => fake()->randomElement(['High', 'Medium', 'Low']),
             'stage_deal' => fake()->randomElement(['New', 'In Progress', 'Closed']),

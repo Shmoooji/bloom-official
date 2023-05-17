@@ -13,7 +13,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .title{
     font-size: 3vw;  
 }

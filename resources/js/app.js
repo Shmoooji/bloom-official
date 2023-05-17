@@ -4,13 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import "./bootstrap";
 import { createApp } from "vue";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import { BootstrapVue3 } from "bootstrap-vue-3";
-import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -20,18 +19,25 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import campaigns from "./components/campaigns.vue";
 import NavBar from "./components/NavBar.vue";
 import PaymentComponent from "./components/PaymentComponent.vue";
+import analyticsLocationGraph from "./components/analyticsLocationGraph.vue";
 import analyticsNav from "./components/analyticsNav.vue";
+import analyticsPieSales from "./components/analyticsPieSales.vue";
 import analyticsSideBar from "./components/analyticsSideBar.vue";
-import analyticsContentReports from "./components/analyticsContentReports.vue";
-import sales from "./pages/Sales.vue";
-import welcome from "./pages/Welcome.vue";
+import analyticsStageDealRatio from "./components/analyticsStageDealRatio.vue";
+import contacts from "./components/contacts.vue";
 import about from "./pages/About.vue";
-import works from "./pages/Works.vue";
-import subscription from "./pages/Subscription.vue";
 import contactUs from "./pages/ContactUs.vue";
-import marketingAutomation from "./pages/MarketingAutomation.vue";
 import customerService from "./pages/CustomerService.vue";
 import index from "./pages/Index.vue";
+import login from "./pages/Login.vue";
+import marketingAutomation from "./pages/MarketingAutomation.vue";
+import register from "./pages/Register.vue";
+import sales from "./pages/Sales.vue";
+import subscription from "./pages/Subscription.vue";
+import welcome from "./pages/Welcome.vue";
+import works from "./pages/Works.vue";
+import analyticsGraphs from "./pages/analyticsGraphs.vue";
+import analyticsReports from "./pages/analyticsReports.vue";
 
 const app = createApp({});
 
@@ -47,9 +53,20 @@ app.component("marketing-automation-component", marketingAutomation)
     .component("payment-component", PaymentComponent)
     .component("analytics-navbar", analyticsNav)
     .component("analytics-sidebar", analyticsSideBar)
-    .component("analytics-contentreports", analyticsContentReports)
+    .component("analytics-reports-component", analyticsReports)
+    .component("analytics-sidebar-component", analyticsSideBar)
     .component("customer-service-component", customerService)
+    .component("analytics-graphs-component", analyticsGraphs)
+    .component("analytics-location-graphs-component", analyticsLocationGraph)
+    .component(
+        "analytics-stage-deals-graphs-component",
+        analyticsStageDealRatio
+    )
+    .component("analytics-pie-sales-component", analyticsPieSales)
     .component("index-page", index)
+    .component("login-page", login)
+    .component("register-page", register)
+    .component("contacts-component", contacts)
     .use(BootstrapVue3)
     .mount("#app");
 
