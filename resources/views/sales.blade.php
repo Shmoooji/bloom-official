@@ -21,6 +21,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
+            <navbar-component></navbar-component>
             <sales-component></sales-component>
         </div>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
