@@ -8,7 +8,7 @@
     </button>
 </template>
 
-<style>
+<style scoped>
 .payment-container {
     display: flex;
     height: 100vh;

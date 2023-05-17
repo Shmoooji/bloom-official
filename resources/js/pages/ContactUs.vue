@@ -2,15 +2,14 @@
     <div>
         <navbarAlt></navbarAlt>
     </div>
-  
+
     <b-container fluid="sm" class="works-content">
         <b-row>
             <h1 class="text-color">Contact Us Page</h1>
         </b-row>
 
-  
         <b-row class="footer-bottom">
-                <footerT></footerT>
+            <footerT></footerT>
         </b-row>
     </b-container>
 </template>
@@ -30,23 +29,23 @@ export default {
 };
 </script>
 
-<style>
-    body {
-        height: 100vh;
-        font-family: 'Nunito', sans-serif;
-    } 
+<style scoped>
+body {
+    height: 100vh;
+    font-family: "Nunito", sans-serif;
+}
 
-    .works-content {
-        min-width: 100%; 
-    }
+.works-content {
+    min-width: 100%;
+}
 
-    .text-color {
-        color: #4d4114;
-    }
+.text-color {
+    color: #4d4114;
+}
 
-    .footer-bottom{
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-    }
+.footer-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
 </style>

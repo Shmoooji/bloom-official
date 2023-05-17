@@ -1,6 +1,6 @@
 
 
-<style>
+<style scoped>
 .content-body {
     display: flex;
     flex-direction: row;
