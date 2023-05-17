@@ -129,7 +129,7 @@ h1{
   }
   .sendbutton {
     border-radius: 50%;}
-  .container{
+  .container {
     color: rgb(54, 54, 54);
     font-size: x-large;
     font-weight: 500;
@@ -137,18 +137,20 @@ h1{
     background-color: #86A760;
     border-radius: 20px;
     min-width: 80%;
-    height: 45vh;
+    height: 30rem;
   }
-  .email-subject{
+
+  .email-subject {
     background-color: #86A760;
     border-color: #86A760;
   }
-  .email-subject:active{
+
+  .email-subject:active {
     border-color: #3F4F34;
     transition: 10s;
-    
   }
-  .display-6{
+
+  .display-6 {
     padding: 5px;
     border-radius: 20px;
     color: #C88512;
@@ -161,6 +163,27 @@ h1{
     border-width: 2px;
     border-color: rgb(0, 0, 0);
   }
+  /* Media queries */
+@media screen and (max-width: 768px) {
+  .marketing-page {
+    margin-top: 5rem;
+  }
 
+  .container {
+    min-width: 90%;
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .marketing-page {
+    margin-top: 3rem;
+  }
+
+  .container {
+    min-width: 100%;
+    height: 80vh;
+  }
+}
 
 </style>
