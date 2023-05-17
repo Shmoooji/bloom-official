@@ -1,18 +1,10 @@
 
 
 <style scoped>
-.content-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-    /* Add position relative to the content body */
-}
+.analytics-page{
+    width:100%;
+}/* Add position relative to the content body */
 
-.content-body analytics-sidebar {
-    display: flex;
-    justify-content: left;
-}
 
 .head-title {
     display: flex;
@@ -40,8 +32,7 @@
 
 .content-container {
     border-radius: 20px;
-    min-width: 1000px;
-    max-width: 75%;
+    max-width: 100%;
     width: auto;
     box-sizing: border-box;
     font-size: 16px;
@@ -65,7 +56,7 @@
 .content-table {
     border-collapse: collapse;
     font-size: 18px;
-    width: 80%;
+    width: 100%;
     table-layout: fixed;
     font-weight: bold;
     max-height: 70vh;   
@@ -106,10 +97,6 @@ td {
 
 div {
     font-family: "Jost", sans-serif !important;
-}
-
-.navbar {
-    width: 100vw;
 }
 
 #datatable {

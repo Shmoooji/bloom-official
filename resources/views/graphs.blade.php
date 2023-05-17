@@ -37,6 +37,7 @@
 
             #app{
                 /*margin-top: -3vh;*/
+                width: 100%;
             }
         </style>
         </head>
