@@ -21,6 +21,8 @@ Route::get('/', function () {
 // Campaigns
 Route::get('/campaigns', [CampaignController::class, 'index'] );
 
+Route::get('/get_campaigns', [CampaignController:: class, 'get_campaigns']);
+
 // About
 Route::get("about", function () {
     return view('about');
