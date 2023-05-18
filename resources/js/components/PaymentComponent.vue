@@ -1,11 +1,11 @@
 <template>
-    <button :class="['payment-option', paymentMethod]">
+    <div :class="['payment-option', paymentMethod]" @click="goToGcash">
         <img
             :id="paymentMethod"
             :src="logoUrl"
             :alt="paymentMethod + ' Logo'"
         />
-    </button>
+    </div>
 </template>
 
 <style>
@@ -73,6 +73,21 @@ export default {
                     return paypalLogo;
                 default:
                     return "";
+            }
+        },
+    },
+    methods: {
+        goToPaymentPage() {
+            switch (this.paymentMethod) {
+                case "gcash":
+                    this.$router.push("/");
+                    break;
+                case "paymaya":
+                    this.$router.push("/");
+                    break;
+                case "paypal":
+                    this.$router.push("/");
+                    break;
             }
         },
     },

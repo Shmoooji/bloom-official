@@ -23,6 +23,7 @@ class ContactFactory extends Factory
             'company' => fake()->company(),
             'status' => fake()->randomElement(['active', 'inactive']),
             'last_active' => fake()->dateTimeBetween('-1 year', 'now'),
+
         ];
     }
 }
