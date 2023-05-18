@@ -1,95 +1,111 @@
 <template>
-    <div class="container">
-        <h2>Login</h2>
-        <form method="post" @submit="login" style="border: 1px solid #ccc">
-            <!-- <input type="hidden" name="_token" :value="csrf" /> -->
-            <label for="email"><b>Email Address</b></label>
-            <input type="email" name="email" v-nmodel="email" required />
+    <b-container class="bv-example-row">
+        <b-row class="register-content">            
+            <b-col cols="4" class="column1">
+                <div>
+                    <img src="/img/bloom_logo.png" class="logo_log">
+                </div>
+            </b-col>
+            <b-col cols="8" class="column2">
+                <div>
+                    <h1 class="text-center">Login</h1>
+                    <form method="post" autocomplete="off">
+                        <input type="hidden" name="_token" :value="csrf" />
+                        <label for="email"><b>Email Address</b></label>
+                        <input type="email" name="email" v-model="email" required />
 
-            <label for="password"><b>Password</b></label>
-            <input
-                type="password"
-                name="password"
-                v-model="password"
-                min="8"
-                required
-            />
-            <p v-if="errors.length">
-                <b>Please correct the following error(s):</b>
-                <ul>
-                    <li v-for="error in errors" style="color: red">
-                        <p  style="color: red">
-                            {{ error }}
-                        </p>
-                    </li>
-                </ul>
-            </p>
-            <button type="submit" class="loginbtn">Login</button>
-        </form>
-    </div>
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" name="password" v-model="password" required />
+
+                        <button type="submit" @click="login()" class="loginbtn">Login</button>
+                    </form>
+                    <span>Don't have an account? <a href="/register" class="register-link">Click Here</a></span>
+                </div>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            // csrf: document
-            //     .querySelector('meta[name="csrf-token"]')
-            //     .getAttribute("content"),
-            email: "",
-            password: "",
-            errors: [],
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content"),
+                email: "",
+                password: ""
         };
     },
-    methhods: {
+    methods: {
         login() {
-            axios
-                .post("/login", {
-                    email: this.email,
-                    password: this.password,
-                })
-                .then((response) => {
+            axios.post('/login/authentication', {
+                email: this.email,
+                password: this.password
+            })
+                .then(response => {
                     console.log(response);
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.log(error);
-                    this.errors.push(error.response.data.message);
-                });
-        },
+                })
+        }
     },
 };
 </script>
 
-<style scoped>
+<style>
 body {
-    background-color: #3f4f34;
+    font-family: 'Nunito', sans-serif;
+    height: 100vh;
 }
-.row {
+
+.register-content {
+    height: 100vh;
+}
+
+.column1 div {
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.column2 div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.container {
+    max-width: 100vw;
+}
+
 .column1 {
-    flex: 50%;
     background-color: #3f4f34;
+    background-image: url('/img/landing_page_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
-    margin-top: 30%;
-    float: left;
 }
+
+.logo_log {
+    height: 350px;
+    width: auto;
+}
+
 h1 {
-    color: #c88512;
-    font-family: "Lucida Console", monospace;
-    font-size: 32;
-    padding: 170px 0;
+    color:  #3f4f34;
+    font-weight: bold;
 }
-h2 {
-    text-align: center;
-}
+
 .column2 {
     background-color: #86a760;
-    flex: 50%;
-    float: right;
-    margin-top: 20%;
 }
-input[type="text"],
+
 input[type="password"],
 input[type="email"] {
     width: 100%;
@@ -100,21 +116,14 @@ input[type="email"] {
     background: #3f4f34;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus, input[type="email"]:focus {
     background-color: #3f4f34;
     outline: none;
-    width: 50%;
-}
-
-.container {
-    padding: 16px;
-    background-color: #86a760;
 }
 
 button {
     background-color: #3f4f34;
-    color: white;
+    color: #C88512;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -126,4 +135,14 @@ button {
 button:hover {
     opacity: 1;
 }
+
+.register-link, .register-link:hover, .register-link:focus {
+    color: #C88512;
+
+}
+
+label {
+    color: #3f4f34;
+}
+
 </style>

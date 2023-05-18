@@ -1,68 +1,59 @@
 <template>
-    <div class="container">
-        <form
-            method="post"
-            @submit="checkForm"
-            style="border: 1px solid #ccc"
-        >
-            <!-- <input type="hidden" name="_token" :value="csrf" /> -->
-            <label for="f_name"><b>First Name</b></label>
-            <input type="text" name="f_name" v-model="f_name" required />
+    <b-container class="bv-example-row">
+        <b-row class="register-content">            
+            <b-col cols="4" class="column1">
+                <div>
+                    <img src="/img/bloom_logo.png" class="logo_reg">
+                </div>
+            </b-col>
+            <b-col cols="8" class="column2">
+                <div>
+                    <h1 class="text-center">REGISTER</h1>
+                    <form action="/register" method="post" @submit="checkForm" autocomplete="off">
+                        <!-- <input type="hidden" name="_token" :value="csrf" /> -->
+                        <label for="f_name"><b>First Name</b></label>
+                        <input type="text" name="f_name" v-model="f_name" required />
 
-            <label for="l_name"><b>Last Name</b></label>
-            <input type="text" name="l_name" v-model="l_name" required />
+                        <label for="l_name"><b>Last Name</b></label>
+                        <input type="text" name="l_name" v-model="l_name" required />
 
-            <label for="email"><b>Email Address</b></label>
-            <input type="email" name="email" v-model="email" required />
+                        <label for="email"><b>Email Address</b></label>
+                        <input type="email" name="email" v-model="email" required />
 
-            <label for="company_name"><b>Name of company_name</b></label>
-            <input type="text" name="company_name" v-model="company_name" required />
+                        <label for="company_name"><b>Name of Company</b></label>
+                        <input type="text" name="company_name" v-model="company_name" />
 
-            <label for="address"><b>Address</b></label>
-            <input type="text" name="address" v-model="address" required />
+                        <label for="company_name"><b>Address</b></label>
+                        <input type="text" name="address" v-model="address" />
 
-            <label for="password"><b>Password</b></label>
-            <input
-                type="password"
-                name="password"
-                v-model="password"
-                min="8"
-                required
-            />
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" name="password" v-model="password" required />
 
-            <label for="password_confirmation"><b>Confirm Password</b></label>
-            <input
-                type="password"
-                name="password_confirmation"
-                v-model="password_confirmation"
-                min="8"
-                required
-            />
+                        <label for="password_confirmation"><b>Confirm Password</b></label>
+                        <input type="password" name="password_confirmation" v-model="password_confirmation" required />
 
-            <label>
-                <input
-                    type="checkbox"
-                    checked="checked"
-                    v-model="checked"
-                    style="margin-bottom: 15px"
-                />
-                By clicking here, I have read and understood the terms and
-                conditions.
-            </label>
-            <p v-if="errors.length">
-                <b>Please correct the following error(s):</b>
-                <ul>
-                    <li v-for="error in errors" style="color: red">
-                        <p  style="color: red">
-                            {{ error }}
+                        <label>
+                            <input type="checkbox" checked="checked" v-model="checked" style="margin-bottom: 15px" />
+                            By clicking here, I have read and understood the terms and
+                            conditions.
+                        </label>
+                        <p v-if="errors.length">
+                            <b>Please correct the following error(s):</b>
+                        <ul>
+                            <li v-for="error in errors" style="color: red">
+                                <p style="color: red">
+                                    {{ error }}
+                                </p>
+                            </li>
+                        </ul>
                         </p>
-                    </li>
-                </ul>
-            </p>
-
-            <button type="submit" class="signupbtn">Sign Up</button>
-        </form>
-    </div>
+                        <button type="submit" class="signupbtn">Sign Up</button>
+                    </form>
+                    <span>Already have an account? <a href="/login" class="login-link">Click Here</a></span>
+                </div>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
@@ -79,7 +70,6 @@ export default {
             l_name: "",
             email: "",
             company_name: "",
-            address: "",
             password: "",
             password_confirmation: "",
             checked: false,
@@ -93,12 +83,10 @@ export default {
                 this.l_name &&
                 this.email &&
                 this.company_name &&
-                this.address &&
                 this.password &&
                 this.password_confirmation &&
                 this.checked
             ) {
-                this.register();
                 return true;
             }
 
@@ -116,11 +104,7 @@ export default {
                 this.errors.push('Valid email required.');
             }
             if (!this.company_name) {
-                this.errors.push("company name required.");
-            }
-            
-            if (!this.address) {
-                this.errors.push("address required.");
+                this.errors.push("company_name name required.");
             }
             if (!this.password) {
                 this.errors.push("Password required.");
@@ -134,19 +118,17 @@ export default {
             if (!this.checked) {
                 this.errors.push("Terms and conditions required.");
             }
-            // console.log("method called and executed");
 
             e.preventDefault();
+            if (this.errors.length === 0) register();
         },
-        register: function() {
-            
+        register() {
             axios
                 .post("/register", {
                     f_name: this.f_name,
                     l_name: this.l_name,
                     email: this.email,
                     company_name: this.company_name,
-                    address: this.address,
                     password: this.password,
                     password_confirmation: this.password_confirmation,
                     checked: this.checked,
@@ -154,46 +136,71 @@ export default {
                 .then((response) => {
                     console.log(response);
                 })
-                .catch(error => {
-                    // Handle AxiosError
-                    if (error.response) {
-                    // The request was made and the server responded with a status code
-                    console.log('Server responded with status code:', error.response.status);
-                    console.log('Response data:', error.response.data);
-                    } else {
-                    // The request was made but no response was received
-                    console.log('Error message:', error.message);
-                    this.errors.push(error.message);
-                }
-            });
+                .catch((error) => {
+                    console.log(error);
+                });
         },
         validEmail: function (email) {
             var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
-        
+
     },
 };
 </script>
 
-<style scoped>
+<style>
 body {
-    background-color: #3f4f34;
+    font-family: 'Nunito', sans-serif;
+    height: 100vh;
 }
+
+.register-content {
+    height: 100vh;
+}
+
+.column1 div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column2 div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.container {
+    max-width: 100vw;
+}
+
 .column1 {
-    flex: 50%;
     background-color: #3f4f34;
+    background-image: url('/img/landing_page_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
-    margin-top: 50%;
-    padding: 370px 0;
 }
+
+.logo_reg {
+    height: 350px;
+    width: auto;
+}
+
 h1 {
-    color: #c88512;
+    color:  #3f4f34;
+    font-weight: bold;
 }
+
 .column2 {
     background-color: #86a760;
-    flex: 50%;
 }
+
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -206,19 +213,14 @@ input[type="email"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus, input[type="email"]:focus {
     background-color: #3f4f34;
     outline: none;
-    width: 50%;
-}
-
-.container {
-    padding: 16px;
 }
 
 button {
     background-color: #3f4f34;
-    color: white;
+    color: #C88512;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -230,4 +232,14 @@ button {
 button:hover {
     opacity: 1;
 }
+
+.login-link, .login-link:hover, .login-link:focus {
+    color: #C88512;
+
+}
+
+label {
+    color: #3f4f34;
+}
+
 </style>
